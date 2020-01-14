@@ -1,0 +1,11 @@
+D:\Projetos\GOS\BLL\bin\Debug\BLL.dll
+D:\Projetos\GOS\BLL\bin\Debug\BLL.pdb
+D:\Projetos\GOS\BLL\bin\Debug\DAL.dll
+D:\Projetos\GOS\BLL\bin\Debug\Model.dll
+D:\Projetos\GOS\BLL\bin\Debug\DAL.pdb
+D:\Projetos\GOS\BLL\bin\Debug\Model.pdb
+D:\Projetos\GOS\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\Projetos\GOS\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\Projetos\GOS\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\Projetos\GOS\BLL\obj\Debug\BLL.dll
+D:\Projetos\GOS\BLL\obj\Debug\BLL.pdb
