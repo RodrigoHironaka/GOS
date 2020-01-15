@@ -125,18 +125,18 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(562, 503);
+            this.groupBox1.Size = new System.Drawing.Size(562, 456);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro de Departamento";
             // 
             // cbDepartamento
             // 
-            this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDepartamento.FormattingEnabled = true;
             this.cbDepartamento.Location = new System.Drawing.Point(388, 307);
             this.cbDepartamento.Name = "cbDepartamento";
-            this.cbDepartamento.Size = new System.Drawing.Size(160, 28);
+            this.cbDepartamento.Size = new System.Drawing.Size(160, 26);
             this.cbDepartamento.TabIndex = 284;
             // 
             // btnGravar
@@ -144,18 +144,19 @@
             this.btnGravar.BackColor = System.Drawing.Color.Silver;
             this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravar.Image = ((System.Drawing.Image)(resources.GetObject("btnGravar.Image")));
-            this.btnGravar.Location = new System.Drawing.Point(435, 451);
+            this.btnGravar.Location = new System.Drawing.Point(442, 1);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(54, 46);
             this.btnGravar.TabIndex = 11;
             this.btnGravar.UseVisualStyleBackColor = false;
+            this.btnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.Silver;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.Location = new System.Drawing.Point(495, 453);
+            this.btnSair.Location = new System.Drawing.Point(502, 3);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(54, 42);
             this.btnSair.TabIndex = 12;
@@ -175,21 +176,21 @@
             // 
             // cbTipoPessoa
             // 
-            this.cbTipoPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTipoPessoa.FormattingEnabled = true;
             this.cbTipoPessoa.Items.AddRange(new object[] {
             "FISICA",
             "JURIDICA"});
-            this.cbTipoPessoa.Location = new System.Drawing.Point(102, 46);
+            this.cbTipoPessoa.Location = new System.Drawing.Point(101, 48);
             this.cbTipoPessoa.Name = "cbTipoPessoa";
-            this.cbTipoPessoa.Size = new System.Drawing.Size(121, 28);
+            this.cbTipoPessoa.Size = new System.Drawing.Size(121, 26);
             this.cbTipoPessoa.TabIndex = 244;
             // 
             // txtDataNasc
             // 
             this.txtDataNasc.CustomFormat = " ";
             this.txtDataNasc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataNasc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtDataNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDataNasc.Location = new System.Drawing.Point(418, 254);
             this.txtDataNasc.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
             this.txtDataNasc.Name = "txtDataNasc";
@@ -233,7 +234,7 @@
             this.txtCelular.Location = new System.Drawing.Point(421, 355);
             this.txtCelular.Mask = "(00)00000-0000";
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(129, 26);
+            this.txtCelular.Size = new System.Drawing.Size(126, 26);
             this.txtCelular.TabIndex = 259;
             // 
             // txtTelefone
@@ -280,7 +281,7 @@
             this.txtDataCadastro.Location = new System.Drawing.Point(229, 48);
             this.txtDataCadastro.MaxLength = 10;
             this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(250, 26);
+            this.txtDataCadastro.Size = new System.Drawing.Size(144, 26);
             this.txtDataCadastro.TabIndex = 262;
             // 
             // label6
@@ -332,7 +333,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(98, 25);
+            this.label3.Location = new System.Drawing.Point(97, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 278;
@@ -395,7 +396,7 @@
             // 
             // cbUF
             // 
-            this.cbUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbUF.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cbUF.FormattingEnabled = true;
             this.cbUF.Items.AddRange(new object[] {
@@ -428,7 +429,7 @@
             "TO"});
             this.cbUF.Location = new System.Drawing.Point(325, 307);
             this.cbUF.Name = "cbUF";
-            this.cbUF.Size = new System.Drawing.Size(55, 28);
+            this.cbUF.Size = new System.Drawing.Size(55, 26);
             this.cbUF.TabIndex = 254;
             // 
             // uf
@@ -601,7 +602,7 @@
             this.chbAtivo.Checked = true;
             this.chbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbAtivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbAtivo.Location = new System.Drawing.Point(485, 48);
+            this.chbAtivo.Location = new System.Drawing.Point(379, 48);
             this.chbAtivo.Name = "chbAtivo";
             this.chbAtivo.Size = new System.Drawing.Size(63, 24);
             this.chbAtivo.TabIndex = 10;
@@ -624,7 +625,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(587, 527);
+            this.ClientSize = new System.Drawing.Size(587, 478);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadastroCliente";

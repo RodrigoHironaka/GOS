@@ -29,10 +29,35 @@ namespace GOS.Formularios
             frmCadastroServico f = new frmCadastroServico(AcaoTela.Inserir);
             f.ShowDialog();
             f.Dispose();
-            if (chbPesqInativos.Checked == false)
-                dgvDados.DataSource = bll.carregaGrid();
+            if (chbPesqAtivos.Checked == true)
+            {
+                lbAtencao.Visible = false;
+                dgvDados.DataSource = bll.LocalizarAtivos(txtPesquisar.Text);
+                chbPesqAtivos.ForeColor = Color.Black;
+                chbPesqInativos.ForeColor = Color.Black;
+            }
             else if (chbPesqInativos.Checked == true)
+            {
+                lbAtencao.Visible = false;
                 dgvDados.DataSource = bll.LocalizarInativos(txtPesquisar.Text);
+                chbPesqAtivos.ForeColor = Color.Black;
+                chbPesqInativos.ForeColor = Color.Black;
+            }
+
+            if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
+            {
+                lbAtencao.Visible = false;
+                dgvDados.DataSource = bll.carregaGrid();
+                chbPesqAtivos.ForeColor = Color.Black;
+                chbPesqInativos.ForeColor = Color.Black;
+            }
+            else if (chbPesqAtivos.Checked == false && chbPesqInativos.Checked == false)
+            {
+                lbAtencao.Visible = true;
+                chbPesqAtivos.ForeColor = Color.Red;
+                chbPesqInativos.ForeColor = Color.Red;
+                ((DataTable)dgvDados.DataSource).Rows.Clear();
+            }
             dgvDados.ClearSelection();
         }
 
@@ -62,10 +87,35 @@ namespace GOS.Formularios
                 }
                 f.ShowDialog();
                 f.Dispose();
-                if (chbPesqInativos.Checked == false)
-                    dgvDados.DataSource = bll.carregaGrid();
+                if (chbPesqAtivos.Checked == true)
+                {
+                    lbAtencao.Visible = false;
+                    dgvDados.DataSource = bll.LocalizarAtivos(txtPesquisar.Text);
+                    chbPesqAtivos.ForeColor = Color.Black;
+                    chbPesqInativos.ForeColor = Color.Black;
+                }
                 else if (chbPesqInativos.Checked == true)
+                {
+                    lbAtencao.Visible = false;
                     dgvDados.DataSource = bll.LocalizarInativos(txtPesquisar.Text);
+                    chbPesqAtivos.ForeColor = Color.Black;
+                    chbPesqInativos.ForeColor = Color.Black;
+                }
+
+                if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
+                {
+                    lbAtencao.Visible = false;
+                    dgvDados.DataSource = bll.carregaGrid();
+                    chbPesqAtivos.ForeColor = Color.Black;
+                    chbPesqInativos.ForeColor = Color.Black;
+                }
+                else if (chbPesqAtivos.Checked == false && chbPesqInativos.Checked == false)
+                {
+                    lbAtencao.Visible = true;
+                    chbPesqAtivos.ForeColor = Color.Red;
+                    chbPesqInativos.ForeColor = Color.Red;
+                    ((DataTable)dgvDados.DataSource).Rows.Clear();
+                }
                 dgvDados.ClearSelection();
             }
         }
@@ -88,10 +138,35 @@ namespace GOS.Formularios
                         BLLServico bll = new BLLServico(cx);
                         bll.Excluir(Convert.ToInt32(dgvDados.CurrentRow.Cells[0].Value));
                         MessageBox.Show("Registro excluído com sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if (chbPesqInativos.Checked == false)
-                            dgvDados.DataSource = bll.carregaGrid();
+                        if (chbPesqAtivos.Checked == true)
+                        {
+                            lbAtencao.Visible = false;
+                            dgvDados.DataSource = bll.LocalizarAtivos(txtPesquisar.Text);
+                            chbPesqAtivos.ForeColor = Color.Black;
+                            chbPesqInativos.ForeColor = Color.Black;
+                        }
                         else if (chbPesqInativos.Checked == true)
+                        {
+                            lbAtencao.Visible = false;
                             dgvDados.DataSource = bll.LocalizarInativos(txtPesquisar.Text);
+                            chbPesqAtivos.ForeColor = Color.Black;
+                            chbPesqInativos.ForeColor = Color.Black;
+                        }
+
+                        if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
+                        {
+                            lbAtencao.Visible = false;
+                            dgvDados.DataSource = bll.carregaGrid();
+                            chbPesqAtivos.ForeColor = Color.Black;
+                            chbPesqInativos.ForeColor = Color.Black;
+                        }
+                        else if (chbPesqAtivos.Checked == false && chbPesqInativos.Checked == false)
+                        {
+                            lbAtencao.Visible = true;
+                            chbPesqAtivos.ForeColor = Color.Red;
+                            chbPesqInativos.ForeColor = Color.Red;
+                            ((DataTable)dgvDados.DataSource).Rows.Clear();
+                        }
                         dgvDados.ClearSelection();
                     }
                 }
@@ -106,13 +181,34 @@ namespace GOS.Formularios
             {
                 DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
                 BLLServico bll = new BLLServico(cx);
-                if (chbPesqInativos.Checked == false)
+                if (chbPesqAtivos.Checked == true)
                 {
-                    dgvDados.DataSource = bll.Localizar(txtPesquisar.Text);
+                    lbAtencao.Visible = false;
+                    dgvDados.DataSource = bll.LocalizarAtivos(txtPesquisar.Text);
+                    chbPesqAtivos.ForeColor = Color.Black;
+                    chbPesqInativos.ForeColor = Color.Black;
                 }
                 else if (chbPesqInativos.Checked == true)
                 {
+                    lbAtencao.Visible = false;
                     dgvDados.DataSource = bll.LocalizarInativos(txtPesquisar.Text);
+                    chbPesqAtivos.ForeColor = Color.Black;
+                    chbPesqInativos.ForeColor = Color.Black;
+                }
+
+                if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
+                {
+                    lbAtencao.Visible = false;
+                    dgvDados.DataSource = bll.carregaGrid();
+                    chbPesqAtivos.ForeColor = Color.Black;
+                    chbPesqInativos.ForeColor = Color.Black;
+                }
+                else if (chbPesqAtivos.Checked == false && chbPesqInativos.Checked == false)
+                {
+                    lbAtencao.Visible = true;
+                    chbPesqAtivos.ForeColor = Color.Red;
+                    chbPesqInativos.ForeColor = Color.Red;
+                    ((DataTable)dgvDados.DataSource).Rows.Clear();
                 }
             }
             catch (Exception ex)

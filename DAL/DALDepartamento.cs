@@ -54,7 +54,7 @@ namespace DAL
             conexao.Desconectar();
         }
 
-        public DataTable Localizar(String valor)
+        public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter("select * from departamento where nome like '%" + valor + "%' and situacao = 'A'", conexao.StringConexao);
@@ -91,6 +91,7 @@ namespace DAL
             return modelo;
         }
 
+        
         public DataTable carregarGrid()
         {
             try
@@ -98,7 +99,7 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from departamento where situacao = 'A'", conexao.StringConexao);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from departamento", conexao.StringConexao);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;

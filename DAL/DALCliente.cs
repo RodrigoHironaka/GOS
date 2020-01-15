@@ -23,7 +23,7 @@ namespace DAL
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "insert into cliente(nome,cpfcnpj,rgie,razaosocial,tipopessoa,cep,endereco,endnumero,complemento,bairro,telefone,celular,celular2,email,cidade,uf, datanasc, datacadastro,situacao,iddepartamento)" +
+            cmd.CommandText = "insert into cliente(nome,cpfcnpj,rgie,razaosocial,tipopessoa,cep,endereco,endnumero,complemento,bairro,telefone,celular,celular2,email,cidade,uf,datanasc,datacadastro,situacao,iddepartamento)" +
                 " values (@nome,@cpfcnpj,@rgie,@razaosocial,@tipopessoa,@cep,@endereco,@endnumero,@complemento,@bairro,@telefone,@celular,@celular2,@email,@cidade,@uf,@datanasc,@datacadastro,@situacao,@iddepartamento);";
             cmd.Parameters.AddWithValue("@nome", modelo.Nome);
             cmd.Parameters.AddWithValue("@cpfcnpj", modelo.CPFCNPJ);
@@ -41,7 +41,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@email", modelo.Email);
             cmd.Parameters.AddWithValue("@cidade", modelo.Cidade);
             cmd.Parameters.AddWithValue("@uf", modelo.UF);
-            cmd.Parameters.AddWithValue("@datanascimento", modelo.DataNasc);
+            cmd.Parameters.AddWithValue("@datanasc", modelo.DataNasc);
             cmd.Parameters.AddWithValue("@datacadastro", modelo.DataCadastro); 
             cmd.Parameters.AddWithValue("@situacao", modelo.Situacao);
             cmd.Parameters.AddWithValue("@iddepartamento", modelo.IdDepartamento);
@@ -93,7 +93,7 @@ namespace DAL
             conexao.Desconectar();
         }
 
-        public DataTable Localizar(String valor)
+        public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();
             string sql = "select * from cliente where razaosocial like '%" + valor + "%'" + " or id like '%" + valor + "%'" + " or nome like '%" + valor + "%' and situacao = 'A'";
@@ -157,7 +157,7 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from cliente where situacao = 'A'", conexao.StringConexao);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from cliente", conexao.StringConexao);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;
