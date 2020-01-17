@@ -23,6 +23,7 @@ namespace GOS.Formularios
             { this.Text = "Cadastro de Departamento - Inserir"; }
             else if (acaoTela == AcaoTela.Alterar)
             { this.Text = "Cadastro de Departamento - Alterar"; }
+            txtNomeUsu.Select();
         }
 
         private void BtnGravar_Click(object sender, EventArgs e)
@@ -30,7 +31,7 @@ namespace GOS.Formularios
             try
             {
                 ModelUsuario modelo = new ModelUsuario();
-                modelo.Nome = txtNomeDep.Text;
+                modelo.Nome = txtNomeUsu.Text;
                 modelo.Senha = txtSenha.Text;
                 modelo.NivelAcesso = Convert.ToString(cbNivelAcesso.SelectedItem);  
                 if (chbAtivo.Checked == true)
@@ -62,7 +63,7 @@ namespace GOS.Formularios
         private void LimpaTela()
         {
             txtCodigo.Clear();
-            txtNomeDep.Clear();
+            txtNomeUsu.Clear();
             txtSenha.Clear();
             cbNivelAcesso.SelectedIndex = 0;
             chbAtivo.Checked = true;
@@ -78,6 +79,16 @@ namespace GOS.Formularios
             }
             catch (Exception ex)
             { MessageBox.Show("Não foi possivel sair! Erro: " + ex.Message); }
+        }
+
+        private void FrmCadastroUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+
+            }   
         }
     }
 }

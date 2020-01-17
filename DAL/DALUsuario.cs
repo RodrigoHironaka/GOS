@@ -61,7 +61,7 @@ namespace DAL
         public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("select * from usuario where nome like '%" + valor + "%' and situacao = 'A'", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("select * from usuario where nome like '%" + valor + "%' and situacao = 'A' order by id", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -69,7 +69,7 @@ namespace DAL
         public DataTable LocalizarInativos(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("select * from usuario where nome like '%" + valor + "%' and situacao = 'I'", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("select * from usuario where nome like '%" + valor + "%' and situacao = 'I' order by id", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -104,7 +104,7 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from usuario", conexao.StringConexao);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from usuario order by id", conexao.StringConexao);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;

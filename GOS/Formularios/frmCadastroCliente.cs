@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ferramentas;
+using static Ferramentas.ValidaCEP;
 
 namespace GOS.Formularios
 {
@@ -120,20 +122,15 @@ namespace GOS.Formularios
             //cbDepartamento.Update();
         }
 
-        private void CbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void CbTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbTipoPessoa.SelectedIndex == 0)
             {
                 txtRazaoSocial.Enabled = false;
                 lbRGIE.Text = "RG";
-                txtRGIE.Mask = "00.000.000-0";
+                txtRGIE.Mask = "00,000,000-0";
                 lbCPFCNPJ.Text = "CPF";
-                txtCPFCNPJ.Mask = "000.000.000-00";
+                txtCPFCNPJ.Mask = "000,000,000-00";
                 lbRazaoNome.Enabled = false;
                 txtNomeFantasia.Text = "";
                 lbNomeFantasia.Text = "Nome:";
@@ -142,9 +139,9 @@ namespace GOS.Formularios
             {
                 txtRazaoSocial.Enabled = true;
                 lbRGIE.Text = "IE";
-                txtRGIE.Mask = "000.000.000.000";
+                txtRGIE.Mask = "000,000,000,000";
                 lbCPFCNPJ.Text = "CNPJ";
-                txtCPFCNPJ.Mask = "00.000.000/0000-00";
+                txtCPFCNPJ.Mask = "00,000,000/0000-00";
                 lbRazaoNome.Enabled = true;
                 lbNomeFantasia.Text = "Nome Fantasia:";
             }
@@ -159,6 +156,79 @@ namespace GOS.Formularios
         {
             txtDataNasc.Text = Convert.ToString(mcCalendar.SelectionStart.Date.ToShortDateString());
             mcCalendar.Visible = false;
+        }
+
+        private void TxtCPFCNPJ_Leave(object sender, EventArgs e)
+        {
+            pbInvalido.Visible = false;
+            string valor = txtCPFCNPJ.Text;
+            if (cbTipoPessoa.SelectedIndex == 0)
+            {
+                if (ValidaCpfCnpj.ValidaCpf(valor) == false)
+                {
+                    pbInvalido.Visible = true;
+                }
+                else
+                {
+                    pbInvalido.Visible = false;
+                }
+            }
+            else if (cbTipoPessoa.SelectedIndex == 1)
+            {
+                if (ValidaCpfCnpj.ValidaCnpj(valor) == false)
+                {
+                    pbInvalido.Visible = true;
+                }
+            }
+        }
+
+        private void TxtCEP_Leave(object sender, EventArgs e)
+        {
+            if (ValidaCEP.ValidaCep(txtCEP.Text) == false)
+            {
+                pbInvalidoCEP.Visible = true;
+                txtBairro.Clear();
+                cbUF.SelectedIndex = 24;
+                txtCidade.Clear();
+                txtEndereco.Clear();
+                txtCEP.Clear();
+            }
+            else
+            {
+                if (BuscaEndereco.verificaCEP(txtCEP.Text) == true)
+                {
+                    txtBairro.Text = BuscaEndereco.bairro;
+                    cbUF.Text = BuscaEndereco.estado;
+                    txtCidade.Text = BuscaEndereco.cidade;
+                    txtEndereco.Text = BuscaEndereco.endereco;
+                    pbInvalidoCEP.Visible = false;
+                }
+            }
+        }
+
+        private void TxtEmail_Leave(object sender, EventArgs e)
+        {
+            if(ValidaEmail.validaEmail(txtEmail.Text) == false)
+            {
+                pbInvalidoEmail.Visible = true;
+            }
+            else
+            {
+                if (ValidaEmail.validaEmail(txtEmail.Text) == true)
+                {
+                    pbInvalidoEmail.Visible = false;
+                }
+            }
+        }
+
+        private void FrmCadastroCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+
+            }
         }
     }
 }

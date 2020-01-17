@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroCliente));
             this.gbInvalido = new System.Windows.Forms.GroupBox();
+            this.pbInvalidoCEP = new System.Windows.Forms.PictureBox();
+            this.pbInvalido = new System.Windows.Forms.PictureBox();
             this.pbCalendario = new System.Windows.Forms.PictureBox();
             this.mcCalendar = new System.Windows.Forms.MonthCalendar();
             this.txtDataNasc = new System.Windows.Forms.MaskedTextBox();
@@ -55,7 +57,6 @@
             this.dataNasc = new System.Windows.Forms.Label();
             this.celular = new System.Windows.Forms.Label();
             this.lbRGIE = new System.Windows.Forms.Label();
-            this.lbCPFCNPJ = new System.Windows.Forms.Label();
             this.cep = new System.Windows.Forms.Label();
             this.cbUF = new System.Windows.Forms.ComboBox();
             this.uf = new System.Windows.Forms.Label();
@@ -75,18 +76,23 @@
             this.lbRazaoNome = new System.Windows.Forms.Label();
             this.chbAtivo = new System.Windows.Forms.CheckBox();
             this.telefone = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbCPFCNPJ = new System.Windows.Forms.Label();
+            this.pbInvalidoEmail = new System.Windows.Forms.PictureBox();
             this.gbInvalido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInvalidoCEP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInvalido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCalendario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInvalidoEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // gbInvalido
             // 
             this.gbInvalido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbInvalido.Controls.Add(this.pictureBox1);
-            this.gbInvalido.Controls.Add(this.pbCalendario);
             this.gbInvalido.Controls.Add(this.mcCalendar);
+            this.gbInvalido.Controls.Add(this.pbInvalidoEmail);
+            this.gbInvalido.Controls.Add(this.pbInvalidoCEP);
+            this.gbInvalido.Controls.Add(this.pbInvalido);
+            this.gbInvalido.Controls.Add(this.pbCalendario);
             this.gbInvalido.Controls.Add(this.txtDataNasc);
             this.gbInvalido.Controls.Add(this.cbDepartamento);
             this.gbInvalido.Controls.Add(this.btnGravar);
@@ -138,6 +144,28 @@
             this.gbInvalido.TabStop = false;
             this.gbInvalido.Text = "Cadastro de Cliente";
             // 
+            // pbInvalidoCEP
+            // 
+            this.pbInvalidoCEP.Image = ((System.Drawing.Image)(resources.GetObject("pbInvalidoCEP.Image")));
+            this.pbInvalidoCEP.Location = new System.Drawing.Point(87, 182);
+            this.pbInvalidoCEP.Name = "pbInvalidoCEP";
+            this.pbInvalidoCEP.Size = new System.Drawing.Size(16, 16);
+            this.pbInvalidoCEP.TabIndex = 290;
+            this.pbInvalidoCEP.TabStop = false;
+            this.pbInvalidoCEP.Visible = false;
+            this.pbInvalidoCEP.WaitOnLoad = true;
+            // 
+            // pbInvalido
+            // 
+            this.pbInvalido.Image = ((System.Drawing.Image)(resources.GetObject("pbInvalido.Image")));
+            this.pbInvalido.Location = new System.Drawing.Point(145, 339);
+            this.pbInvalido.Name = "pbInvalido";
+            this.pbInvalido.Size = new System.Drawing.Size(16, 16);
+            this.pbInvalido.TabIndex = 289;
+            this.pbInvalido.TabStop = false;
+            this.pbInvalido.Visible = false;
+            this.pbInvalido.WaitOnLoad = true;
+            // 
             // pbCalendario
             // 
             this.pbCalendario.Image = ((System.Drawing.Image)(resources.GetObject("pbCalendario.Image")));
@@ -150,7 +178,7 @@
             // 
             // mcCalendar
             // 
-            this.mcCalendar.Location = new System.Drawing.Point(325, 282);
+            this.mcCalendar.Location = new System.Drawing.Point(320, 282);
             this.mcCalendar.Name = "mcCalendar";
             this.mcCalendar.TabIndex = 287;
             this.mcCalendar.Visible = false;
@@ -163,7 +191,7 @@
             this.txtDataNasc.Mask = "00/00/0000";
             this.txtDataNasc.Name = "txtDataNasc";
             this.txtDataNasc.Size = new System.Drawing.Size(92, 26);
-            this.txtDataNasc.TabIndex = 286;
+            this.txtDataNasc.TabIndex = 8;
             // 
             // cbDepartamento
             // 
@@ -172,18 +200,17 @@
             this.cbDepartamento.Location = new System.Drawing.Point(388, 307);
             this.cbDepartamento.Name = "cbDepartamento";
             this.cbDepartamento.Size = new System.Drawing.Size(160, 26);
-            this.cbDepartamento.TabIndex = 284;
-            this.cbDepartamento.SelectedIndexChanged += new System.EventHandler(this.CbDepartamento_SelectedIndexChanged);
+            this.cbDepartamento.TabIndex = 11;
             // 
             // btnGravar
             // 
             this.btnGravar.BackColor = System.Drawing.Color.Silver;
             this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravar.Image = ((System.Drawing.Image)(resources.GetObject("btnGravar.Image")));
-            this.btnGravar.Location = new System.Drawing.Point(442, 1);
+            this.btnGravar.Location = new System.Drawing.Point(442, 36);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(54, 46);
-            this.btnGravar.TabIndex = 11;
+            this.btnGravar.TabIndex = 18;
             this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
@@ -192,10 +219,10 @@
             this.btnSair.BackColor = System.Drawing.Color.Silver;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.Location = new System.Drawing.Point(502, 3);
+            this.btnSair.Location = new System.Drawing.Point(502, 38);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(54, 42);
-            this.btnSair.TabIndex = 12;
+            this.btnSair.TabIndex = 19;
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
@@ -220,7 +247,7 @@
             this.cbTipoPessoa.Location = new System.Drawing.Point(101, 48);
             this.cbTipoPessoa.Name = "cbTipoPessoa";
             this.cbTipoPessoa.Size = new System.Drawing.Size(121, 26);
-            this.cbTipoPessoa.TabIndex = 244;
+            this.cbTipoPessoa.TabIndex = 0;
             this.cbTipoPessoa.SelectedIndexChanged += new System.EventHandler(this.CbTipoPessoa_SelectedIndexChanged);
             // 
             // txtCelular2
@@ -230,7 +257,7 @@
             this.txtCelular2.Mask = "(00)00000-0000";
             this.txtCelular2.Name = "txtCelular2";
             this.txtCelular2.Size = new System.Drawing.Size(129, 26);
-            this.txtCelular2.TabIndex = 260;
+            this.txtCelular2.TabIndex = 16;
             // 
             // txtEmail
             // 
@@ -241,7 +268,8 @@
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(400, 26);
-            this.txtEmail.TabIndex = 261;
+            this.txtEmail.TabIndex = 17;
+            this.txtEmail.Leave += new System.EventHandler(this.TxtEmail_Leave);
             // 
             // email
             // 
@@ -261,7 +289,7 @@
             this.txtCelular.Mask = "(00)00000-0000";
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(126, 26);
-            this.txtCelular.TabIndex = 259;
+            this.txtCelular.TabIndex = 15;
             // 
             // txtTelefone
             // 
@@ -270,25 +298,26 @@
             this.txtTelefone.Mask = "(00)0000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(111, 26);
-            this.txtTelefone.TabIndex = 258;
+            this.txtTelefone.TabIndex = 14;
             // 
             // txtCPFCNPJ
             // 
             this.txtCPFCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCPFCNPJ.Location = new System.Drawing.Point(11, 355);
-            this.txtCPFCNPJ.Mask = "000.000.000-00";
+            this.txtCPFCNPJ.Mask = "000,000,000-00";
             this.txtCPFCNPJ.Name = "txtCPFCNPJ";
             this.txtCPFCNPJ.Size = new System.Drawing.Size(150, 26);
-            this.txtCPFCNPJ.TabIndex = 257;
+            this.txtCPFCNPJ.TabIndex = 12;
+            this.txtCPFCNPJ.Leave += new System.EventHandler(this.TxtCPFCNPJ_Leave);
             // 
             // txtRGIE
             // 
             this.txtRGIE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRGIE.Location = new System.Drawing.Point(167, 355);
-            this.txtRGIE.Mask = "00.000.000-0";
+            this.txtRGIE.Mask = "00,000,000-0";
             this.txtRGIE.Name = "txtRGIE";
             this.txtRGIE.Size = new System.Drawing.Size(129, 26);
-            this.txtRGIE.TabIndex = 256;
+            this.txtRGIE.TabIndex = 13;
             // 
             // txtCEP
             // 
@@ -297,7 +326,8 @@
             this.txtCEP.Mask = "00000-000";
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(93, 26);
-            this.txtCEP.TabIndex = 248;
+            this.txtCEP.TabIndex = 3;
+            this.txtCEP.Leave += new System.EventHandler(this.TxtCEP_Leave);
             // 
             // txtDataCadastro
             // 
@@ -398,17 +428,6 @@
             this.lbRGIE.TabIndex = 273;
             this.lbRGIE.Text = "RG:";
             // 
-            // lbCPFCNPJ
-            // 
-            this.lbCPFCNPJ.AutoSize = true;
-            this.lbCPFCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCPFCNPJ.ForeColor = System.Drawing.Color.Black;
-            this.lbCPFCNPJ.Location = new System.Drawing.Point(9, 334);
-            this.lbCPFCNPJ.Name = "lbCPFCNPJ";
-            this.lbCPFCNPJ.Size = new System.Drawing.Size(44, 20);
-            this.lbCPFCNPJ.TabIndex = 272;
-            this.lbCPFCNPJ.Text = "CPF:";
-            // 
             // cep
             // 
             this.cep.AutoSize = true;
@@ -456,7 +475,7 @@
             this.cbUF.Location = new System.Drawing.Point(325, 307);
             this.cbUF.Name = "cbUF";
             this.cbUF.Size = new System.Drawing.Size(55, 26);
-            this.cbUF.TabIndex = 254;
+            this.cbUF.TabIndex = 10;
             // 
             // uf
             // 
@@ -478,7 +497,7 @@
             this.txtCidade.MaxLength = 30;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(309, 26);
-            this.txtCidade.TabIndex = 253;
+            this.txtCidade.TabIndex = 9;
             // 
             // cidade
             // 
@@ -500,7 +519,7 @@
             this.txtBairro.MaxLength = 30;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(199, 26);
-            this.txtBairro.TabIndex = 252;
+            this.txtBairro.TabIndex = 7;
             // 
             // bairro
             // 
@@ -522,7 +541,7 @@
             this.txtComplemento.MaxLength = 30;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(200, 26);
-            this.txtComplemento.TabIndex = 251;
+            this.txtComplemento.TabIndex = 6;
             // 
             // complemento
             // 
@@ -543,7 +562,7 @@
             this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(83, 26);
-            this.txtNumero.TabIndex = 250;
+            this.txtNumero.TabIndex = 5;
             // 
             // numero
             // 
@@ -565,7 +584,7 @@
             this.txtEndereco.MaxLength = 50;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(352, 26);
-            this.txtEndereco.TabIndex = 249;
+            this.txtEndereco.TabIndex = 4;
             // 
             // endereco
             // 
@@ -587,7 +606,7 @@
             this.txtNomeFantasia.MaxLength = 60;
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.txtNomeFantasia.Size = new System.Drawing.Size(538, 26);
-            this.txtNomeFantasia.TabIndex = 246;
+            this.txtNomeFantasia.TabIndex = 2;
             // 
             // lbNomeFantasia
             // 
@@ -609,7 +628,7 @@
             this.txtRazaoSocial.MaxLength = 60;
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(538, 26);
-            this.txtRazaoSocial.TabIndex = 245;
+            this.txtRazaoSocial.TabIndex = 1;
             // 
             // lbRazaoNome
             // 
@@ -646,32 +665,48 @@
             this.telefone.TabIndex = 275;
             this.telefone.Text = "Telefone:";
             // 
-            // pictureBox1
+            // lbCPFCNPJ
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(145, 339);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.TabIndex = 289;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.WaitOnLoad = true;
+            this.lbCPFCNPJ.AutoSize = true;
+            this.lbCPFCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCPFCNPJ.ForeColor = System.Drawing.Color.Black;
+            this.lbCPFCNPJ.Location = new System.Drawing.Point(9, 334);
+            this.lbCPFCNPJ.Name = "lbCPFCNPJ";
+            this.lbCPFCNPJ.Size = new System.Drawing.Size(44, 20);
+            this.lbCPFCNPJ.TabIndex = 272;
+            this.lbCPFCNPJ.Text = "CPF:";
+            // 
+            // pbInvalidoEmail
+            // 
+            this.pbInvalidoEmail.Image = ((System.Drawing.Image)(resources.GetObject("pbInvalidoEmail.Image")));
+            this.pbInvalidoEmail.Location = new System.Drawing.Point(397, 392);
+            this.pbInvalidoEmail.Name = "pbInvalidoEmail";
+            this.pbInvalidoEmail.Size = new System.Drawing.Size(16, 16);
+            this.pbInvalidoEmail.TabIndex = 291;
+            this.pbInvalidoEmail.TabStop = false;
+            this.pbInvalidoEmail.Visible = false;
+            this.pbInvalidoEmail.WaitOnLoad = true;
             // 
             // frmCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(587, 510);
+            this.ClientSize = new System.Drawing.Size(587, 481);
             this.Controls.Add(this.gbInvalido);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "frmCadastroCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Cliente";
             this.Load += new System.EventHandler(this.FrmCadastroCliente_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroCliente_KeyDown);
             this.gbInvalido.ResumeLayout(false);
             this.gbInvalido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInvalidoCEP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInvalido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCalendario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInvalidoEmail)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -724,6 +759,8 @@
         private System.Windows.Forms.MonthCalendar mcCalendar;
         public System.Windows.Forms.MaskedTextBox txtDataNasc;
         private System.Windows.Forms.PictureBox pbCalendario;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbInvalido;
+        private System.Windows.Forms.PictureBox pbInvalidoCEP;
+        private System.Windows.Forms.PictureBox pbInvalidoEmail;
     }
 }

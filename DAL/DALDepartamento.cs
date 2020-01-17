@@ -57,7 +57,7 @@ namespace DAL
         public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("select * from departamento where nome like '%" + valor + "%' and situacao = 'A'", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("select * from departamento where nome like '%" + valor + "%' and situacao = 'A' order by id", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -65,7 +65,7 @@ namespace DAL
         public DataTable LocalizarInativos(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("select * from departamento where nome like '%" + valor + "%' and situacao = 'I'", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("select * from departamento where nome like '%" + valor + "%' and situacao = 'I' order by id", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -90,8 +90,7 @@ namespace DAL
             conexao.Desconectar();
             return modelo;
         }
-
-        
+     
         public DataTable carregarGrid()
         {
             try
@@ -99,7 +98,7 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from departamento", conexao.StringConexao);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from departamento order by id", conexao.StringConexao);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;

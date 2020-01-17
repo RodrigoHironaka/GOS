@@ -101,7 +101,7 @@
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(351, 100);
-            this.txtDescricao.TabIndex = 12;
+            this.txtDescricao.TabIndex = 1;
             this.txtDescricao.WordWrap = false;
             // 
             // chbAtivo
@@ -135,7 +135,7 @@
             this.txtNomeSer.Location = new System.Drawing.Point(79, 49);
             this.txtNomeSer.Name = "txtNomeSer";
             this.txtNomeSer.Size = new System.Drawing.Size(284, 26);
-            this.txtNomeSer.TabIndex = 3;
+            this.txtNomeSer.TabIndex = 0;
             this.txtNomeSer.WordWrap = false;
             // 
             // btnSair
@@ -146,7 +146,7 @@
             this.btnSair.Location = new System.Drawing.Point(393, 177);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(54, 42);
-            this.btnSair.TabIndex = 12;
+            this.btnSair.TabIndex = 3;
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
@@ -158,7 +158,7 @@
             this.btnGravar.Location = new System.Drawing.Point(393, 130);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(54, 46);
-            this.btnGravar.TabIndex = 11;
+            this.btnGravar.TabIndex = 2;
             this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
@@ -172,11 +172,13 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnGravar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCadastroServico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Servico";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroServico_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -22,6 +22,7 @@ namespace GOS.Formularios
             { this.Text = "Cadastro de Departamento - Inserir"; }
             else if (acaoTela == AcaoTela.Alterar)
             { this.Text = "Cadastro de Departamento - Alterar"; }
+            txtNomeSer.Select();
         }
 
         private void BtnGravar_Click(object sender, EventArgs e)
@@ -74,6 +75,16 @@ namespace GOS.Formularios
             }
             catch (Exception ex)
             { MessageBox.Show("Não foi possivel sair! Erro: " + ex.Message); }
+        }
+
+        private void FrmCadastroServico_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+
+            }
         }
     }
 }

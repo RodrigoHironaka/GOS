@@ -80,7 +80,7 @@ namespace GOS.Formularios
                 if (cod != 0)
                 {
                     f.txtCodigo.Text = modelo.IdUsuario.ToString();
-                    f.txtNomeDep.Text = modelo.Nome;
+                    f.txtNomeUsu.Text = modelo.Nome;
                     f.txtSenha.Text = modelo.Senha;
 
                     //combo Nivel de Acesso

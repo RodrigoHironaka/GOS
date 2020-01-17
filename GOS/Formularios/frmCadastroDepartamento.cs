@@ -22,7 +22,8 @@ namespace GOS.Formularios
             if (acaoTela == AcaoTela.Inserir)
             {this.Text = "Cadastro de Departamento - Inserir";}
             else if(acaoTela == AcaoTela.Alterar)
-            {this.Text = "Cadastro de Departamento - Alterar";}  
+            {this.Text = "Cadastro de Departamento - Alterar";}
+            txtNomeDep.Select();
         }
 
         private void BtnSair_Click(object sender, EventArgs e)
@@ -73,6 +74,16 @@ namespace GOS.Formularios
             txtCodigo.Clear();
             txtNomeDep.Clear();
             chbAtivo.Checked = true;
+        }
+
+        private void FrmCadastroDepartamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+
+            }
         }
     }
 }

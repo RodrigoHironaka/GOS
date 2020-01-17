@@ -96,7 +96,7 @@ namespace DAL
         public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();
-            string sql = "select * from cliente where razaosocial like '%" + valor + "%'" + " or id like '%" + valor + "%'" + " or nome like '%" + valor + "%' and situacao = 'A'";
+            string sql = "select * from cliente where razaosocial like '%" + valor + "%'" + " or id like '%" + valor + "%'" + " or nome like '%" + valor + "%' and situacao = 'A' order by id";
             SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
@@ -105,7 +105,7 @@ namespace DAL
         public DataTable LocalizarInativos(String valor)
         {
             DataTable tabela = new DataTable();
-            string sql = "select * from cliente where razaosocial like '%" + valor + "%'" + " or id like '%" + valor + "%'" + " or nome like '%" + valor + "%' and situacao = 'I'";
+            string sql = "select * from cliente where razaosocial like '%" + valor + "%'" + " or id like '%" + valor + "%'" + " or nome like '%" + valor + "%' and situacao = 'I' order by id";
             SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
@@ -157,7 +157,7 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from cliente", conexao.StringConexao);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from cliente order by id", conexao.StringConexao);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;

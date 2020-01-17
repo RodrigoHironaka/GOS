@@ -160,6 +160,10 @@
       <Project>{927609b5-b952-482a-920b-d184cbfb6e24}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ferramentas\Ferramentas.csproj">
+      <Project>{db50818e-2443-4234-a814-2a87ff7803a3}</Project>
+      <Name>Ferramentas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{db32c1ee-b3c0-43d6-a14d-7912e92c337b}</Project>
       <Name>Model</Name>

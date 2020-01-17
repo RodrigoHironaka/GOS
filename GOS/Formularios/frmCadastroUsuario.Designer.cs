@@ -38,7 +38,7 @@
             this.cbNivelAcesso = new System.Windows.Forms.ComboBox();
             this.chbAtivo = new System.Windows.Forms.CheckBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.txtNomeDep = new System.Windows.Forms.TextBox();
+            this.txtNomeUsu = new System.Windows.Forms.TextBox();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             idUsuarioLabel = new System.Windows.Forms.Label();
@@ -99,7 +99,7 @@
             this.groupBox1.Controls.Add(idUsuarioLabel);
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(usuarioLabel);
-            this.groupBox1.Controls.Add(this.txtNomeDep);
+            this.groupBox1.Controls.Add(this.txtNomeUsu);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -116,7 +116,7 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(284, 26);
-            this.txtSenha.TabIndex = 14;
+            this.txtSenha.TabIndex = 2;
             this.txtSenha.WordWrap = false;
             // 
             // cbNivelAcesso
@@ -130,7 +130,7 @@
             this.cbNivelAcesso.Location = new System.Drawing.Point(12, 101);
             this.cbNivelAcesso.Name = "cbNivelAcesso";
             this.cbNivelAcesso.Size = new System.Drawing.Size(61, 28);
-            this.cbNivelAcesso.TabIndex = 11;
+            this.cbNivelAcesso.TabIndex = 1;
             // 
             // chbAtivo
             // 
@@ -156,15 +156,15 @@
             this.txtCodigo.TabIndex = 1;
             this.txtCodigo.WordWrap = false;
             // 
-            // txtNomeDep
+            // txtNomeUsu
             // 
-            this.txtNomeDep.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeDep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeDep.Location = new System.Drawing.Point(79, 49);
-            this.txtNomeDep.Name = "txtNomeDep";
-            this.txtNomeDep.Size = new System.Drawing.Size(284, 26);
-            this.txtNomeDep.TabIndex = 3;
-            this.txtNomeDep.WordWrap = false;
+            this.txtNomeUsu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomeUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeUsu.Location = new System.Drawing.Point(79, 49);
+            this.txtNomeUsu.Name = "txtNomeUsu";
+            this.txtNomeUsu.Size = new System.Drawing.Size(284, 26);
+            this.txtNomeUsu.TabIndex = 0;
+            this.txtNomeUsu.WordWrap = false;
             // 
             // btnSair
             // 
@@ -174,7 +174,7 @@
             this.btnSair.Location = new System.Drawing.Point(393, 113);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(54, 42);
-            this.btnSair.TabIndex = 12;
+            this.btnSair.TabIndex = 4;
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
@@ -186,7 +186,7 @@
             this.btnGravar.Location = new System.Drawing.Point(393, 66);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(54, 46);
-            this.btnGravar.TabIndex = 11;
+            this.btnGravar.TabIndex = 3;
             this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
@@ -200,9 +200,11 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnGravar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "frmCadastroUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Usuário";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroUsuario_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -214,7 +216,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.CheckBox chbAtivo;
         public System.Windows.Forms.TextBox txtCodigo;
-        public System.Windows.Forms.TextBox txtNomeDep;
+        public System.Windows.Forms.TextBox txtNomeUsu;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnGravar;
         public System.Windows.Forms.TextBox txtSenha;

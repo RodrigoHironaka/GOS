@@ -109,7 +109,7 @@
             this.txtNomeDep.Location = new System.Drawing.Point(79, 49);
             this.txtNomeDep.Name = "txtNomeDep";
             this.txtNomeDep.Size = new System.Drawing.Size(284, 26);
-            this.txtNomeDep.TabIndex = 3;
+            this.txtNomeDep.TabIndex = 0;
             this.txtNomeDep.WordWrap = false;
             // 
             // btnSair
@@ -120,7 +120,7 @@
             this.btnSair.Location = new System.Drawing.Point(393, 59);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(54, 42);
-            this.btnSair.TabIndex = 9;
+            this.btnSair.TabIndex = 2;
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
@@ -132,7 +132,7 @@
             this.btnGravar.Location = new System.Drawing.Point(393, 12);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(54, 46);
-            this.btnGravar.TabIndex = 8;
+            this.btnGravar.TabIndex = 1;
             this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
@@ -146,11 +146,13 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnGravar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCadastroDepartamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Departamento";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDepartamento_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
