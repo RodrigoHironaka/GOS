@@ -60,14 +60,13 @@ namespace GOS.Formularios
                 modelo.Email = txtEmail.Text;
                 modelo.Cidade = txtCidade.Text;
                 modelo.UF = cbUF.Text;
-                modelo.DataNasc = Convert.ToDateTime(txtDataNasc.Text);
+                modelo.DataNasc = txtDataNasc.Text;
                 modelo.DataCadastro = txtDataCadastro.Text;
-                modelo.IdDepartamento = Convert.ToInt32(cbDepartamento.Text);
-
                 if (chbAtivo.Checked == true)
                     modelo.Situacao = "A";
                 else if (chbAtivo.Checked == false)
                     modelo.Situacao = "I";
+                modelo.IdDepartamento = Convert.ToInt32(cbDepartamento.SelectedValue);
 
                 DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
                 BLLCliente bll = new BLLCliente(cx);
@@ -108,7 +107,58 @@ namespace GOS.Formularios
             txtEmail.Clear();
             txtCidade.Clear();
             cbUF.SelectedIndex = 24;
-            txtDataNasc.Value = DateTime.Now;
+            txtDataNasc.Clear();
+        }
+
+        private void FrmCadastroCliente_Load(object sender, EventArgs e)
+        {
+            DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+            BLLCliente bll = new BLLCliente(cx);
+            cbDepartamento.DataSource = bll.CarregaComboDepartamentos();
+            cbDepartamento.ValueMember = "id";
+            cbDepartamento.DisplayMember = "nome";
+            //cbDepartamento.Update();
+        }
+
+        private void CbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CbTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTipoPessoa.SelectedIndex == 0)
+            {
+                txtRazaoSocial.Enabled = false;
+                lbRGIE.Text = "RG";
+                txtRGIE.Mask = "00.000.000-0";
+                lbCPFCNPJ.Text = "CPF";
+                txtCPFCNPJ.Mask = "000.000.000-00";
+                lbRazaoNome.Enabled = false;
+                txtNomeFantasia.Text = "";
+                lbNomeFantasia.Text = "Nome:";
+            }
+            else if (cbTipoPessoa.SelectedIndex == 1)
+            {
+                txtRazaoSocial.Enabled = true;
+                lbRGIE.Text = "IE";
+                txtRGIE.Mask = "000.000.000.000";
+                lbCPFCNPJ.Text = "CNPJ";
+                txtCPFCNPJ.Mask = "00.000.000/0000-00";
+                lbRazaoNome.Enabled = true;
+                lbNomeFantasia.Text = "Nome Fantasia:";
+            }
+        }
+
+        private void PbCalendario_Click(object sender, EventArgs e)
+        {
+            mcCalendar.Visible = true;
+        }
+
+        private void McCalendar_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            txtDataNasc.Text = Convert.ToString(mcCalendar.SelectionStart.Date.ToShortDateString());
+            mcCalendar.Visible = false;
         }
     }
 }

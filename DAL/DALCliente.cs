@@ -27,7 +27,7 @@ namespace DAL
                 " values (@nome,@cpfcnpj,@rgie,@razaosocial,@tipopessoa,@cep,@endereco,@endnumero,@complemento,@bairro,@telefone,@celular,@celular2,@email,@cidade,@uf,@datanasc,@datacadastro,@situacao,@iddepartamento);";
             cmd.Parameters.AddWithValue("@nome", modelo.Nome);
             cmd.Parameters.AddWithValue("@cpfcnpj", modelo.CPFCNPJ);
-            cmd.Parameters.AddWithValue("@rgie", modelo.RGIE); 
+            cmd.Parameters.AddWithValue("@rgie", modelo.RGIE);
             cmd.Parameters.AddWithValue("@razaosocial", modelo.RazaoSocial);
             cmd.Parameters.AddWithValue("@tipopessoa", modelo.TipoPessoa);
             cmd.Parameters.AddWithValue("@cep", modelo.CEP);
@@ -42,7 +42,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@cidade", modelo.Cidade);
             cmd.Parameters.AddWithValue("@uf", modelo.UF);
             cmd.Parameters.AddWithValue("@datanasc", modelo.DataNasc);
-            cmd.Parameters.AddWithValue("@datacadastro", modelo.DataCadastro); 
+            cmd.Parameters.AddWithValue("@datacadastro", modelo.DataCadastro);
             cmd.Parameters.AddWithValue("@situacao", modelo.Situacao);
             cmd.Parameters.AddWithValue("@iddepartamento", modelo.IdDepartamento);
             conexao.Conectar();
@@ -72,7 +72,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@email", modelo.Email);
             cmd.Parameters.AddWithValue("@cidade", modelo.Cidade);
             cmd.Parameters.AddWithValue("@uf", modelo.UF);
-            cmd.Parameters.AddWithValue("@datanascimento", modelo.DataNasc);
+            cmd.Parameters.AddWithValue("@datanasc", modelo.DataNasc);
             cmd.Parameters.AddWithValue("@datacadastro", modelo.DataCadastro);
             cmd.Parameters.AddWithValue("@situacao", modelo.Situacao);
             cmd.Parameters.AddWithValue("@iddepartamento", modelo.IdDepartamento);
@@ -140,7 +140,7 @@ namespace DAL
                 modelo.Email = Convert.ToString(registro["email"]);
                 modelo.Cidade = Convert.ToString(registro["cidade"]);
                 modelo.UF = Convert.ToString(registro["uf"]);
-                modelo.DataNasc = Convert.ToDateTime(registro["datanasc"]);
+                modelo.DataNasc = Convert.ToString(registro["datanasc"]);
                 modelo.DataCadastro = Convert.ToString(registro["datacadastro"]);
                 modelo.Situacao = Convert.ToString(registro["situacao"]);
                 modelo.IdDepartamento = Convert.ToInt32(registro["iddepartamento"]);
@@ -168,5 +168,27 @@ namespace DAL
                 throw;
             }
         }
+
+        public DataTable CarregaComboDepartamentos()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                conexao.Conectar();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT id, nome FROM departamento ORDER BY nome", conexao.StringConexao);
+                DataTable dataTable = new DataTable("departamento");
+                sqlDataAdapter.Fill(dataTable);
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+        }
+
+
     }
 }
+

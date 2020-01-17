@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroCliente));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbInvalido = new System.Windows.Forms.GroupBox();
+            this.pbCalendario = new System.Windows.Forms.PictureBox();
+            this.mcCalendar = new System.Windows.Forms.MonthCalendar();
+            this.txtDataNasc = new System.Windows.Forms.MaskedTextBox();
             this.cbDepartamento = new System.Windows.Forms.ComboBox();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbTipoPessoa = new System.Windows.Forms.ComboBox();
-            this.txtDataNasc = new System.Windows.Forms.DateTimePicker();
             this.txtCelular2 = new System.Windows.Forms.MaskedTextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.email = new System.Windows.Forms.Label();
@@ -68,67 +70,100 @@
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.endereco = new System.Windows.Forms.Label();
             this.txtNomeFantasia = new System.Windows.Forms.TextBox();
-            this.nomeFantasia = new System.Windows.Forms.Label();
+            this.lbNomeFantasia = new System.Windows.Forms.Label();
             this.txtRazaoSocial = new System.Windows.Forms.TextBox();
             this.lbRazaoNome = new System.Windows.Forms.Label();
             this.chbAtivo = new System.Windows.Forms.CheckBox();
             this.telefone = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.gbInvalido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCalendario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbInvalido
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox1.Controls.Add(this.cbDepartamento);
-            this.groupBox1.Controls.Add(this.btnGravar);
-            this.groupBox1.Controls.Add(this.btnSair);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cbTipoPessoa);
-            this.groupBox1.Controls.Add(this.txtDataNasc);
-            this.groupBox1.Controls.Add(this.txtCelular2);
-            this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Controls.Add(this.email);
-            this.groupBox1.Controls.Add(this.txtCelular);
-            this.groupBox1.Controls.Add(this.txtTelefone);
-            this.groupBox1.Controls.Add(this.txtCPFCNPJ);
-            this.groupBox1.Controls.Add(this.txtRGIE);
-            this.groupBox1.Controls.Add(this.txtCEP);
-            this.groupBox1.Controls.Add(this.txtDataCadastro);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtCodigo);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.dataNasc);
-            this.groupBox1.Controls.Add(this.celular);
-            this.groupBox1.Controls.Add(this.lbRGIE);
-            this.groupBox1.Controls.Add(this.lbCPFCNPJ);
-            this.groupBox1.Controls.Add(this.cep);
-            this.groupBox1.Controls.Add(this.cbUF);
-            this.groupBox1.Controls.Add(this.uf);
-            this.groupBox1.Controls.Add(this.txtCidade);
-            this.groupBox1.Controls.Add(this.cidade);
-            this.groupBox1.Controls.Add(this.txtBairro);
-            this.groupBox1.Controls.Add(this.bairro);
-            this.groupBox1.Controls.Add(this.txtComplemento);
-            this.groupBox1.Controls.Add(this.complemento);
-            this.groupBox1.Controls.Add(this.txtNumero);
-            this.groupBox1.Controls.Add(this.numero);
-            this.groupBox1.Controls.Add(this.txtEndereco);
-            this.groupBox1.Controls.Add(this.endereco);
-            this.groupBox1.Controls.Add(this.txtNomeFantasia);
-            this.groupBox1.Controls.Add(this.nomeFantasia);
-            this.groupBox1.Controls.Add(this.txtRazaoSocial);
-            this.groupBox1.Controls.Add(this.lbRazaoNome);
-            this.groupBox1.Controls.Add(this.chbAtivo);
-            this.groupBox1.Controls.Add(this.telefone);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(562, 456);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cadastro de Departamento";
+            this.gbInvalido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gbInvalido.Controls.Add(this.pictureBox1);
+            this.gbInvalido.Controls.Add(this.pbCalendario);
+            this.gbInvalido.Controls.Add(this.mcCalendar);
+            this.gbInvalido.Controls.Add(this.txtDataNasc);
+            this.gbInvalido.Controls.Add(this.cbDepartamento);
+            this.gbInvalido.Controls.Add(this.btnGravar);
+            this.gbInvalido.Controls.Add(this.btnSair);
+            this.gbInvalido.Controls.Add(this.label2);
+            this.gbInvalido.Controls.Add(this.cbTipoPessoa);
+            this.gbInvalido.Controls.Add(this.txtCelular2);
+            this.gbInvalido.Controls.Add(this.txtEmail);
+            this.gbInvalido.Controls.Add(this.email);
+            this.gbInvalido.Controls.Add(this.txtCelular);
+            this.gbInvalido.Controls.Add(this.txtTelefone);
+            this.gbInvalido.Controls.Add(this.txtCPFCNPJ);
+            this.gbInvalido.Controls.Add(this.txtRGIE);
+            this.gbInvalido.Controls.Add(this.txtCEP);
+            this.gbInvalido.Controls.Add(this.txtDataCadastro);
+            this.gbInvalido.Controls.Add(this.label6);
+            this.gbInvalido.Controls.Add(this.label4);
+            this.gbInvalido.Controls.Add(this.txtCodigo);
+            this.gbInvalido.Controls.Add(this.label1);
+            this.gbInvalido.Controls.Add(this.label3);
+            this.gbInvalido.Controls.Add(this.dataNasc);
+            this.gbInvalido.Controls.Add(this.celular);
+            this.gbInvalido.Controls.Add(this.lbRGIE);
+            this.gbInvalido.Controls.Add(this.cep);
+            this.gbInvalido.Controls.Add(this.cbUF);
+            this.gbInvalido.Controls.Add(this.uf);
+            this.gbInvalido.Controls.Add(this.txtCidade);
+            this.gbInvalido.Controls.Add(this.cidade);
+            this.gbInvalido.Controls.Add(this.txtBairro);
+            this.gbInvalido.Controls.Add(this.bairro);
+            this.gbInvalido.Controls.Add(this.txtComplemento);
+            this.gbInvalido.Controls.Add(this.complemento);
+            this.gbInvalido.Controls.Add(this.txtNumero);
+            this.gbInvalido.Controls.Add(this.numero);
+            this.gbInvalido.Controls.Add(this.txtEndereco);
+            this.gbInvalido.Controls.Add(this.endereco);
+            this.gbInvalido.Controls.Add(this.txtNomeFantasia);
+            this.gbInvalido.Controls.Add(this.lbNomeFantasia);
+            this.gbInvalido.Controls.Add(this.txtRazaoSocial);
+            this.gbInvalido.Controls.Add(this.lbRazaoNome);
+            this.gbInvalido.Controls.Add(this.chbAtivo);
+            this.gbInvalido.Controls.Add(this.telefone);
+            this.gbInvalido.Controls.Add(this.lbCPFCNPJ);
+            this.gbInvalido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbInvalido.Location = new System.Drawing.Point(12, 12);
+            this.gbInvalido.Name = "gbInvalido";
+            this.gbInvalido.Size = new System.Drawing.Size(562, 456);
+            this.gbInvalido.TabIndex = 13;
+            this.gbInvalido.TabStop = false;
+            this.gbInvalido.Text = "Cadastro de Cliente";
+            // 
+            // pbCalendario
+            // 
+            this.pbCalendario.Image = ((System.Drawing.Image)(resources.GetObject("pbCalendario.Image")));
+            this.pbCalendario.Location = new System.Drawing.Point(516, 248);
+            this.pbCalendario.Name = "pbCalendario";
+            this.pbCalendario.Size = new System.Drawing.Size(32, 32);
+            this.pbCalendario.TabIndex = 288;
+            this.pbCalendario.TabStop = false;
+            this.pbCalendario.Click += new System.EventHandler(this.PbCalendario_Click);
+            // 
+            // mcCalendar
+            // 
+            this.mcCalendar.Location = new System.Drawing.Point(325, 282);
+            this.mcCalendar.Name = "mcCalendar";
+            this.mcCalendar.TabIndex = 287;
+            this.mcCalendar.Visible = false;
+            this.mcCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.McCalendar_DateSelected);
+            // 
+            // txtDataNasc
+            // 
+            this.txtDataNasc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataNasc.Location = new System.Drawing.Point(418, 254);
+            this.txtDataNasc.Mask = "00/00/0000";
+            this.txtDataNasc.Name = "txtDataNasc";
+            this.txtDataNasc.Size = new System.Drawing.Size(92, 26);
+            this.txtDataNasc.TabIndex = 286;
             // 
             // cbDepartamento
             // 
@@ -138,6 +173,7 @@
             this.cbDepartamento.Name = "cbDepartamento";
             this.cbDepartamento.Size = new System.Drawing.Size(160, 26);
             this.cbDepartamento.TabIndex = 284;
+            this.cbDepartamento.SelectedIndexChanged += new System.EventHandler(this.CbDepartamento_SelectedIndexChanged);
             // 
             // btnGravar
             // 
@@ -185,17 +221,7 @@
             this.cbTipoPessoa.Name = "cbTipoPessoa";
             this.cbTipoPessoa.Size = new System.Drawing.Size(121, 26);
             this.cbTipoPessoa.TabIndex = 244;
-            // 
-            // txtDataNasc
-            // 
-            this.txtDataNasc.CustomFormat = " ";
-            this.txtDataNasc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataNasc.Location = new System.Drawing.Point(418, 254);
-            this.txtDataNasc.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
-            this.txtDataNasc.Name = "txtDataNasc";
-            this.txtDataNasc.Size = new System.Drawing.Size(131, 26);
-            this.txtDataNasc.TabIndex = 255;
+            this.cbTipoPessoa.SelectedIndexChanged += new System.EventHandler(this.CbTipoPessoa_SelectedIndexChanged);
             // 
             // txtCelular2
             // 
@@ -473,7 +499,7 @@
             this.txtBairro.Location = new System.Drawing.Point(214, 254);
             this.txtBairro.MaxLength = 30;
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(198, 26);
+            this.txtBairro.Size = new System.Drawing.Size(199, 26);
             this.txtBairro.TabIndex = 252;
             // 
             // bairro
@@ -493,7 +519,7 @@
             this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComplemento.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtComplemento.Location = new System.Drawing.Point(10, 254);
-            this.txtComplemento.MaxLength = 10;
+            this.txtComplemento.MaxLength = 30;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(200, 26);
             this.txtComplemento.TabIndex = 251;
@@ -514,7 +540,7 @@
             this.txtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumero.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtNumero.Location = new System.Drawing.Point(465, 202);
-            this.txtNumero.MaxLength = 6;
+            this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(83, 26);
             this.txtNumero.TabIndex = 250;
@@ -563,16 +589,16 @@
             this.txtNomeFantasia.Size = new System.Drawing.Size(538, 26);
             this.txtNomeFantasia.TabIndex = 246;
             // 
-            // nomeFantasia
+            // lbNomeFantasia
             // 
-            this.nomeFantasia.AutoSize = true;
-            this.nomeFantasia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomeFantasia.ForeColor = System.Drawing.Color.Black;
-            this.nomeFantasia.Location = new System.Drawing.Point(6, 127);
-            this.nomeFantasia.Name = "nomeFantasia";
-            this.nomeFantasia.Size = new System.Drawing.Size(121, 20);
-            this.nomeFantasia.TabIndex = 264;
-            this.nomeFantasia.Text = "Nome Fantasia:";
+            this.lbNomeFantasia.AutoSize = true;
+            this.lbNomeFantasia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNomeFantasia.ForeColor = System.Drawing.Color.Black;
+            this.lbNomeFantasia.Location = new System.Drawing.Point(6, 127);
+            this.lbNomeFantasia.Name = "lbNomeFantasia";
+            this.lbNomeFantasia.Size = new System.Drawing.Size(121, 20);
+            this.lbNomeFantasia.TabIndex = 264;
+            this.lbNomeFantasia.Text = "Nome Fantasia:";
             // 
             // txtRazaoSocial
             // 
@@ -580,7 +606,7 @@
             this.txtRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRazaoSocial.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtRazaoSocial.Location = new System.Drawing.Point(10, 98);
-            this.txtRazaoSocial.MaxLength = 50;
+            this.txtRazaoSocial.MaxLength = 60;
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(538, 26);
             this.txtRazaoSocial.TabIndex = 245;
@@ -620,31 +646,43 @@
             this.telefone.TabIndex = 275;
             this.telefone.Text = "Telefone:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(145, 339);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.TabIndex = 289;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
             // frmCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(587, 478);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(587, 510);
+            this.Controls.Add(this.gbInvalido);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCadastroCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Cliente";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Load += new System.EventHandler(this.FrmCadastroCliente_Load);
+            this.gbInvalido.ResumeLayout(false);
+            this.gbInvalido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCalendario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbInvalido;
         public System.Windows.Forms.CheckBox chbAtivo;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnGravar;
         public System.Windows.Forms.ComboBox cbTipoPessoa;
-        public System.Windows.Forms.DateTimePicker txtDataNasc;
         public System.Windows.Forms.MaskedTextBox txtCelular2;
         public System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label email;
@@ -678,10 +716,14 @@
         public System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Label endereco;
         public System.Windows.Forms.TextBox txtNomeFantasia;
-        private System.Windows.Forms.Label nomeFantasia;
+        private System.Windows.Forms.Label lbNomeFantasia;
         public System.Windows.Forms.TextBox txtRazaoSocial;
         private System.Windows.Forms.Label lbRazaoNome;
         public System.Windows.Forms.ComboBox cbDepartamento;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MonthCalendar mcCalendar;
+        public System.Windows.Forms.MaskedTextBox txtDataNasc;
+        private System.Windows.Forms.PictureBox pbCalendario;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

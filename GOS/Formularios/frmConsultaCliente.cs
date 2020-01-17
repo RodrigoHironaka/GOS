@@ -24,11 +24,10 @@ namespace GOS.Formularios
         private void BtnIncluir_Click(object sender, EventArgs e)
         {
             DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
-            BLLUsuario bll = new BLLUsuario(cx);
+            BLLCliente bll = new BLLCliente(cx);
             frmCadastroCliente f = new frmCadastroCliente(AcaoTela.Inserir);
             f.ShowDialog();
             f.Dispose();
-
             if (chbPesqAtivos.Checked == true)
             {
                 lbAtencao.Visible = false;
@@ -97,11 +96,11 @@ namespace GOS.Formularios
                     f.cbUF.Text = modelo.UF;
                     f.txtDataNasc.Text = modelo.DataNasc.ToString();
                     f.txtDataCadastro.Text = modelo.DataCadastro;
-                    f.cbDepartamento.Text = modelo.IdDepartamento.ToString();
                     if (modelo.Situacao == "A")
                         f.chbAtivo.Checked = true;
                     else if (modelo.Situacao == "I")
                         f.chbAtivo.Checked = false;
+                    f.cbDepartamento.SelectedValue = modelo.IdDepartamento.ToString();
                 }
                 f.ShowDialog();
                 f.Dispose();

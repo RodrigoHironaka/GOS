@@ -30,17 +30,17 @@
         {
             System.Windows.Forms.Label idUsuarioLabel;
             System.Windows.Forms.Label usuarioLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroUsuario));
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroUsuario));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.cbNivelAcesso = new System.Windows.Forms.ComboBox();
             this.chbAtivo = new System.Windows.Forms.CheckBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNomeDep = new System.Windows.Forms.TextBox();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.cbNivelAcesso = new System.Windows.Forms.ComboBox();
-            this.txtSenha = new System.Windows.Forms.TextBox();
             idUsuarioLabel = new System.Windows.Forms.Label();
             usuarioLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -68,6 +68,26 @@
             usuarioLabel.TabIndex = 2;
             usuarioLabel.Text = "Nome:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(8, 78);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(46, 20);
+            label1.TabIndex = 12;
+            label1.Text = "Nível:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(77, 80);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(60, 20);
+            label2.TabIndex = 13;
+            label2.Text = "Senha:";
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -86,7 +106,31 @@
             this.groupBox1.Size = new System.Drawing.Size(375, 143);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cadastro de Departamento";
+            this.groupBox1.Text = "Cadastro de Usuário";
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenha.Location = new System.Drawing.Point(79, 103);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(284, 26);
+            this.txtSenha.TabIndex = 14;
+            this.txtSenha.WordWrap = false;
+            // 
+            // cbNivelAcesso
+            // 
+            this.cbNivelAcesso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNivelAcesso.FormattingEnabled = true;
+            this.cbNivelAcesso.Items.AddRange(new object[] {
+            " ",
+            "ADM",
+            "USU"});
+            this.cbNivelAcesso.Location = new System.Drawing.Point(12, 101);
+            this.cbNivelAcesso.Name = "cbNivelAcesso";
+            this.cbNivelAcesso.Size = new System.Drawing.Size(61, 28);
+            this.cbNivelAcesso.TabIndex = 11;
             // 
             // chbAtivo
             // 
@@ -145,50 +189,6 @@
             this.btnGravar.TabIndex = 11;
             this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
-            // 
-            // cbNivelAcesso
-            // 
-            this.cbNivelAcesso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNivelAcesso.FormattingEnabled = true;
-            this.cbNivelAcesso.Items.AddRange(new object[] {
-            " ",
-            "ADM",
-            "USU"});
-            this.cbNivelAcesso.Location = new System.Drawing.Point(12, 101);
-            this.cbNivelAcesso.Name = "cbNivelAcesso";
-            this.cbNivelAcesso.Size = new System.Drawing.Size(61, 28);
-            this.cbNivelAcesso.TabIndex = 11;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(8, 78);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(46, 20);
-            label1.TabIndex = 12;
-            label1.Text = "Nível:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.Location = new System.Drawing.Point(77, 80);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(60, 20);
-            label2.TabIndex = 13;
-            label2.Text = "Senha:";
-            // 
-            // txtSenha
-            // 
-            this.txtSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(79, 103);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '*';
-            this.txtSenha.Size = new System.Drawing.Size(284, 26);
-            this.txtSenha.TabIndex = 14;
-            this.txtSenha.WordWrap = false;
             // 
             // frmCadastroUsuario
             // 

@@ -74,5 +74,11 @@ namespace BLL
             DALCliente DALObj = new DALCliente(conexao);
             return DALObj.CarregaModelCliente(codigo);
         }
+
+        public DataTable CarregaComboDepartamentos()
+        {
+            DALCliente DALObj = new DALCliente(conexao);
+            return DALObj.CarregaComboDepartamentos();
+        }
     }
 }

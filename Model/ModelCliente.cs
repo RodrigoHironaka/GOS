@@ -25,7 +25,7 @@ namespace Model
         public string Email { get; set; }
         public string Cidade { get; set; }
         public string UF { get; set; }
-        public DateTime DataNasc { get; set; }
+        public string DataNasc { get; set; }
         public string DataCadastro { get; set; }
         public string Situacao { get; set; }
         public int IdDepartamento { get; set; }

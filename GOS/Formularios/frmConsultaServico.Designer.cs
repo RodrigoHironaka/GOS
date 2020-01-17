@@ -37,15 +37,15 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbAtencao = new System.Windows.Forms.Label();
+            this.chbPesqAtivos = new System.Windows.Forms.CheckBox();
+            this.chbPesqInativos = new System.Windows.Forms.CheckBox();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.lbAtencao = new System.Windows.Forms.Label();
-            this.chbPesqAtivos = new System.Windows.Forms.CheckBox();
-            this.chbPesqInativos = new System.Windows.Forms.CheckBox();
             this.groupUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -60,7 +60,7 @@
             this.groupUsuario.Size = new System.Drawing.Size(391, 257);
             this.groupUsuario.TabIndex = 33;
             this.groupUsuario.TabStop = false;
-            this.groupUsuario.Text = "Departamento(s)";
+            this.groupUsuario.Text = "Serviço(s)";
             // 
             // dgvDados
             // 
@@ -129,6 +129,44 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pesquisar";
             // 
+            // lbAtencao
+            // 
+            this.lbAtencao.AutoSize = true;
+            this.lbAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAtencao.ForeColor = System.Drawing.Color.Red;
+            this.lbAtencao.Location = new System.Drawing.Point(329, 9);
+            this.lbAtencao.Name = "lbAtencao";
+            this.lbAtencao.Size = new System.Drawing.Size(71, 15);
+            this.lbAtencao.TabIndex = 9;
+            this.lbAtencao.Text = "ATENÇÃO!!!";
+            this.lbAtencao.Visible = false;
+            // 
+            // chbPesqAtivos
+            // 
+            this.chbPesqAtivos.AutoSize = true;
+            this.chbPesqAtivos.Checked = true;
+            this.chbPesqAtivos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbPesqAtivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbPesqAtivos.Location = new System.Drawing.Point(291, 27);
+            this.chbPesqAtivos.Name = "chbPesqAtivos";
+            this.chbPesqAtivos.Size = new System.Drawing.Size(65, 21);
+            this.chbPesqAtivos.TabIndex = 8;
+            this.chbPesqAtivos.Text = "Ativos";
+            this.ttInfo.SetToolTip(this.chbPesqAtivos, "Marque este campo para pesquisar registros inativados.");
+            this.chbPesqAtivos.UseVisualStyleBackColor = true;
+            // 
+            // chbPesqInativos
+            // 
+            this.chbPesqInativos.AutoSize = true;
+            this.chbPesqInativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbPesqInativos.Location = new System.Drawing.Point(362, 27);
+            this.chbPesqInativos.Name = "chbPesqInativos";
+            this.chbPesqInativos.Size = new System.Drawing.Size(75, 21);
+            this.chbPesqInativos.TabIndex = 7;
+            this.chbPesqInativos.Text = "Inativos";
+            this.ttInfo.SetToolTip(this.chbPesqInativos, "Marque este campo para pesquisar registros inativados.");
+            this.chbPesqInativos.UseVisualStyleBackColor = true;
+            // 
             // txtPesquisar
             // 
             this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -192,44 +230,6 @@
             this.ttInfo.SetToolTip(this.btnExcluir, "Excluir registro");
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
-            // lbAtencao
-            // 
-            this.lbAtencao.AutoSize = true;
-            this.lbAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAtencao.ForeColor = System.Drawing.Color.Red;
-            this.lbAtencao.Location = new System.Drawing.Point(329, 9);
-            this.lbAtencao.Name = "lbAtencao";
-            this.lbAtencao.Size = new System.Drawing.Size(71, 15);
-            this.lbAtencao.TabIndex = 9;
-            this.lbAtencao.Text = "ATENÇÃO!!!";
-            this.lbAtencao.Visible = false;
-            // 
-            // chbPesqAtivos
-            // 
-            this.chbPesqAtivos.AutoSize = true;
-            this.chbPesqAtivos.Checked = true;
-            this.chbPesqAtivos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbPesqAtivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqAtivos.Location = new System.Drawing.Point(291, 27);
-            this.chbPesqAtivos.Name = "chbPesqAtivos";
-            this.chbPesqAtivos.Size = new System.Drawing.Size(65, 21);
-            this.chbPesqAtivos.TabIndex = 8;
-            this.chbPesqAtivos.Text = "Ativos";
-            this.ttInfo.SetToolTip(this.chbPesqAtivos, "Marque este campo para pesquisar registros inativados.");
-            this.chbPesqAtivos.UseVisualStyleBackColor = true;
-            // 
-            // chbPesqInativos
-            // 
-            this.chbPesqInativos.AutoSize = true;
-            this.chbPesqInativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqInativos.Location = new System.Drawing.Point(362, 27);
-            this.chbPesqInativos.Name = "chbPesqInativos";
-            this.chbPesqInativos.Size = new System.Drawing.Size(75, 21);
-            this.chbPesqInativos.TabIndex = 7;
-            this.chbPesqInativos.Text = "Inativos";
-            this.ttInfo.SetToolTip(this.chbPesqInativos, "Marque este campo para pesquisar registros inativados.");
-            this.chbPesqInativos.UseVisualStyleBackColor = true;
             // 
             // frmConsultaServico
             // 

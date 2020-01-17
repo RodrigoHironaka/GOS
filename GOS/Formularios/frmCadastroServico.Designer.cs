@@ -91,7 +91,7 @@
             this.groupBox1.Size = new System.Drawing.Size(375, 207);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cadastro de Departamento";
+            this.groupBox1.Text = "Cadastro de Serviço";
             // 
             // txtDescricao
             // 
