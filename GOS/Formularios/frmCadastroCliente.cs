@@ -17,6 +17,17 @@ namespace GOS.Formularios
 {
     public partial class frmCadastroCliente : Form
     {
+        private ModelCliente cliente;
+
+        private void carregaDepartamento()
+        {
+            DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+            BLLCliente bll = new BLLCliente(cx);
+            cbDepartamento.DataSource = bll.CarregaComboDepartamentos();
+            cbDepartamento.ValueMember = "id";
+            cbDepartamento.DisplayMember = "nome";
+        }
+
         public frmCadastroCliente(AcaoTela acaoTela)
         {
             InitializeComponent();
@@ -27,6 +38,49 @@ namespace GOS.Formularios
             cbTipoPessoa.SelectedIndex = 0;
             cbUF.SelectedIndex = 24;
             txtDataCadastro.Text = System.DateTime.Now.ToShortDateString() + " - " + System.DateTime.Now.ToShortTimeString();
+
+            this.carregaDepartamento();
+        }
+
+        public frmCadastroCliente(AcaoTela acaoTela, ModelCliente modelo)
+        {
+            InitializeComponent();
+            if (acaoTela == AcaoTela.Inserir)
+            { this.Text = "Cadastro de Cliente - Inserir"; }
+            else if (acaoTela == AcaoTela.Alterar)
+            { this.Text = "Cadastro de Cliente - Alterar"; }
+            cbTipoPessoa.SelectedIndex = 0;
+            cbUF.SelectedIndex = 24;
+            txtDataCadastro.Text = System.DateTime.Now.ToShortDateString() + " - " + System.DateTime.Now.ToShortTimeString();
+
+            this.carregaDepartamento();
+
+            txtCodigo.Text = modelo.IdCliente.ToString();
+            txtNomeFantasia.Text = modelo.Nome;
+            txtCPFCNPJ.Text = modelo.CPFCNPJ;
+            txtRGIE.Text = modelo.RGIE;
+            txtRazaoSocial.Text = modelo.RazaoSocial;
+            cbTipoPessoa.Text = modelo.TipoPessoa;
+            txtCEP.Text = modelo.CEP;
+            txtEndereco.Text = modelo.Endereco;
+            txtNumero.Text = modelo.EndNumero;
+            txtComplemento.Text = modelo.Complemento;
+            txtBairro.Text = modelo.Bairro;
+            txtTelefone.Text = modelo.Telefone;
+            txtCelular.Text = modelo.Celular;
+            txtCelular2.Text = modelo.Celular2;
+            txtEmail.Text = modelo.Email;
+            txtCidade.Text = modelo.Cidade;
+            cbUF.Text = modelo.UF;
+            txtDataNasc.Text = modelo.DataNasc.ToString();
+            txtDataCadastro.Text = modelo.DataCadastro;
+            if (modelo.Situacao == "A")
+                chbAtivo.Checked = true;
+            else if (modelo.Situacao == "I")
+                chbAtivo.Checked = false;
+            cbDepartamento.SelectedValue = modelo.IdDepartamento.ToString();
+            //cbDepartamento.SelectedIndex = cbDepartamento.FindString(modelo.Departamento.ToString());
+
         }
 
         private void BtnSair_Click(object sender, EventArgs e)
@@ -59,8 +113,8 @@ namespace GOS.Formularios
                 modelo.Telefone = txtTelefone.Text;
                 modelo.Celular = txtCelular.Text;
                 modelo.Celular2 = txtCelular2.Text;
-                modelo.Email = txtEmail.Text;
                 modelo.Cidade = txtCidade.Text;
+                modelo.Email = txtEmail.Text;
                 modelo.UF = cbUF.Text;
                 modelo.DataNasc = txtDataNasc.Text;
                 modelo.DataCadastro = txtDataCadastro.Text;
@@ -114,16 +168,7 @@ namespace GOS.Formularios
 
         private void FrmCadastroCliente_Load(object sender, EventArgs e)
         {
-            DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
-            BLLCliente bll = new BLLCliente(cx);
-            cbDepartamento.DataSource = bll.CarregaComboDepartamentos();
-            cbDepartamento.ValueMember = "id";
-            cbDepartamento.DisplayMember = "nome";
-            //cbDepartamento.Update();
-        }
-
-        private void CbTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            //------------------------
             if (cbTipoPessoa.SelectedIndex == 0)
             {
                 txtRazaoSocial.Enabled = false;
@@ -132,7 +177,7 @@ namespace GOS.Formularios
                 lbCPFCNPJ.Text = "CPF";
                 txtCPFCNPJ.Mask = "000,000,000-00";
                 lbRazaoNome.Enabled = false;
-                txtNomeFantasia.Text = "";
+                //txtNomeFantasia.Text = "";
                 lbNomeFantasia.Text = "Nome:";
             }
             else if (cbTipoPessoa.SelectedIndex == 1)
@@ -145,6 +190,13 @@ namespace GOS.Formularios
                 lbRazaoNome.Enabled = true;
                 lbNomeFantasia.Text = "Nome Fantasia:";
             }
+            //------------------------
+            /*DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+            BLLCliente bll = new BLLCliente(cx);
+            cbDepartamento.DataSource = bll.CarregaComboDepartamentos();
+            cbDepartamento.ValueMember = "id";
+            cbDepartamento.DisplayMember = "nome";
+            //cbDepartamento.Update();*/
         }
 
         private void PbCalendario_Click(object sender, EventArgs e)
@@ -155,6 +207,12 @@ namespace GOS.Formularios
         private void McCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
             txtDataNasc.Text = Convert.ToString(mcCalendar.SelectionStart.Date.ToShortDateString());
+            DateTime datanasc = Convert.ToDateTime(txtDataNasc.Text);
+            if (datanasc > System.DateTime.Now)
+            {
+                MessageBox.Show("Data inválida para nascimento", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDataNasc.Text = "";
+            }
             mcCalendar.Visible = false;
         }
 
@@ -191,7 +249,7 @@ namespace GOS.Formularios
                 cbUF.SelectedIndex = 24;
                 txtCidade.Clear();
                 txtEndereco.Clear();
-                txtCEP.Clear();
+
             }
             else
             {
@@ -208,7 +266,7 @@ namespace GOS.Formularios
 
         private void TxtEmail_Leave(object sender, EventArgs e)
         {
-            if(ValidaEmail.validaEmail(txtEmail.Text) == false)
+            if (ValidaEmail.validaEmail(txtEmail.Text) == false)
             {
                 pbInvalidoEmail.Visible = true;
             }
@@ -228,6 +286,32 @@ namespace GOS.Formularios
 
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
 
+            }
+        }
+
+        private void CbTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //------------------------
+            if (cbTipoPessoa.SelectedIndex == 0)
+            {
+                txtRazaoSocial.Enabled = false;
+                lbRGIE.Text = "RG";
+                txtRGIE.Mask = "00,000,000-0";
+                lbCPFCNPJ.Text = "CPF";
+                txtCPFCNPJ.Mask = "000,000,000-00";
+                lbRazaoNome.Enabled = false;
+                //txtNomeFantasia.Text = "";
+                lbNomeFantasia.Text = "Nome:";
+            }
+            else if (cbTipoPessoa.SelectedIndex == 1)
+            {
+                txtRazaoSocial.Enabled = true;
+                lbRGIE.Text = "IE";
+                txtRGIE.Mask = "000,000,000,000";
+                lbCPFCNPJ.Text = "CNPJ";
+                txtCPFCNPJ.Mask = "00,000,000/0000-00";
+                lbRazaoNome.Enabled = true;
+                lbNomeFantasia.Text = "Nome Fantasia:";
             }
         }
     }

@@ -82,6 +82,12 @@
     <Compile Include="Formularios\frmConsultaDepartamento.Designer.cs">
       <DependentUpon>frmConsultaDepartamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmConsultaOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConsultaOS.Designer.cs">
+      <DependentUpon>frmConsultaOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmConsultaServico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConsultaDepartamento.resx">
       <DependentUpon>frmConsultaDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConsultaOS.resx">
+      <DependentUpon>frmConsultaOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConsultaServico.resx">
       <DependentUpon>frmConsultaServico.cs</DependentUpon>

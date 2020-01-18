@@ -93,10 +93,23 @@ namespace DAL
             conexao.Desconectar();
         }
 
+        //public DataTable LocalizarAtivos(String valor)
+        //{
+        //    DataTable tabela = new DataTable();
+        //    string sql = "select * from cliente  "+
+        //        " where id like '%" + valor + "%' or razaosocial like '%" + valor + "%' or nome like '%" + valor + "%'" +
+        //        " order by id";
+        //    SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
+        //    da.Fill(tabela);
+        //    return tabela;
+        //}
         public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();
-            string sql = "select * from cliente where razaosocial like '%" + valor + "%'" + " or id like '%" + valor + "%'" + " or nome like '%" + valor + "%' and situacao = 'A' order by id";
+            string sql = "select c.*, d.nome  as departamento from cliente c " +
+                " inner join  departamento d on (c.iddepartamento = d.id)" +
+                " where (c.id like '%" + valor + "%' or c.razaosocial like '%" + valor + "%' or c.nome like '%" + valor + "%') and c.situacao = 'A'" +
+                " order by c.id";
             SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
@@ -105,7 +118,10 @@ namespace DAL
         public DataTable LocalizarInativos(String valor)
         {
             DataTable tabela = new DataTable();
-            string sql = "select * from cliente where razaosocial like '%" + valor + "%'" + " or id like '%" + valor + "%'" + " or nome like '%" + valor + "%' and situacao = 'I' order by id";
+            string sql = "select c.id, c.nome, c.cpfcnpj, c.rgie, c.razaosocial, c.tipopessoa,c.cep, c.endereco, c.endnumero, c.complemento, c.bairro, c.telefone, c.celular, c.celular2, c.email, c.cidade, c.uf, c.dataNasc, c.dataCadastro, c.situacao, d.nome from cliente c " +
+                " inner join  departamento d on (c.iddepartamento = d.id)" +
+                " where (c.id like '%" + valor + "%' or c.razaosocial like '%" + valor + "%' or c.nome like '%" + valor + "%') and c.situacao = 'I'" +
+                " order by c.id";
             SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
@@ -114,39 +130,45 @@ namespace DAL
         public ModelCliente CarregaModelCliente(int codigo)
         {
             ModelCliente modelo = new ModelCliente();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "select * from cliente where id = @id";
-            cmd.Parameters.AddWithValue("@id", codigo);
-            conexao.Conectar();
-            SqlDataReader registro = cmd.ExecuteReader();
-            if (registro.HasRows)
+            try
             {
-                registro.Read();
-                modelo.IdCliente = Convert.ToInt32(registro["id"]);
-                modelo.Nome = Convert.ToString(registro["nome"]);
-                modelo.CPFCNPJ = Convert.ToString(registro["cpfcnpj"]);
-                modelo.RGIE = Convert.ToString(registro["rgie"]);
-                modelo.RazaoSocial = Convert.ToString(registro["razaosocial"]);
-                modelo.TipoPessoa = Convert.ToString(registro["tipopessoa"]);
-                modelo.CEP = Convert.ToString(registro["cep"]);
-                modelo.Endereco = Convert.ToString(registro["endereco"]);
-                modelo.EndNumero = Convert.ToString(registro["endnumero"]);
-                modelo.Complemento = Convert.ToString(registro["complemento"]);
-                modelo.Bairro = Convert.ToString(registro["bairro"]);
-                modelo.Telefone = Convert.ToString(registro["telefone"]);
-                modelo.Celular = Convert.ToString(registro["celular"]);
-                modelo.Celular2 = Convert.ToString(registro["celular2"]);
-                modelo.Email = Convert.ToString(registro["email"]);
-                modelo.Cidade = Convert.ToString(registro["cidade"]);
-                modelo.UF = Convert.ToString(registro["uf"]);
-                modelo.DataNasc = Convert.ToString(registro["datanasc"]);
-                modelo.DataCadastro = Convert.ToString(registro["datacadastro"]);
-                modelo.Situacao = Convert.ToString(registro["situacao"]);
-                modelo.IdDepartamento = Convert.ToInt32(registro["iddepartamento"]);
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "select * from cliente " +
+                    " where id = @id";
+                cmd.Parameters.AddWithValue("@id", codigo);
+                conexao.Conectar();
+                SqlDataReader registro = cmd.ExecuteReader();
+                if (registro.HasRows)
+                {
+                    registro.Read();
+                    modelo.IdCliente = Convert.ToInt32(registro["id"]);
+                    modelo.Nome = Convert.ToString(registro["nome"]);
+                    modelo.CPFCNPJ = Convert.ToString(registro["cpfcnpj"]);
+                    modelo.RGIE = Convert.ToString(registro["rgie"]);
+                    modelo.RazaoSocial = Convert.ToString(registro["razaosocial"]);
+                    modelo.TipoPessoa = Convert.ToString(registro["tipopessoa"]);
+                    modelo.CEP = Convert.ToString(registro["cep"]);
+                    modelo.Endereco = Convert.ToString(registro["endereco"]);
+                    modelo.EndNumero = Convert.ToString(registro["endnumero"]);
+                    modelo.Complemento = Convert.ToString(registro["complemento"]);
+                    modelo.Bairro = Convert.ToString(registro["bairro"]);
+                    modelo.Telefone = Convert.ToString(registro["telefone"]);
+                    modelo.Celular = Convert.ToString(registro["celular"]);
+                    modelo.Celular2 = Convert.ToString(registro["celular2"]);
+                    modelo.Email = Convert.ToString(registro["email"]);
+                    modelo.Cidade = Convert.ToString(registro["cidade"]);
+                    modelo.UF = Convert.ToString(registro["uf"]);
+                    modelo.DataNasc = Convert.ToString(registro["datanasc"]);
+                    modelo.DataCadastro = Convert.ToString(registro["datacadastro"]);
+                    modelo.Situacao = Convert.ToString(registro["situacao"]);
+                    modelo.IdDepartamento = Convert.ToInt32(registro["iddepartamento"]);
+                    //modelo.Departamento = registro["departamento"].ToString();
+                }
+                registro.Close();
+                conexao.Desconectar(); 
             }
-            registro.Close();
-            conexao.Desconectar();
+            catch { }
             return modelo;
         }
 
@@ -157,7 +179,9 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from cliente order by id", conexao.StringConexao);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select c.id, c.nome, c.cpfcnpj, c.rgie, c.razaosocial, c.tipopessoa, c.cep, c.endereco, c.endnumero, c.complemento, c.bairro, c.telefone, c.celular, c.celular2, c.email, c.cidade, c.uf, c.dataNasc, c.dataCadastro, c.situacao, d.nome from cliente c " +
+                " inner join  departamento d on (c.iddepartamento = d.id)" + 
+                " order by id", conexao.StringConexao);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;
@@ -176,8 +200,8 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT id, nome FROM departamento ORDER BY nome", conexao.StringConexao);
-                DataTable dataTable = new DataTable("departamento");
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT id, nome FROM departamento where situacao = 'A' ORDER BY nome", conexao.StringConexao);
+                DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;
             }

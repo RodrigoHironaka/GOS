@@ -44,10 +44,10 @@
             this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +56,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,10 +90,10 @@
             this.dgvDados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
+            this.Column4,
             this.Column5,
             this.Column8,
-            this.Column4,
-            this.Column9,
+            this.Column22,
             this.Column10,
             this.Column11,
             this.Column12,
@@ -101,6 +102,7 @@
             this.Column3,
             this.Column6,
             this.Column7,
+            this.Column9,
             this.Column15,
             this.Column16,
             this.Column17,
@@ -136,7 +138,7 @@
             this.lbAtencao.AutoSize = true;
             this.lbAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAtencao.ForeColor = System.Drawing.Color.Red;
-            this.lbAtencao.Location = new System.Drawing.Point(637, 7);
+            this.lbAtencao.Location = new System.Drawing.Point(637, 10);
             this.lbAtencao.Name = "lbAtencao";
             this.lbAtencao.Size = new System.Drawing.Size(71, 15);
             this.lbAtencao.TabIndex = 15;
@@ -149,7 +151,7 @@
             this.chbPesqAtivos.Checked = true;
             this.chbPesqAtivos.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbPesqAtivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqAtivos.Location = new System.Drawing.Point(608, 25);
+            this.chbPesqAtivos.Location = new System.Drawing.Point(608, 28);
             this.chbPesqAtivos.Name = "chbPesqAtivos";
             this.chbPesqAtivos.Size = new System.Drawing.Size(65, 21);
             this.chbPesqAtivos.TabIndex = 14;
@@ -161,7 +163,7 @@
             // 
             this.chbPesqInativos.AutoSize = true;
             this.chbPesqInativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqInativos.Location = new System.Drawing.Point(679, 25);
+            this.chbPesqInativos.Location = new System.Drawing.Point(679, 28);
             this.chbPesqInativos.Name = "chbPesqInativos";
             this.chbPesqInativos.Size = new System.Drawing.Size(75, 21);
             this.chbPesqInativos.TabIndex = 13;
@@ -172,10 +174,10 @@
             // txtPesquisar
             // 
             this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.Location = new System.Drawing.Point(6, 25);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(596, 23);
+            this.txtPesquisar.Size = new System.Drawing.Size(596, 24);
             this.txtPesquisar.TabIndex = 0;
             this.ttInfo.SetToolTip(this.txtPesquisar, "Digite aqui para buscar o registro desejado.");
             this.txtPesquisar.WordWrap = false;
@@ -249,6 +251,14 @@
             this.Column2.ReadOnly = true;
             this.Column2.Width = 81;
             // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "razaosocial";
+            this.Column4.HeaderText = "RAZÃO";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 90;
+            // 
             // Column5
             // 
             this.Column5.DataPropertyName = "cpfcnpj";
@@ -267,21 +277,13 @@
             this.Column8.Visible = false;
             this.Column8.Width = 75;
             // 
-            // Column4
+            // Column22
             // 
-            this.Column4.DataPropertyName = "razaosocial";
-            this.Column4.HeaderText = "RAZÃO SOCIAL";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Visible = false;
-            this.Column4.Width = 153;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "tipopessoa";
-            this.Column9.HeaderText = "PESSOA";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
+            this.Column22.DataPropertyName = "departamento";
+            this.Column22.HeaderText = "DEPARTAMENTO";
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            this.Column22.Width = 166;
             // 
             // Column10
             // 
@@ -352,6 +354,13 @@
             this.Column7.ReadOnly = true;
             this.Column7.Width = 118;
             // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "tipopessoa";
+            this.Column9.HeaderText = "PESSOA";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
             // Column15
             // 
             this.Column15.DataPropertyName = "email";
@@ -406,12 +415,12 @@
             // 
             // Column21
             // 
-            this.Column21.DataPropertyName = "idDepartamento";
-            this.Column21.HeaderText = "DEPARTAMENTO";
+            this.Column21.DataPropertyName = "iddepartamento";
+            this.Column21.HeaderText = "IDDEP";
             this.Column21.Name = "Column21";
             this.Column21.ReadOnly = true;
             this.Column21.Visible = false;
-            this.Column21.Width = 166;
+            this.Column21.Width = 84;
             // 
             // frmConsultaCliente
             // 
@@ -454,10 +463,10 @@
         private System.Windows.Forms.CheckBox chbPesqInativos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
@@ -466,6 +475,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;

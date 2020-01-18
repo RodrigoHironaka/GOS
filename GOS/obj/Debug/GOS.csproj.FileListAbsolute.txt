@@ -25,3 +25,4 @@ D:\Projetos\GOS\GOS\obj\Debug\GOS.Formularios.frmCadastroCliente.resources
 D:\Projetos\GOS\GOS\obj\Debug\GOS.Formularios.frmConsultaCliente.resources
 D:\Projetos\GOS\GOS\bin\Debug\Ferramentas.dll
 D:\Projetos\GOS\GOS\bin\Debug\Ferramentas.pdb
+D:\Projetos\GOS\GOS\obj\Debug\GOS.Formularios.frmConsultaOS.resources

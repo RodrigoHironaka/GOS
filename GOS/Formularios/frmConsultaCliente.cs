@@ -19,6 +19,7 @@ namespace GOS.Formularios
         public frmConsultaCliente()
         {
             InitializeComponent();
+            txtPesquisar.Select();
         }
 
         private void BtnIncluir_Click(object sender, EventArgs e)
@@ -64,7 +65,6 @@ namespace GOS.Formularios
         {
             DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
             BLLCliente bll = new BLLCliente(cx);
-            frmCadastroCliente f = new frmCadastroCliente(AcaoTela.Alterar); // acao na tela para verificar se é incluir ou alterar
 
             if (dgvDados.SelectedRows.Count == 0) //verifica se uma linha esta selecionada no grid ou nao
             {
@@ -73,35 +73,38 @@ namespace GOS.Formularios
             }
             else
             {
-                this.cod = Convert.ToInt32(dgvDados.SelectedRows[0].Cells[0].Value); //cod recebe o valor do codigo da linha selecionada no grid
+                this.cod = Convert.ToInt32(dgvDados.CurrentRow.Cells[0].Value); //cod recebe o valor do codigo da linha selecionada no grid
                 ModelCliente modelo = bll.CarregaModelCliente(cod);
-                if (cod != 0)
-                {
-                    f.txtCodigo.Text = modelo.IdCliente.ToString();
-                    f.txtNomeFantasia.Text = modelo.Nome;
-                    f.txtCPFCNPJ.Text = modelo.CPFCNPJ;
-                    f.txtRGIE.Text = modelo.RGIE;
-                    f.txtRazaoSocial.Text = modelo.RazaoSocial;
-                    f.cbTipoPessoa.Text = modelo.TipoPessoa;
-                    f.txtCEP.Text = modelo.CEP;
-                    f.txtEndereco.Text = modelo.Endereco;
-                    f.txtNumero.Text = modelo.EndNumero;
-                    f.txtComplemento.Text = modelo.Complemento;
-                    f.txtBairro.Text = modelo.Bairro;
-                    f.txtTelefone.Text = modelo.Telefone;
-                    f.txtCelular.Text = modelo.Celular;
-                    f.txtCelular2.Text = modelo.Celular2;
-                    f.txtEmail.Text = modelo.Email;
-                    f.txtCidade.Text = modelo.Cidade;
-                    f.cbUF.Text = modelo.UF;
-                    f.txtDataNasc.Text = modelo.DataNasc.ToString();
-                    f.txtDataCadastro.Text = modelo.DataCadastro;
-                    if (modelo.Situacao == "A")
-                        f.chbAtivo.Checked = true;
-                    else if (modelo.Situacao == "I")
-                        f.chbAtivo.Checked = false;
-                    f.cbDepartamento.SelectedValue = modelo.IdDepartamento.ToString();
-                }
+                frmCadastroCliente f = new frmCadastroCliente(AcaoTela.Alterar, modelo); // acao na tela para verificar se é incluir ou alterar
+ 
+                //if (cod != 0)
+                //{
+                //    f.txtCodigo.Text = modelo.IdCliente.ToString();
+                //    f.txtNomeFantasia.Text = modelo.Nome;
+                //    f.txtCPFCNPJ.Text = modelo.CPFCNPJ;
+                //    f.txtRGIE.Text = modelo.RGIE;
+                //    f.txtRazaoSocial.Text = modelo.RazaoSocial;
+                //    f.cbTipoPessoa.Text = modelo.TipoPessoa;
+                //    f.txtCEP.Text = modelo.CEP;
+                //    f.txtEndereco.Text = modelo.Endereco;
+                //    f.txtNumero.Text = modelo.EndNumero;
+                //    f.txtComplemento.Text = modelo.Complemento;
+                //    f.txtBairro.Text = modelo.Bairro;
+                //    f.txtTelefone.Text = modelo.Telefone;
+                //    f.txtCelular.Text = modelo.Celular;
+                //    f.txtCelular2.Text = modelo.Celular2;
+                //    f.txtEmail.Text = modelo.Email;
+                //    f.txtCidade.Text = modelo.Cidade;
+                //    f.cbUF.Text = modelo.UF;
+                //    f.txtDataNasc.Text = modelo.DataNasc.ToString();
+                //    f.txtDataCadastro.Text = modelo.DataCadastro;
+                //    if (modelo.Situacao == "A")
+                //        f.chbAtivo.Checked = true;
+                //    else if (modelo.Situacao == "I")
+                //        f.chbAtivo.Checked = false;
+                //    //f.cbDepartamento.SelectedValue = modelo.IdDepartamento.ToString();
+                //    f.cbDepartamento.SelectedIndex = f.cbDepartamento.FindString(modelo.Departamento.ToString());
+                //}
                 f.ShowDialog();
                 f.Dispose();
                 if (chbPesqAtivos.Checked == true)

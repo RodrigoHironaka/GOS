@@ -29,6 +29,7 @@ namespace Model
         public string DataCadastro { get; set; }
         public string Situacao { get; set; }
         public int IdDepartamento { get; set; }
+        public string Departamento { get; set; }
 
     }
 }
