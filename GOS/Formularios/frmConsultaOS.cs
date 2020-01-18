@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,15 @@ namespace GOS.Formularios
         public frmConsultaOS()
         {
             InitializeComponent();
+        }
+
+        private void BtnIncluir_Click(object sender, EventArgs e)
+        {
+            frmCadastroOS f = new frmCadastroOS(AcaoTela.Inserir);
+            f.txtSituacao.Text = "ABERTO";
+            f.txtDataInicial.Text = System.DateTime.Now.ToShortDateString() + " - " + System.DateTime.Now.ToShortTimeString();
+            f.ShowDialog();
+            f.Dispose();
         }
     }
 }

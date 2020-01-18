@@ -52,7 +52,7 @@
             this.btnSair.BackColor = System.Drawing.Color.Silver;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.Location = new System.Drawing.Point(724, 298);
+            this.btnSair.Location = new System.Drawing.Point(472, 298);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(48, 41);
             this.btnSair.TabIndex = 42;
@@ -64,19 +64,20 @@
             this.btnIncluir.BackColor = System.Drawing.Color.Silver;
             this.btnIncluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncluir.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluir.Image")));
-            this.btnIncluir.Location = new System.Drawing.Point(724, 91);
+            this.btnIncluir.Location = new System.Drawing.Point(472, 91);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(48, 41);
             this.btnIncluir.TabIndex = 39;
             this.ttInfo.SetToolTip(this.btnIncluir, "Incluir registro");
             this.btnIncluir.UseVisualStyleBackColor = false;
+            this.btnIncluir.Click += new System.EventHandler(this.BtnIncluir_Click);
             // 
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.Color.Silver;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(724, 228);
+            this.btnExcluir.Location = new System.Drawing.Point(472, 228);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(48, 41);
             this.btnExcluir.TabIndex = 41;
@@ -89,7 +90,7 @@
             this.chbPesqAtivos.Checked = true;
             this.chbPesqAtivos.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbPesqAtivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqAtivos.Location = new System.Drawing.Point(608, 28);
+            this.chbPesqAtivos.Location = new System.Drawing.Point(362, 29);
             this.chbPesqAtivos.Name = "chbPesqAtivos";
             this.chbPesqAtivos.Size = new System.Drawing.Size(65, 21);
             this.chbPesqAtivos.TabIndex = 14;
@@ -101,7 +102,7 @@
             // 
             this.chbPesqInativos.AutoSize = true;
             this.chbPesqInativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqInativos.Location = new System.Drawing.Point(679, 28);
+            this.chbPesqInativos.Location = new System.Drawing.Point(433, 29);
             this.chbPesqInativos.Name = "chbPesqInativos";
             this.chbPesqInativos.Size = new System.Drawing.Size(75, 21);
             this.chbPesqInativos.TabIndex = 13;
@@ -115,7 +116,7 @@
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.Location = new System.Drawing.Point(6, 25);
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(596, 24);
+            this.txtPesquisar.Size = new System.Drawing.Size(350, 24);
             this.txtPesquisar.TabIndex = 0;
             this.ttInfo.SetToolTip(this.txtPesquisar, "Digite aqui para buscar o registro desejado.");
             this.txtPesquisar.WordWrap = false;
@@ -125,7 +126,7 @@
             this.btnAlterar.BackColor = System.Drawing.Color.Silver;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("btnAlterar.Image")));
-            this.btnAlterar.Location = new System.Drawing.Point(724, 159);
+            this.btnAlterar.Location = new System.Drawing.Point(472, 159);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(48, 41);
             this.btnAlterar.TabIndex = 40;
@@ -137,7 +138,7 @@
             this.lbAtencao.AutoSize = true;
             this.lbAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAtencao.ForeColor = System.Drawing.Color.Red;
-            this.lbAtencao.Location = new System.Drawing.Point(637, 10);
+            this.lbAtencao.Location = new System.Drawing.Point(391, 11);
             this.lbAtencao.Name = "lbAtencao";
             this.lbAtencao.Size = new System.Drawing.Size(71, 15);
             this.lbAtencao.TabIndex = 15;
@@ -154,7 +155,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(760, 58);
+            this.groupBox2.Size = new System.Drawing.Size(508, 58);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pesquisar";
@@ -171,7 +172,7 @@
             this.dgvDados.Name = "dgvDados";
             this.dgvDados.ReadOnly = true;
             this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDados.Size = new System.Drawing.Size(700, 355);
+            this.dgvDados.Size = new System.Drawing.Size(451, 304);
             this.dgvDados.TabIndex = 1;
             // 
             // groupUsuario
@@ -180,7 +181,7 @@
             this.groupUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupUsuario.Location = new System.Drawing.Point(12, 69);
             this.groupUsuario.Name = "groupUsuario";
-            this.groupUsuario.Size = new System.Drawing.Size(706, 380);
+            this.groupUsuario.Size = new System.Drawing.Size(457, 329);
             this.groupUsuario.TabIndex = 44;
             this.groupUsuario.TabStop = false;
             this.groupUsuario.Text = "Ordem de Serviço(s)";
@@ -190,7 +191,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(534, 401);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.btnExcluir);

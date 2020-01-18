@@ -57,5 +57,12 @@ namespace GOS.Formularios
             f.MdiParent = this;
             f.Show();
         }
+
+        private void OrdemDeServiçoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaOS f = new frmConsultaOS();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

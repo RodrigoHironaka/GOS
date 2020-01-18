@@ -93,16 +93,6 @@ namespace DAL
             conexao.Desconectar();
         }
 
-        //public DataTable LocalizarAtivos(String valor)
-        //{
-        //    DataTable tabela = new DataTable();
-        //    string sql = "select * from cliente  "+
-        //        " where id like '%" + valor + "%' or razaosocial like '%" + valor + "%' or nome like '%" + valor + "%'" +
-        //        " order by id";
-        //    SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
-        //    da.Fill(tabela);
-        //    return tabela;
-        //}
         public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();
@@ -118,7 +108,7 @@ namespace DAL
         public DataTable LocalizarInativos(String valor)
         {
             DataTable tabela = new DataTable();
-            string sql = "select c.id, c.nome, c.cpfcnpj, c.rgie, c.razaosocial, c.tipopessoa,c.cep, c.endereco, c.endnumero, c.complemento, c.bairro, c.telefone, c.celular, c.celular2, c.email, c.cidade, c.uf, c.dataNasc, c.dataCadastro, c.situacao, d.nome from cliente c " +
+            string sql = "select c.*, d.nome  as departamento from cliente c " +
                 " inner join  departamento d on (c.iddepartamento = d.id)" +
                 " where (c.id like '%" + valor + "%' or c.razaosocial like '%" + valor + "%' or c.nome like '%" + valor + "%') and c.situacao = 'I'" +
                 " order by c.id";
@@ -176,15 +166,13 @@ namespace DAL
         {
             try
             {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = conexao.ObjetoConexao;
-                conexao.Conectar();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select c.id, c.nome, c.cpfcnpj, c.rgie, c.razaosocial, c.tipopessoa, c.cep, c.endereco, c.endnumero, c.complemento, c.bairro, c.telefone, c.celular, c.celular2, c.email, c.cidade, c.uf, c.dataNasc, c.dataCadastro, c.situacao, d.nome from cliente c " +
-                " inner join  departamento d on (c.iddepartamento = d.id)" + 
-                " order by id", conexao.StringConexao);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-                return dataTable;
+                DataTable tabela = new DataTable();
+                string sql = "select c.*, d.nome  as departamento from cliente c " +
+                    " inner join  departamento d on (c.iddepartamento = d.id)" +                    
+                    " order by c.id";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
+                da.Fill(tabela);
+                return tabela;
             }
             catch (Exception ex)
             {

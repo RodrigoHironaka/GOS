@@ -327,6 +327,7 @@
             // 
             this.txtRGIE.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRGIE.Location = new System.Drawing.Point(167, 344);
+            this.txtRGIE.Mask = "00,000,000-0";
             this.txtRGIE.Name = "txtRGIE";
             this.txtRGIE.Size = new System.Drawing.Size(129, 24);
             this.txtRGIE.TabIndex = 13;

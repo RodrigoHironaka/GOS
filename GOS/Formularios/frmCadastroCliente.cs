@@ -17,7 +17,7 @@ namespace GOS.Formularios
 {
     public partial class frmCadastroCliente : Form
     {
-        private ModelCliente cliente;
+        //private ModelCliente cliente;
 
         private void carregaDepartamento()
         {
@@ -101,11 +101,27 @@ namespace GOS.Formularios
             {
                 ModelCliente modelo = new ModelCliente();
                 modelo.Nome = txtNomeFantasia.Text;
-                modelo.CPFCNPJ = txtCPFCNPJ.Text;
+                if (pbInvalido.Visible == true)
+                {
+                    MessageBox.Show("Digite um valor válido no campo CPF/CNPJ!!!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    modelo.CPFCNPJ = txtCPFCNPJ.Text;
+                }
                 modelo.RGIE = txtRGIE.Text;
                 modelo.RazaoSocial = txtRazaoSocial.Text;
                 modelo.TipoPessoa = cbTipoPessoa.Text;
-                modelo.CEP = txtCEP.Text;
+                if (pbInvalidoCEP.Visible == true)
+                {
+                    MessageBox.Show("Digite um valor válido no campo CEP!!!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    modelo.CEP = txtCEP.Text;
+                }
                 modelo.Endereco = txtEndereco.Text;
                 modelo.EndNumero = txtNumero.Text;
                 modelo.Complemento = txtComplemento.Text;
@@ -114,7 +130,15 @@ namespace GOS.Formularios
                 modelo.Celular = txtCelular.Text;
                 modelo.Celular2 = txtCelular2.Text;
                 modelo.Cidade = txtCidade.Text;
-                modelo.Email = txtEmail.Text;
+                if (pbInvalidoEmail.Visible == true)
+                {
+                    MessageBox.Show("Digite um valor válido no campo Email!!!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    modelo.Email = txtEmail.Text;
+                }
                 modelo.UF = cbUF.Text;
                 modelo.DataNasc = txtDataNasc.Text;
                 modelo.DataCadastro = txtDataCadastro.Text;
@@ -177,7 +201,6 @@ namespace GOS.Formularios
                 lbCPFCNPJ.Text = "CPF";
                 txtCPFCNPJ.Mask = "000,000,000-00";
                 lbRazaoNome.Enabled = false;
-                //txtNomeFantasia.Text = "";
                 lbNomeFantasia.Text = "Nome:";
             }
             else if (cbTipoPessoa.SelectedIndex == 1)
@@ -190,13 +213,6 @@ namespace GOS.Formularios
                 lbRazaoNome.Enabled = true;
                 lbNomeFantasia.Text = "Nome Fantasia:";
             }
-            //------------------------
-            /*DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
-            BLLCliente bll = new BLLCliente(cx);
-            cbDepartamento.DataSource = bll.CarregaComboDepartamentos();
-            cbDepartamento.ValueMember = "id";
-            cbDepartamento.DisplayMember = "nome";
-            //cbDepartamento.Update();*/
         }
 
         private void PbCalendario_Click(object sender, EventArgs e)
@@ -300,7 +316,6 @@ namespace GOS.Formularios
                 lbCPFCNPJ.Text = "CPF";
                 txtCPFCNPJ.Mask = "000,000,000-00";
                 lbRazaoNome.Enabled = false;
-                //txtNomeFantasia.Text = "";
                 lbNomeFantasia.Text = "Nome:";
             }
             else if (cbTipoPessoa.SelectedIndex == 1)
