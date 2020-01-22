@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace Model
 {
-    public class ModeloOrdemServico
+    public class ModelOrdemServico
     {
         public int IdOS { get; set; }
-        public DateTime DataInicial { get; set; }
-        public DateTime DataFinal { get; set; }
-        public String Situacao { get; set; }
-        public String Observacao { get; set; }
+        public string DataInicial { get; set; }
+        public string DataFinal { get; set; }
+        public string Situacao { get; set; }
+        public string Observacao { get; set; }
         public int IdCliente { get; set; }
 
     }

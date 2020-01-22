@@ -56,6 +56,25 @@ namespace DAL
             conexao.Desconectar();
         }
 
+        public DataTable LocalizarTodosAtivos()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                conexao.Conectar();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from servico where situacao = 'A' order by id", conexao.StringConexao);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+        }
+
         public DataTable LocalizarAtivos(String valor)
         {
             DataTable tabela = new DataTable();

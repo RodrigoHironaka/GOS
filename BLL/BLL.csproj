@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="BLLCliente.cs" />
     <Compile Include="BLLDepartamento.cs" />
+    <Compile Include="BLLOrdemServico.cs" />
+    <Compile Include="BLLOrdemServicoItens.cs" />
     <Compile Include="BLLServico.cs" />
     <Compile Include="BLLUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

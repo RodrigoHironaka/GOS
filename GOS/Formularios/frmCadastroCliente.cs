@@ -17,7 +17,6 @@ namespace GOS.Formularios
 {
     public partial class frmCadastroCliente : Form
     {
-        //private ModelCliente cliente;
 
         private void carregaDepartamento()
         {
@@ -49,18 +48,17 @@ namespace GOS.Formularios
             { this.Text = "Cadastro de Cliente - Inserir"; }
             else if (acaoTela == AcaoTela.Alterar)
             { this.Text = "Cadastro de Cliente - Alterar"; }
-            cbTipoPessoa.SelectedIndex = 0;
             cbUF.SelectedIndex = 24;
             txtDataCadastro.Text = System.DateTime.Now.ToShortDateString() + " - " + System.DateTime.Now.ToShortTimeString();
 
             this.carregaDepartamento();
 
             txtCodigo.Text = modelo.IdCliente.ToString();
+            cbTipoPessoa.Text = modelo.TipoPessoa;
             txtNomeFantasia.Text = modelo.Nome;
             txtCPFCNPJ.Text = modelo.CPFCNPJ;
             txtRGIE.Text = modelo.RGIE;
-            txtRazaoSocial.Text = modelo.RazaoSocial;
-            cbTipoPessoa.Text = modelo.TipoPessoa;
+            txtRazaoSocial.Text = modelo.RazaoSocial;           
             txtCEP.Text = modelo.CEP;
             txtEndereco.Text = modelo.Endereco;
             txtNumero.Text = modelo.EndNumero;
@@ -80,7 +78,6 @@ namespace GOS.Formularios
                 chbAtivo.Checked = false;
             cbDepartamento.SelectedValue = modelo.IdDepartamento.ToString();
             //cbDepartamento.SelectedIndex = cbDepartamento.FindString(modelo.Departamento.ToString());
-
         }
 
         private void BtnSair_Click(object sender, EventArgs e)
@@ -299,9 +296,7 @@ namespace GOS.Formularios
         {
             if (e.KeyCode == Keys.Enter)
             {
-
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
-
             }
         }
 

@@ -51,6 +51,12 @@ namespace BLL
             DALObj.Excluir(codigo);
         }
 
+        public DataTable LocalizarTodosAtivos()
+        {
+            DALServico DALObj = new DALServico(conexao);
+            return DALObj.LocalizarTodosAtivos();
+        }
+
         public DataTable LocalizarAtivos(String valor)
         {
             DALServico DALObj = new DALServico(conexao);

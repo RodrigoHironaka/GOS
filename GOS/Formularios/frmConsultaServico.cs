@@ -22,6 +22,15 @@ namespace GOS.Formularios
             txtPesquisar.Select();
         }
 
+        public frmConsultaServico(bool selecao)
+        {
+            InitializeComponent();
+            DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+            BLLServico bll = new BLLServico(cx);
+            dgvDados.DataSource = bll.LocalizarTodosAtivos();
+            dgvDados.Select();
+        }
+
         private void BtnIncluir_Click(object sender, EventArgs e)
         {
             DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
@@ -220,6 +229,18 @@ namespace GOS.Formularios
             this.Close();
         }
 
-
+        private void DgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDados.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Nenhum registro selecionado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (e.RowIndex >= 0)
+            {
+                this.cod = Convert.ToInt32(dgvDados.Rows[e.RowIndex].Cells[0].Value);
+                this.Close();
+            }
+        }
     }
 }

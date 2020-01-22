@@ -16,10 +16,20 @@ namespace GOS.Formularios
     public partial class frmConsultaCliente : Form
     {
         public int cod = 0;
+
         public frmConsultaCliente()
         {
-            InitializeComponent();
+            InitializeComponent();            
             txtPesquisar.Select();
+        }
+
+        public frmConsultaCliente(bool selecao)
+        {
+            InitializeComponent();
+            DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+            BLLCliente bll = new BLLCliente(cx);
+            dgvDados.DataSource = bll.LocalizarTodosAtivos();
+            dgvDados.Select();
         }
 
         private void BtnIncluir_Click(object sender, EventArgs e)
@@ -109,7 +119,6 @@ namespace GOS.Formularios
                 }
                 dgvDados.ClearSelection();
             }
-
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
@@ -211,6 +220,19 @@ namespace GOS.Formularios
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
+        }
+
+        private void DgvDados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDados.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Nenhum registro selecionado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }else if (e.RowIndex >= 0)
+            {
+                this.cod = Convert.ToInt32(dgvDados.Rows[e.RowIndex].Cells[0].Value);
+                this.Close();
+            }
         }
     }
 }

@@ -32,16 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaCliente));
             this.groupUsuario = new System.Windows.Forms.GroupBox();
             this.dgvDados = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbAtencao = new System.Windows.Forms.Label();
-            this.chbPesqAtivos = new System.Windows.Forms.CheckBox();
-            this.chbPesqInativos = new System.Windows.Forms.CheckBox();
-            this.txtPesquisar = new System.Windows.Forms.TextBox();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.btnIncluir = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +54,16 @@
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbAtencao = new System.Windows.Forms.Label();
+            this.chbPesqAtivos = new System.Windows.Forms.CheckBox();
+            this.chbPesqInativos = new System.Windows.Forms.CheckBox();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnIncluir = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
             this.groupUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -117,123 +117,7 @@
             this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDados.Size = new System.Drawing.Size(700, 355);
             this.dgvDados.TabIndex = 1;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox2.Controls.Add(this.lbAtencao);
-            this.groupBox2.Controls.Add(this.chbPesqAtivos);
-            this.groupBox2.Controls.Add(this.chbPesqInativos);
-            this.groupBox2.Controls.Add(this.txtPesquisar);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(760, 58);
-            this.groupBox2.TabIndex = 37;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Pesquisar";
-            // 
-            // lbAtencao
-            // 
-            this.lbAtencao.AutoSize = true;
-            this.lbAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAtencao.ForeColor = System.Drawing.Color.Red;
-            this.lbAtencao.Location = new System.Drawing.Point(637, 10);
-            this.lbAtencao.Name = "lbAtencao";
-            this.lbAtencao.Size = new System.Drawing.Size(71, 15);
-            this.lbAtencao.TabIndex = 15;
-            this.lbAtencao.Text = "ATENÇÃO!!!";
-            this.lbAtencao.Visible = false;
-            // 
-            // chbPesqAtivos
-            // 
-            this.chbPesqAtivos.AutoSize = true;
-            this.chbPesqAtivos.Checked = true;
-            this.chbPesqAtivos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbPesqAtivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqAtivos.Location = new System.Drawing.Point(608, 28);
-            this.chbPesqAtivos.Name = "chbPesqAtivos";
-            this.chbPesqAtivos.Size = new System.Drawing.Size(65, 21);
-            this.chbPesqAtivos.TabIndex = 14;
-            this.chbPesqAtivos.Text = "Ativos";
-            this.ttInfo.SetToolTip(this.chbPesqAtivos, "Marque este campo para pesquisar registros inativados.");
-            this.chbPesqAtivos.UseVisualStyleBackColor = true;
-            // 
-            // chbPesqInativos
-            // 
-            this.chbPesqInativos.AutoSize = true;
-            this.chbPesqInativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqInativos.Location = new System.Drawing.Point(679, 28);
-            this.chbPesqInativos.Name = "chbPesqInativos";
-            this.chbPesqInativos.Size = new System.Drawing.Size(75, 21);
-            this.chbPesqInativos.TabIndex = 13;
-            this.chbPesqInativos.Text = "Inativos";
-            this.ttInfo.SetToolTip(this.chbPesqInativos, "Marque este campo para pesquisar registros inativados.");
-            this.chbPesqInativos.UseVisualStyleBackColor = true;
-            // 
-            // txtPesquisar
-            // 
-            this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(6, 25);
-            this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(596, 24);
-            this.txtPesquisar.TabIndex = 0;
-            this.ttInfo.SetToolTip(this.txtPesquisar, "Digite aqui para buscar o registro desejado.");
-            this.txtPesquisar.WordWrap = false;
-            this.txtPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPesquisar_KeyDown);
-            // 
-            // btnSair
-            // 
-            this.btnSair.BackColor = System.Drawing.Color.Silver;
-            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.Location = new System.Drawing.Point(724, 298);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(48, 41);
-            this.btnSair.TabIndex = 36;
-            this.ttInfo.SetToolTip(this.btnSair, "Sair da tela");
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
-            // 
-            // btnIncluir
-            // 
-            this.btnIncluir.BackColor = System.Drawing.Color.Silver;
-            this.btnIncluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncluir.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluir.Image")));
-            this.btnIncluir.Location = new System.Drawing.Point(724, 91);
-            this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(48, 41);
-            this.btnIncluir.TabIndex = 33;
-            this.ttInfo.SetToolTip(this.btnIncluir, "Incluir registro");
-            this.btnIncluir.UseVisualStyleBackColor = false;
-            this.btnIncluir.Click += new System.EventHandler(this.BtnIncluir_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.BackColor = System.Drawing.Color.Silver;
-            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("btnAlterar.Image")));
-            this.btnAlterar.Location = new System.Drawing.Point(724, 159);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(48, 41);
-            this.btnAlterar.TabIndex = 34;
-            this.ttInfo.SetToolTip(this.btnAlterar, "Alterar registro");
-            this.btnAlterar.UseVisualStyleBackColor = false;
-            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackColor = System.Drawing.Color.Silver;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(724, 228);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(48, 41);
-            this.btnExcluir.TabIndex = 35;
-            this.ttInfo.SetToolTip(this.btnExcluir, "Excluir registro");
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            this.dgvDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDados_CellDoubleClick);
             // 
             // Column1
             // 
@@ -421,6 +305,123 @@
             this.Column21.ReadOnly = true;
             this.Column21.Visible = false;
             this.Column21.Width = 84;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox2.Controls.Add(this.lbAtencao);
+            this.groupBox2.Controls.Add(this.chbPesqAtivos);
+            this.groupBox2.Controls.Add(this.chbPesqInativos);
+            this.groupBox2.Controls.Add(this.txtPesquisar);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(760, 58);
+            this.groupBox2.TabIndex = 37;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Pesquisar";
+            // 
+            // lbAtencao
+            // 
+            this.lbAtencao.AutoSize = true;
+            this.lbAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAtencao.ForeColor = System.Drawing.Color.Red;
+            this.lbAtencao.Location = new System.Drawing.Point(637, 10);
+            this.lbAtencao.Name = "lbAtencao";
+            this.lbAtencao.Size = new System.Drawing.Size(71, 15);
+            this.lbAtencao.TabIndex = 15;
+            this.lbAtencao.Text = "ATENÇÃO!!!";
+            this.lbAtencao.Visible = false;
+            // 
+            // chbPesqAtivos
+            // 
+            this.chbPesqAtivos.AutoSize = true;
+            this.chbPesqAtivos.Checked = true;
+            this.chbPesqAtivos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbPesqAtivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbPesqAtivos.Location = new System.Drawing.Point(608, 28);
+            this.chbPesqAtivos.Name = "chbPesqAtivos";
+            this.chbPesqAtivos.Size = new System.Drawing.Size(65, 21);
+            this.chbPesqAtivos.TabIndex = 14;
+            this.chbPesqAtivos.Text = "Ativos";
+            this.ttInfo.SetToolTip(this.chbPesqAtivos, "Marque este campo para pesquisar registros inativados.");
+            this.chbPesqAtivos.UseVisualStyleBackColor = true;
+            // 
+            // chbPesqInativos
+            // 
+            this.chbPesqInativos.AutoSize = true;
+            this.chbPesqInativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbPesqInativos.Location = new System.Drawing.Point(679, 28);
+            this.chbPesqInativos.Name = "chbPesqInativos";
+            this.chbPesqInativos.Size = new System.Drawing.Size(75, 21);
+            this.chbPesqInativos.TabIndex = 13;
+            this.chbPesqInativos.Text = "Inativos";
+            this.ttInfo.SetToolTip(this.chbPesqInativos, "Marque este campo para pesquisar registros inativados.");
+            this.chbPesqInativos.UseVisualStyleBackColor = true;
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.Location = new System.Drawing.Point(6, 25);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(596, 24);
+            this.txtPesquisar.TabIndex = 0;
+            this.ttInfo.SetToolTip(this.txtPesquisar, "Digite aqui para buscar o registro desejado.");
+            this.txtPesquisar.WordWrap = false;
+            this.txtPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPesquisar_KeyDown);
+            // 
+            // btnSair
+            // 
+            this.btnSair.BackColor = System.Drawing.Color.Silver;
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
+            this.btnSair.Location = new System.Drawing.Point(724, 298);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(48, 41);
+            this.btnSair.TabIndex = 36;
+            this.ttInfo.SetToolTip(this.btnSair, "Sair da tela");
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.BackColor = System.Drawing.Color.Silver;
+            this.btnIncluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluir.Image")));
+            this.btnIncluir.Location = new System.Drawing.Point(724, 91);
+            this.btnIncluir.Name = "btnIncluir";
+            this.btnIncluir.Size = new System.Drawing.Size(48, 41);
+            this.btnIncluir.TabIndex = 33;
+            this.ttInfo.SetToolTip(this.btnIncluir, "Incluir registro");
+            this.btnIncluir.UseVisualStyleBackColor = false;
+            this.btnIncluir.Click += new System.EventHandler(this.BtnIncluir_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.BackColor = System.Drawing.Color.Silver;
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("btnAlterar.Image")));
+            this.btnAlterar.Location = new System.Drawing.Point(724, 159);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(48, 41);
+            this.btnAlterar.TabIndex = 34;
+            this.ttInfo.SetToolTip(this.btnAlterar, "Alterar registro");
+            this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.Color.Silver;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
+            this.btnExcluir.Location = new System.Drawing.Point(724, 228);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(48, 41);
+            this.btnExcluir.TabIndex = 35;
+            this.ttInfo.SetToolTip(this.btnExcluir, "Excluir registro");
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // frmConsultaCliente
             // 

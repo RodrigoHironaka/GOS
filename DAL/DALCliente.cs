@@ -180,6 +180,25 @@ namespace DAL
                 throw;
             }
         }
+        public DataTable LocalizarTodosAtivos()
+        {
+            try
+            {
+                DataTable tabela = new DataTable();
+                string sql = "select c.*, d.nome  as departamento from cliente c " +
+                    " inner join  departamento d on (c.iddepartamento = d.id)" +
+                    " where c.situacao = 'A'" +
+                    " order by c.id";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conexao.StringConexao);
+                da.Fill(tabela);
+                return tabela;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+        }
 
         public DataTable CarregaComboDepartamentos()
         {

@@ -11,6 +11,6 @@ namespace Model
         public int IdOSItens { get; set; }
         public int IdServico { get; set; }
         public int IdOS { get; set; }
-        public String Detalhes { get; set; }
+        public string Detalhes { get; set; }
     }
 }

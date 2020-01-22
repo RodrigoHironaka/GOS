@@ -68,6 +68,11 @@ namespace BLL
             DALCliente DALObj = new DALCliente(conexao);
             return DALObj.carregarGrid();
         }
+        public DataTable LocalizarTodosAtivos()
+        {
+            DALCliente DALObj = new DALCliente(conexao);
+            return DALObj.LocalizarTodosAtivos();
+        }
 
         public ModelCliente CarregaModelCliente(int codigo)
         {
