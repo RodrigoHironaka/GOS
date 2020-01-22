@@ -56,11 +56,13 @@ namespace GOS.Formularios
                             txtCodCliente.Clear();
                             txtNomeCliente.Clear();
                             txtCelCliente.Clear();
+                            txtCodCliente.Select();
                         }
                         else
                         {
                             txtNomeCliente.Text = modelo.Nome;
                             txtCelCliente.Text = modelo.Celular;
+                            txtCodServico.Select();
                         }
                     }
                 }
@@ -74,11 +76,13 @@ namespace GOS.Formularios
                         txtCodCliente.Clear();
                         txtNomeCliente.Clear();
                         txtCelCliente.Clear();
+                        txtCodCliente.Select();
                     }
                     else
                     {
                         txtNomeCliente.Text = modelo.Nome;
                         txtCelCliente.Text = modelo.Celular;
+                        txtCodServico.Select();
                     }
                 }
             }
@@ -87,6 +91,7 @@ namespace GOS.Formularios
                 txtCodCliente.Clear();
                 txtNomeCliente.Clear();
                 txtCelCliente.Clear();
+                txtCodCliente.Select();
             }
         }
 
@@ -142,7 +147,7 @@ namespace GOS.Formularios
         {
             try
             {
-                if((txtCodServico.Text != "") && (txtNomeServico.Text != ""))
+                if ((txtCodServico.Text != "") && (txtNomeServico.Text != ""))
                 {
                     String[] i = new String[] { txtCodServico.Text, txtNomeServico.Text, txtDetalhesServico.Text };
                     this.dgvItens.Rows.Add(i);
@@ -150,6 +155,8 @@ namespace GOS.Formularios
                     txtCodServico.Clear();
                     txtNomeServico.Clear();
                     txtDetalhesServico.Clear();
+                    txtCodServico.Select();
+
                 }
             }
             catch (Exception ex)
@@ -176,18 +183,6 @@ namespace GOS.Formularios
             if (e.KeyCode == Keys.Enter)
             {
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
-            }
-        }
-
-        private void TxtDetalhesServico_Click(object sender, EventArgs e)
-        {
-            if (txtDetalhesServico.Focus())
-            {
-                txtDetalhesServico.Text = "";
-            }
-            else
-            {
-                txtDetalhesServico.Text = "DIGITE AQUI OS DETALHES DO SERVIÇO A SER FEITO.";
             }
         }
     }

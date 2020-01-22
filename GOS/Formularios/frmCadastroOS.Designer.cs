@@ -292,7 +292,6 @@
             this.txtDetalhesServico.Size = new System.Drawing.Size(532, 45);
             this.txtDetalhesServico.TabIndex = 2;
             this.txtDetalhesServico.Text = "DIGITE AQUI OS DETALHES DO SERVIÇO A SER FEITO.";
-            this.txtDetalhesServico.Click += new System.EventHandler(this.TxtDetalhesServico_Click);
             // 
             // label7
             // 

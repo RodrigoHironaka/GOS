@@ -76,5 +76,6 @@ namespace BLL
             DALOrdemServico DALObj = new DALOrdemServico(conexao);
             return DALObj.CarregaModelOrdemServico(codigo);
         }
+ 
     }
 }
