@@ -21,38 +21,36 @@ namespace DAL
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "insert into ordemservicoitens(idos, idservico, detalhes) values (@idos, @idservico, @detalhes); select @@IDENTITY;";
+            cmd.Transaction = this.conexao.ObjetoTransacao;
+            cmd.CommandText = "insert into ordemservicoitens (idos, idservico, detalhes) values (@idos, @idservico, @detalhes); select @@IDENTITY;";
+            //cmd.Parameters.AddWithValue("@id", modelo.IdOSItens);
             cmd.Parameters.AddWithValue("@idos", modelo.IdOS);
             cmd.Parameters.AddWithValue("@idservico", modelo.IdServico);
             cmd.Parameters.AddWithValue("@detalhes", modelo.Detalhes);
-            conexao.Conectar();
             modelo.IdOS = Convert.ToInt32(cmd.ExecuteScalar());
-            conexao.Desconectar();
         }
 
         public void Alterar(ModelOrdemServicoItens modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
+            cmd.Transaction = this.conexao.ObjetoTransacao;
             cmd.CommandText = "update ordemservicoitens set idos=@idos, idservico=@idservico, detalhes=@detalhes where id=@id;";
             cmd.Parameters.AddWithValue("@idos", modelo.IdOS);
             cmd.Parameters.AddWithValue("@idservico", modelo.IdServico);
             cmd.Parameters.AddWithValue("@detalhes", modelo.Detalhes);;
             cmd.Parameters.AddWithValue("@id", modelo.IdOSItens);
-            conexao.Conectar();
             cmd.ExecuteNonQuery();
-            conexao.Desconectar();
         }
 
         public void Excluir(int codigo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
+            cmd.Transaction = this.conexao.ObjetoTransacao;
             cmd.CommandText = "delete from ordemservicoitens where id = @id;";
             cmd.Parameters.AddWithValue("@id", codigo);
-            conexao.Conectar();
             cmd.ExecuteNonQuery();
-            conexao.Desconectar();
         }
 
         //public DataTable Localizar(int cod)
@@ -85,6 +83,19 @@ namespace DAL
             registro.Close();
             conexao.Desconectar();
             return modelo;
+        }
+
+        public void ExcluirTodosOsItens(int OScod)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conexao.ObjetoConexao;
+            cmd.Transaction = this.conexao.ObjetoTransacao;
+            cmd.CommandText = "delete from ordemservicoitens where id = @id ";
+            cmd.Parameters.AddWithValue("@id", OScod);
+
+            //conexao.Conectar();
+            cmd.ExecuteNonQuery();
+            //conexao.Desconectar();
         }
     }
 }

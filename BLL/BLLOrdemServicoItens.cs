@@ -59,5 +59,15 @@ namespace BLL
             DALOrdemServicoItens DALObj = new DALOrdemServicoItens(conexao);
             return DALObj.CarregaModelOrdemServicoItens(codigo);
         }
+        public void ExcluirTodosOsItens(int OScod)
+        {
+            if (OScod <= 0)
+            {
+                throw new Exception("O código do serviço é obrigatório");
+            }
+
+            DALOrdemServicoItens DALObj = new DALOrdemServicoItens(conexao);
+            DALObj.ExcluirTodosOsItens(OScod);
+        }
     }
 }

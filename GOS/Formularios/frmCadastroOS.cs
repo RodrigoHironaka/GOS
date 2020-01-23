@@ -155,8 +155,15 @@ namespace GOS.Formularios
                     txtCodServico.Clear();
                     txtNomeServico.Clear();
                     txtDetalhesServico.Clear();
-                    txtCodServico.Select();
-
+                    DialogResult d = MessageBox.Show("Deseja Inserir outro serviço?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (d.ToString() == "Yes")
+                    {
+                        txtCodServico.Select();
+                    }
+                    else
+                    {
+                        txtObservacao.Select();
+                    }
                 }
             }
             catch (Exception ex)
@@ -183,6 +190,112 @@ namespace GOS.Formularios
             if (e.KeyCode == Keys.Enter)
             {
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+            }
+        }
+
+        private void TxtObservacao_Click(object sender, EventArgs e)
+        {
+            if (txtObservacao.Text.Equals(" OBS. GERAL "))
+            {
+                txtObservacao.Clear();
+            }
+        }
+
+        private void BtnGravar_Click(object sender, EventArgs e)
+        {
+            DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+            cx.Conectar();
+            cx.IniciarTransacao();
+
+            try
+            {
+                //Inserindo Dados da Tabela OS
+                ModelOrdemServico modeloOS = new ModelOrdemServico();
+                modeloOS.DataInicial = txtDataInicial.Text;
+                modeloOS.DataFinal = txtDataFinal.Text;
+                modeloOS.Situacao = txtSituacao.Text;
+                modeloOS.Observacao = txtObservacao.Text;
+                modeloOS.IdCliente = Convert.ToInt32(txtCodCliente.Text);
+                BLLOrdemServico bllOS = new BLLOrdemServico(cx);
+
+                //Inserindo dados da Tabela OSItens
+                ModelOrdemServicoItens modeloOSItens = new ModelOrdemServicoItens();
+                BLLOrdemServicoItens bllOSItens = new BLLOrdemServicoItens(cx);
+
+                //Inserir ou alterar
+                if (txtCodigo.Text == "")
+                {
+                    //inclui dados da tabela OS
+                    bllOS.Incluir(modeloOS);
+
+                    //Percorre o grid com itens e insere na tabela OSItens
+                    for (int i = 0; i < dgvItens.RowCount; i++)
+                    {
+                        modeloOSItens.IdOSItens = i + 1;
+                        modeloOSItens.IdOS = modeloOS.IdOS;
+                        modeloOSItens.IdServico = Convert.ToInt32(dgvItens.Rows[i].Cells[0].Value);
+                        modeloOSItens.Detalhes = dgvItens.Rows[i].Cells[2].Value.ToString();
+                        bllOSItens.Incluir(modeloOSItens);
+                    }
+                    MessageBox.Show("Ordem de serviço Salva com sucesso: Código " + modeloOS.IdOS.ToString());
+                }
+                else
+                {
+                   /* //Alterar
+                    modeloOS.IdOS = Int32.Parse(txtCodigo.Text);
+                    bllOS.Alterar(modeloOS);
+                    bllOSItens.ExcluirTodosOsItens(modeloOSItens.IdOS);
+
+                    //cadastrar itens da OS
+                    for (int i = 0; i < dgvItens.RowCount; i++)
+                    {
+                        modeloOSItens.IdOSItens = i + 1;
+                        modeloOSItens.IdOS = modeloOS.IdOS;
+                        modeloOSItens.IdServico = Convert.ToInt32(dgvItens.Rows[i].Cells[0].Value);
+                        modeloOSItens.Detalhes = Convert.ToString(dgvItens.Rows[i].Cells[2].Value);
+                        bllOSItens.Incluir(modeloOSItens);
+                    }
+                    MessageBox.Show("Cadastro Alterado com sucesso!!!");*/
+                }
+                this.LimpaTela();
+                cx.TerminarTransacao();
+                cx.Desconectar();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+                cx.CancelaTransacao();
+                cx.Desconectar();
+            }
+        }
+        public void LimpaTela()
+        {
+            txtCodigo.Clear();
+            txtCodCliente.Clear();
+            txtNomeCliente.Clear();
+            txtCelCliente.Clear();
+            txtCodServico.Clear();
+            txtNomeServico.Clear();
+            txtDetalhesServico.Clear();
+            txtObservacao.Clear();
+            dgvItens.Rows.Clear(); 
+        }
+
+        private void TxtCodCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //validacao para permitir apenas numeros
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtCodServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //validacao para permitir apenas numeros
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

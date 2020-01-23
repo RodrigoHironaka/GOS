@@ -22,42 +22,39 @@ namespace DAL
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "insert into ordemservico(datainicial, datafinal, observacao, idcliente, situacao) values (@datainicial, @datafinal, @observacao, @idcliente, @situacao); select @@IDENTITY;";
+            cmd.Transaction = this.conexao.ObjetoTransacao;
+            cmd.CommandText = "insert into ordemservico (datainicial, datafinal, observacao, situacao, idcliente) values (@datainicial, @datafinal, @observacao, @situacao, @idcliente); select @@IDENTITY;";
             cmd.Parameters.AddWithValue("@datainicial", modelo.DataInicial);
             cmd.Parameters.AddWithValue("@datafinal", modelo.DataFinal);
-            cmd.Parameters.AddWithValue("@observacao", modelo.Observacao);
-            cmd.Parameters.AddWithValue("@idcliente", modelo.IdCliente);
+            cmd.Parameters.AddWithValue("@observacao", modelo.Observacao); 
             cmd.Parameters.AddWithValue("@situacao", modelo.Situacao);
-            conexao.Conectar();
+            cmd.Parameters.AddWithValue("@idcliente", modelo.IdCliente);
             modelo.IdOS = Convert.ToInt32(cmd.ExecuteScalar());
-            conexao.Desconectar();
         }
 
         public void Alterar(ModelOrdemServico modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "update ordemservico set datainicial=@datainicial, datafinal=@datafinal, observacao=@observacao, idcliente=@idcliente, situacao=@situacao where id=@id;";
+            cmd.Transaction = this.conexao.ObjetoTransacao;
+            cmd.CommandText = "update ordemservico set datainicial=@datainicial, datafinal=@datafinal, observacao=@observacao, situacao=@situacao, idcliente=@idcliente where id=@id;";
             cmd.Parameters.AddWithValue("@datainicial", modelo.DataInicial);
             cmd.Parameters.AddWithValue("@datafinal", modelo.DataFinal);
             cmd.Parameters.AddWithValue("@observacao", modelo.Observacao);
-            cmd.Parameters.AddWithValue("@idcliente", modelo.IdCliente);
             cmd.Parameters.AddWithValue("@situacao", modelo.Situacao);
+            cmd.Parameters.AddWithValue("@idcliente", modelo.IdCliente);
             cmd.Parameters.AddWithValue("@id", modelo.IdOS);
-            conexao.Conectar();
             cmd.ExecuteNonQuery();
-            conexao.Desconectar();
         }
 
         public void Excluir(int codigo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
+            cmd.Transaction = this.conexao.ObjetoTransacao;
             cmd.CommandText = "delete from ordemservico where id = @id;";
             cmd.Parameters.AddWithValue("@id", codigo);
-            conexao.Conectar();
             cmd.ExecuteNonQuery();
-            conexao.Desconectar();
         }
 
         public DataTable LocalizarTodos()
@@ -78,6 +75,7 @@ namespace DAL
                 throw;
             }
         }
+
         public DataTable LocalizarAbertos(String valor)
         {
             DataTable tabela = new DataTable();
@@ -118,8 +116,8 @@ namespace DAL
                 modelo.DataInicial = Convert.ToString(registro["dataincial"]);
                 modelo.DataFinal = Convert.ToString(registro["datafinal"]);
                 modelo.Observacao = Convert.ToString(registro["observacao"]);
-                modelo.IdCliente = Convert.ToInt32(registro["idcliente"]);
                 modelo.Situacao = Convert.ToString(registro["situacao"]);
+                modelo.IdCliente = Convert.ToInt32(registro["idcliente"]);
             }
             registro.Close();
             conexao.Desconectar();

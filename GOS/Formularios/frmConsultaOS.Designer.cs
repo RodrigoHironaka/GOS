@@ -34,14 +34,12 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.chbPesqAtivos = new System.Windows.Forms.CheckBox();
-            this.chbPesqInativos = new System.Windows.Forms.CheckBox();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.btnAlterar = new System.Windows.Forms.Button();
-            this.lbAtencao = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDados = new System.Windows.Forms.DataGridView();
             this.groupUsuario = new System.Windows.Forms.GroupBox();
+            this.cbSituacao = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.groupUsuario.SuspendLayout();
@@ -83,32 +81,7 @@
             this.btnExcluir.TabIndex = 41;
             this.ttInfo.SetToolTip(this.btnExcluir, "Excluir registro");
             this.btnExcluir.UseVisualStyleBackColor = false;
-            // 
-            // chbPesqAtivos
-            // 
-            this.chbPesqAtivos.AutoSize = true;
-            this.chbPesqAtivos.Checked = true;
-            this.chbPesqAtivos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbPesqAtivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqAtivos.Location = new System.Drawing.Point(362, 29);
-            this.chbPesqAtivos.Name = "chbPesqAtivos";
-            this.chbPesqAtivos.Size = new System.Drawing.Size(65, 21);
-            this.chbPesqAtivos.TabIndex = 14;
-            this.chbPesqAtivos.Text = "Ativos";
-            this.ttInfo.SetToolTip(this.chbPesqAtivos, "Marque este campo para pesquisar registros inativados.");
-            this.chbPesqAtivos.UseVisualStyleBackColor = true;
-            // 
-            // chbPesqInativos
-            // 
-            this.chbPesqInativos.AutoSize = true;
-            this.chbPesqInativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPesqInativos.Location = new System.Drawing.Point(433, 29);
-            this.chbPesqInativos.Name = "chbPesqInativos";
-            this.chbPesqInativos.Size = new System.Drawing.Size(75, 21);
-            this.chbPesqInativos.TabIndex = 13;
-            this.chbPesqInativos.Text = "Inativos";
-            this.ttInfo.SetToolTip(this.chbPesqInativos, "Marque este campo para pesquisar registros inativados.");
-            this.chbPesqInativos.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // txtPesquisar
             // 
@@ -120,6 +93,7 @@
             this.txtPesquisar.TabIndex = 0;
             this.ttInfo.SetToolTip(this.txtPesquisar, "Digite aqui para buscar o registro desejado.");
             this.txtPesquisar.WordWrap = false;
+            this.txtPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPesquisar_KeyDown);
             // 
             // btnAlterar
             // 
@@ -133,24 +107,10 @@
             this.ttInfo.SetToolTip(this.btnAlterar, "Alterar registro");
             this.btnAlterar.UseVisualStyleBackColor = false;
             // 
-            // lbAtencao
-            // 
-            this.lbAtencao.AutoSize = true;
-            this.lbAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAtencao.ForeColor = System.Drawing.Color.Red;
-            this.lbAtencao.Location = new System.Drawing.Point(391, 11);
-            this.lbAtencao.Name = "lbAtencao";
-            this.lbAtencao.Size = new System.Drawing.Size(71, 15);
-            this.lbAtencao.TabIndex = 15;
-            this.lbAtencao.Text = "ATENÇÃO!!!";
-            this.lbAtencao.Visible = false;
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox2.Controls.Add(this.lbAtencao);
-            this.groupBox2.Controls.Add(this.chbPesqAtivos);
-            this.groupBox2.Controls.Add(this.chbPesqInativos);
+            this.groupBox2.Controls.Add(this.cbSituacao);
             this.groupBox2.Controls.Add(this.txtPesquisar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
@@ -186,12 +146,26 @@
             this.groupUsuario.TabStop = false;
             this.groupUsuario.Text = "Ordem de Serviço(s)";
             // 
+            // cbSituacao
+            // 
+            this.cbSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSituacao.FormattingEnabled = true;
+            this.cbSituacao.Items.AddRange(new object[] {
+            "TODOS",
+            "ABERTOS",
+            "FINALIZADOS",
+            "CANCELADO"});
+            this.cbSituacao.Location = new System.Drawing.Point(362, 25);
+            this.cbSituacao.Name = "cbSituacao";
+            this.cbSituacao.Size = new System.Drawing.Size(140, 23);
+            this.cbSituacao.TabIndex = 16;
+            // 
             // frmConsultaOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(534, 401);
+            this.ClientSize = new System.Drawing.Size(530, 401);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.btnExcluir);
@@ -216,13 +190,11 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnIncluir;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.CheckBox chbPesqAtivos;
-        private System.Windows.Forms.CheckBox chbPesqInativos;
         public System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Label lbAtencao;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dgvDados;
         private System.Windows.Forms.GroupBox groupUsuario;
+        private System.Windows.Forms.ComboBox cbSituacao;
     }
 }
