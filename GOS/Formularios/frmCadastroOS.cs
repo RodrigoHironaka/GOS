@@ -298,6 +298,18 @@ namespace GOS.Formularios
                 e.Handled = true;
             }
         }
+
+        private void txtSituacao_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSituacao.Text == "CANCELADO")
+            {
+                pbCancelado.Visible = true;
+            }
+            else
+            {
+                pbCancelado.Visible = false;
+            }
+        }
     }
 }
 

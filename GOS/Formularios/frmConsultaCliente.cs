@@ -57,7 +57,7 @@ namespace GOS.Formularios
             if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
             {
                 lbAtencao.Visible = false;
-                dgvDados.DataSource = bll.carregaGrid();
+                dgvDados.DataSource = bll.LocalizarTodos();
                 chbPesqAtivos.ForeColor = Color.Black;
                 chbPesqInativos.ForeColor = Color.Black;
             }
@@ -106,7 +106,7 @@ namespace GOS.Formularios
                 if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
                 {
                     lbAtencao.Visible = false;
-                    dgvDados.DataSource = bll.carregaGrid();
+                    dgvDados.DataSource = bll.LocalizarTodos();
                     chbPesqAtivos.ForeColor = Color.Black;
                     chbPesqInativos.ForeColor = Color.Black;
                 }
@@ -158,7 +158,7 @@ namespace GOS.Formularios
                         if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
                         {
                             lbAtencao.Visible = false;
-                            dgvDados.DataSource = bll.carregaGrid();
+                            dgvDados.DataSource = bll.LocalizarTodos();
                             chbPesqAtivos.ForeColor = Color.Black;
                             chbPesqInativos.ForeColor = Color.Black;
                         }
@@ -206,7 +206,7 @@ namespace GOS.Formularios
                 if (chbPesqAtivos.Checked == true && chbPesqInativos.Checked == true)
                 {
                     lbAtencao.Visible = false;
-                    dgvDados.DataSource = bll.carregaGrid();
+                    dgvDados.DataSource = bll.LocalizarTodos();
                     chbPesqAtivos.ForeColor = Color.Black;
                     chbPesqInativos.ForeColor = Color.Black;
                 }

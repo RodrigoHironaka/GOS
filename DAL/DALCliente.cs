@@ -162,7 +162,7 @@ namespace DAL
             return modelo;
         }
 
-        public DataTable carregarGrid()
+        public DataTable LocalizarTodos()
         {
             try
             {

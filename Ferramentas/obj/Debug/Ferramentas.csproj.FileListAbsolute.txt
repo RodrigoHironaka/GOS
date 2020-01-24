@@ -1,6 +1,5 @@
 D:\Projetos\GOS\Ferramentas\bin\Debug\Ferramentas.dll
 D:\Projetos\GOS\Ferramentas\bin\Debug\Ferramentas.pdb
-D:\Projetos\GOS\Ferramentas\obj\Debug\Ferramentas.csproj.CoreCompileInputs.cache
 D:\Projetos\GOS\Ferramentas\obj\Debug\Ferramentas.dll
 D:\Projetos\GOS\Ferramentas\obj\Debug\Ferramentas.pdb
 D:\Projetos\GOS\Ferramentas\obj\Debug\Ferramentas.csprojAssemblyReference.cache

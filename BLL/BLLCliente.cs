@@ -63,10 +63,10 @@ namespace BLL
             return DALObj.LocalizarInativos(valor);
         }
 
-        public DataTable carregaGrid()
+        public DataTable LocalizarTodos()
         {
             DALCliente DALObj = new DALCliente(conexao);
-            return DALObj.carregarGrid();
+            return DALObj.LocalizarTodos();
         }
         public DataTable LocalizarTodosAtivos()
         {

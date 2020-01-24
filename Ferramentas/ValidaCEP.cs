@@ -37,7 +37,7 @@ namespace Ferramentas
                     cep = CEP;
                     flag = true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     endereco = "";
                     bairro = "";

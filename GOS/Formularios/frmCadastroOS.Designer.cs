@@ -63,10 +63,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDataFinal = new System.Windows.Forms.TextBox();
             this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.pbCancelado = new System.Windows.Forms.PictureBox();
             this.gbOS.SuspendLayout();
             this.gbLancarServicos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             this.gbDadosOS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancelado)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGravar
@@ -165,6 +167,7 @@
             // gbOS
             // 
             this.gbOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gbOS.Controls.Add(this.pbCancelado);
             this.gbOS.Controls.Add(this.btFinalizar);
             this.gbOS.Controls.Add(this.btnGravar);
             this.gbOS.Controls.Add(this.txtObservacao);
@@ -404,6 +407,7 @@
             this.txtSituacao.Name = "txtSituacao";
             this.txtSituacao.Size = new System.Drawing.Size(144, 24);
             this.txtSituacao.TabIndex = 286;
+            this.txtSituacao.TextChanged += new System.EventHandler(this.txtSituacao_TextChanged);
             // 
             // label3
             // 
@@ -462,6 +466,16 @@
             this.txtDataFinal.Size = new System.Drawing.Size(144, 24);
             this.txtDataFinal.TabIndex = 284;
             // 
+            // pbCancelado
+            // 
+            this.pbCancelado.Image = ((System.Drawing.Image)(resources.GetObject("pbCancelado.Image")));
+            this.pbCancelado.Location = new System.Drawing.Point(509, 17);
+            this.pbCancelado.Name = "pbCancelado";
+            this.pbCancelado.Size = new System.Drawing.Size(48, 48);
+            this.pbCancelado.TabIndex = 293;
+            this.pbCancelado.TabStop = false;
+            this.pbCancelado.Visible = false;
+            // 
             // frmCadastroOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,6 +498,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
             this.gbDadosOS.ResumeLayout(false);
             this.gbDadosOS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancelado)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -523,5 +538,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Serviço;
         private System.Windows.Forms.DataGridViewTextBoxColumn detalhes;
         private System.Windows.Forms.ToolTip ttInfo;
+        private System.Windows.Forms.PictureBox pbCancelado;
     }
 }

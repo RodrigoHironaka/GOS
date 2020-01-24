@@ -47,10 +47,10 @@ namespace BLL
             DALObj.Excluir(codigo);
         }
 
-        public DataTable LocalizarTodos()
+        public DataTable LocalizarTodos(String valor)
         {
             DALOrdemServico DALObj = new DALOrdemServico(conexao);
-            return DALObj.LocalizarTodos();
+            return DALObj.LocalizarTodos(valor);
         }
 
         public DataTable LocalizarAbertos(String valor)
@@ -76,6 +76,21 @@ namespace BLL
             DALOrdemServico DALObj = new DALOrdemServico(conexao);
             return DALObj.CarregaModelOrdemServico(codigo);
         }
- 
+        public Boolean CancelarOS(int codigo)
+        {
+            if (codigo <= 0)
+            {
+                throw new Exception("O código da OS deve ser maior que zero!");
+            }
+            DALOrdemServico DALObj = new DALOrdemServico(conexao);
+            return DALObj.CancelarOS(codigo);
+        }
+
+        public DataTable Pesquisa(String valor)
+        {
+            DALOrdemServico DALObj = new DALOrdemServico(conexao);
+            return DALObj.Pesquisa(valor);
+        }
+
     }
 }
