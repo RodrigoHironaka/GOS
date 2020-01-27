@@ -9,8 +9,11 @@ namespace Model
     public class ModelOrdemServicoItens
     {
         public int IdOSItens { get; set; }
-        public int IdServico { get; set; }
+        
         public int IdOS { get; set; }
+
+        public int IdServico { get; set; }
+
         public string Detalhes { get; set; }
     }
 }

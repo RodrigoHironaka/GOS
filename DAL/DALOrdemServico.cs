@@ -149,7 +149,7 @@ namespace DAL
             {
                 registro.Read();
                 modelo.IdOS = Convert.ToInt32(registro["id"]);
-                modelo.DataInicial = Convert.ToString(registro["dataincial"]);
+                modelo.DataInicial = Convert.ToString(registro["datainicial"]);
                 modelo.DataFinal = Convert.ToString(registro["datafinal"]);
                 modelo.Observacao = Convert.ToString(registro["observacao"]);
                 modelo.Situacao = Convert.ToString(registro["situacao"]);

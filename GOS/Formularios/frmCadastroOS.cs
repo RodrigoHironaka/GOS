@@ -25,6 +25,16 @@ namespace GOS.Formularios
             txtCodCliente.Select();
         }
 
+        public frmCadastroOS(AcaoTela acaoTela, ModelOrdemServico os)
+        {
+            InitializeComponent();
+            if (acaoTela == AcaoTela.Inserir)
+            { this.Text = "Cadastro de Cliente - Inserir"; }
+            else if (acaoTela == AcaoTela.Alterar)
+            { this.Text = "Cadastro de Cliente - Alterar"; }
+            txtCodCliente.Select();
+        }
+
         private void BtnSair_Click(object sender, EventArgs e)
         {
             try
@@ -185,13 +195,13 @@ namespace GOS.Formularios
             }
         }
 
-        private void FrmCadastroOS_KeyDown(object sender, KeyEventArgs e)
+        /*private void FrmCadastroOS_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
             }
-        }
+        }*/
 
         private void TxtObservacao_Click(object sender, EventArgs e)
         {
@@ -237,14 +247,14 @@ namespace GOS.Formularios
                         modeloOSItens.Detalhes = dgvItens.Rows[i].Cells[2].Value.ToString();
                         bllOSItens.Incluir(modeloOSItens);
                     }
-                    MessageBox.Show("Ordem de serviço Salva com sucesso: Código " + modeloOS.IdOS.ToString());
+                    MessageBox.Show("Ordem de serviço salva com sucesso: Código " + modeloOS.IdOS.ToString());
                 }
                 else
                 {
-                   /* //Alterar
+                    //Alterar
                     modeloOS.IdOS = Int32.Parse(txtCodigo.Text);
                     bllOS.Alterar(modeloOS);
-                    bllOSItens.ExcluirTodosOsItens(modeloOSItens.IdOS);
+                    bllOSItens.ExcluirTodosOsItens(modeloOS.IdOS);
 
                     //cadastrar itens da OS
                     for (int i = 0; i < dgvItens.RowCount; i++)
@@ -252,10 +262,10 @@ namespace GOS.Formularios
                         modeloOSItens.IdOSItens = i + 1;
                         modeloOSItens.IdOS = modeloOS.IdOS;
                         modeloOSItens.IdServico = Convert.ToInt32(dgvItens.Rows[i].Cells[0].Value);
-                        modeloOSItens.Detalhes = Convert.ToString(dgvItens.Rows[i].Cells[2].Value);
+                        modeloOSItens.Detalhes = dgvItens.Rows[i].Cells[2].Value.ToString();
                         bllOSItens.Incluir(modeloOSItens);
                     }
-                    MessageBox.Show("Cadastro Alterado com sucesso!!!");*/
+                    MessageBox.Show("Cadastro Alterado com sucesso!!!");
                 }
                 this.LimpaTela();
                 cx.TerminarTransacao();
@@ -268,6 +278,7 @@ namespace GOS.Formularios
                 cx.Desconectar();
             }
         }
+
         public void LimpaTela()
         {
             txtCodigo.Clear();
@@ -309,6 +320,73 @@ namespace GOS.Formularios
             {
                 pbCancelado.Visible = false;
             }
+        }
+
+        private void btFinalizar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("DESEJA FINALIZAR A ORDEM DE SERVICO?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                txtDataFinal.Text = System.DateTime.Now.ToShortDateString() + " - " + System.DateTime.Now.ToShortTimeString();
+                txtSituacao.Text = "FINALIZADO";
+
+                DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+                cx.Conectar();
+                cx.IniciarTransacao();
+
+                try
+                {
+                    //Inserindo Dados da Tabela OS
+                    ModelOrdemServico modeloOS = new ModelOrdemServico();
+                    modeloOS.DataInicial = txtDataInicial.Text;
+                    modeloOS.DataFinal = txtDataFinal.Text;
+                    modeloOS.Situacao = txtSituacao.Text;
+                    modeloOS.Observacao = txtObservacao.Text;
+                    modeloOS.IdCliente = Convert.ToInt32(txtCodCliente.Text);
+                    BLLOrdemServico bllOS = new BLLOrdemServico(cx);
+
+                    //Inserindo dados da Tabela OSItens
+                    ModelOrdemServicoItens modeloOSItens = new ModelOrdemServicoItens();
+                    BLLOrdemServicoItens bllOSItens = new BLLOrdemServicoItens(cx);
+
+
+                    if (txtCodigo.Text != "")
+                    {
+                        //Alterar
+                        modeloOS.IdOS = Int32.Parse(txtCodigo.Text);
+                        bllOS.Alterar(modeloOS);
+                        bllOSItens.ExcluirTodosOsItens(modeloOS.IdOS);
+
+                        //cadastrar itens da OS
+                        for (int i = 0; i < dgvItens.RowCount; i++)
+                        {
+                            modeloOSItens.IdOSItens = i + 1;
+                            modeloOSItens.IdOS = modeloOS.IdOS;
+                            modeloOSItens.IdServico = Convert.ToInt32(dgvItens.Rows[i].Cells[0].Value);
+                            modeloOSItens.Detalhes = dgvItens.Rows[i].Cells[2].Value.ToString();
+                            bllOSItens.Incluir(modeloOSItens);
+                        }
+                        MessageBox.Show("Ordem de serviço finalizado com sucesso!!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Campo código da OS esta vazia por favor verifique!!!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    this.LimpaTela();
+                    cx.TerminarTransacao();
+                    cx.Desconectar();
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show(erro.Message);
+                    cx.CancelaTransacao();
+                    cx.Desconectar();
+                }
+            }
+            else{
+                return;
+            }
+            
         }
     }
 }

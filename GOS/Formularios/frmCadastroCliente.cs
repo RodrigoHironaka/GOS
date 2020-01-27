@@ -103,7 +103,7 @@ namespace GOS.Formularios
                     MessageBox.Show("Digite um valor válido no campo CPF/CNPJ!!!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else
+                else 
                 {
                     modelo.CPFCNPJ = txtCPFCNPJ.Text;
                 }
@@ -243,6 +243,7 @@ namespace GOS.Formularios
                 {
                     pbInvalido.Visible = false;
                 }
+                
             }
             else if (cbTipoPessoa.SelectedIndex == 1)
             {

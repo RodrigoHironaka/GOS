@@ -35,7 +35,7 @@ namespace DAL
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
             cmd.Transaction = this.conexao.ObjetoTransacao;
-            cmd.CommandText = "update ordemservicoitens set idos=@idos, idservico=@idservico, detalhes=@detalhes where id=@id;";
+            cmd.CommandText = "update ordemservicoitens set detalhes=@detalhes where id=@id and idos= @idos and idservico= @idservico;";
             cmd.Parameters.AddWithValue("@idos", modelo.IdOS);
             cmd.Parameters.AddWithValue("@idservico", modelo.IdServico);
             cmd.Parameters.AddWithValue("@detalhes", modelo.Detalhes);;
@@ -43,40 +43,45 @@ namespace DAL
             cmd.ExecuteNonQuery();
         }
 
-        public void Excluir(int codigo)
+        public void Excluir(int idOSitens, int idOs, int idServico)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
             cmd.Transaction = this.conexao.ObjetoTransacao;
-            cmd.CommandText = "delete from ordemservicoitens where id = @id;";
-            cmd.Parameters.AddWithValue("@id", codigo);
+            cmd.CommandText = "delete from ordemservicoitens where id = @id and id=@id and idos= @idos and idservico= @idservico;";
+            cmd.Parameters.AddWithValue("@id", idOSitens);
+            cmd.Parameters.AddWithValue("@idos", idOs);
+            cmd.Parameters.AddWithValue("@idservico", idServico);
             cmd.ExecuteNonQuery();
         }
 
-        //public DataTable Localizar(int cod)
-        //{
-        //    DataTable tabela = new DataTable();
-        //    SqlDataAdapter da = new SqlDataAdapter("select osi.* from ordemservicoitens osi i inner join servico s  on(d) where i.ven_cod = "
-        //        + cod.ToString(), conexao.StringConexao);
-        //    da.Fill(tabela);
-        //    return tabela;
-        //}
+        public DataTable Localizar(int codigo)
+        {
+            DataTable tabela = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter("select osi.*, s.id as idser, s.nome as nomeser from ordemservicoitens osi " + 
+                " inner join servico s on (osi.idservico = s.id)"+
+                " where osi.idos = " + codigo.ToString(), conexao.StringConexao);
+            da.Fill(tabela);
+            return tabela;
+        }
 
-        public ModelOrdemServicoItens CarregaModelOrdemServicoItens(int codigo)
+        public ModelOrdemServicoItens CarregaModelOrdemServicoItens(int idOSitens, int idOs, int idServico)
         {
             ModelOrdemServicoItens modelo = new ModelOrdemServicoItens();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "select * from ordemservicoitens where id = @id";
-            cmd.Parameters.AddWithValue("@id", codigo);
+            cmd.CommandText = "select * from ordemservicoitens where id = @id and idos = @idos and idservico = @idservico";
+            cmd.Parameters.AddWithValue("@id", idOSitens);
+            cmd.Parameters.AddWithValue("@idos", idOs);
+            cmd.Parameters.AddWithValue("@idservico", idServico);
             conexao.Conectar();
             SqlDataReader registro = cmd.ExecuteReader();
             if (registro.HasRows)
             {
                 registro.Read();
-                modelo.IdOSItens = Convert.ToInt32(registro["id"]);
-                modelo.IdOS = Convert.ToInt32(registro["idos"]);
-                modelo.IdServico = Convert.ToInt32(registro["idservico"]);
+                modelo.IdOSItens = idOSitens;
+                modelo.IdOS = idOs;
+                modelo.IdServico = idServico;
                 modelo.Detalhes = Convert.ToString(registro["detalhes"]);
 
             }
@@ -85,13 +90,13 @@ namespace DAL
             return modelo;
         }
 
-        public void ExcluirTodosOsItens(int OScod)
+        public void ExcluirTodosOsItens( int idOs)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
             cmd.Transaction = this.conexao.ObjetoTransacao;
-            cmd.CommandText = "delete from ordemservicoitens where id = @id ";
-            cmd.Parameters.AddWithValue("@id", OScod);
+            cmd.CommandText = "delete from ordemservicoitens where idos= @idos";
+            cmd.Parameters.AddWithValue("@idos", idOs);
 
             //conexao.Conectar();
             cmd.ExecuteNonQuery();

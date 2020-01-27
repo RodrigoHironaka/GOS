@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,26 +49,33 @@ namespace BLL
             DALObj.Alterar(modelo);
         }
 
-        public void Excluir(int codigo)
+        public void Excluir(int idOSitens, int idOs, int idServico)
         {
             DALOrdemServicoItens DALObj = new DALOrdemServicoItens(conexao);
-            DALObj.Excluir(codigo);
+            DALObj.Excluir(idOSitens, idOs, idServico);
         }
 
-        public ModelOrdemServicoItens CarregaModelOrdemServicoItens(int codigo)
+        public DataTable Localizar(int codigo)
         {
             DALOrdemServicoItens DALObj = new DALOrdemServicoItens(conexao);
-            return DALObj.CarregaModelOrdemServicoItens(codigo);
+            return DALObj.Localizar(codigo);
         }
-        public void ExcluirTodosOsItens(int OScod)
+
+        public ModelOrdemServicoItens CarregaModelOrdemServicoItens(int idOSitens, int idOs, int idServico)
         {
-            if (OScod <= 0)
+            DALOrdemServicoItens DALObj = new DALOrdemServicoItens(conexao);
+            return DALObj.CarregaModelOrdemServicoItens(idOSitens, idOs, idServico);
+        }
+
+        public void ExcluirTodosOsItens(int idOS)
+        {
+            if (idOS <= 0)
             {
-                throw new Exception("O código do serviço é obrigatório");
+                throw new Exception("O código da os é obrigatório");
             }
 
             DALOrdemServicoItens DALObj = new DALOrdemServicoItens(conexao);
-            DALObj.ExcluirTodosOsItens(OScod);
+            DALObj.ExcluirTodosOsItens(idOS);
         }
     }
 }

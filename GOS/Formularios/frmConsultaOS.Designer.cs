@@ -117,6 +117,7 @@
             this.btnAlterar.TabIndex = 40;
             this.ttInfo.SetToolTip(this.btnAlterar, "Alterar registro");
             this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // groupBox2
             // 
@@ -177,10 +178,7 @@
             this.dgvDados.Location = new System.Drawing.Point(3, 22);
             this.dgvDados.Name = "dgvDados";
             this.dgvDados.ReadOnly = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Empty;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgvDados.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDados.Size = new System.Drawing.Size(700, 355);

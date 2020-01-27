@@ -39,13 +39,11 @@
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.lbRazaoNome = new System.Windows.Forms.Label();
             this.gbOS = new System.Windows.Forms.GroupBox();
+            this.pbCancelado = new System.Windows.Forms.PictureBox();
             this.btFinalizar = new System.Windows.Forms.Button();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.gbLancarServicos = new System.Windows.Forms.GroupBox();
             this.dgvItens = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Serviço = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detalhes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtNomeServico = new System.Windows.Forms.TextBox();
             this.btAdd = new System.Windows.Forms.Button();
             this.txtDetalhesServico = new System.Windows.Forms.TextBox();
@@ -63,12 +61,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDataFinal = new System.Windows.Forms.TextBox();
             this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.pbCancelado = new System.Windows.Forms.PictureBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbOS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancelado)).BeginInit();
             this.gbLancarServicos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             this.gbDadosOS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCancelado)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGravar
@@ -182,6 +182,16 @@
             this.gbOS.TabStop = false;
             this.gbOS.Text = "Cadastro de Ordem de Serviço";
             // 
+            // pbCancelado
+            // 
+            this.pbCancelado.Image = ((System.Drawing.Image)(resources.GetObject("pbCancelado.Image")));
+            this.pbCancelado.Location = new System.Drawing.Point(509, 17);
+            this.pbCancelado.Name = "pbCancelado";
+            this.pbCancelado.Size = new System.Drawing.Size(48, 48);
+            this.pbCancelado.TabIndex = 293;
+            this.pbCancelado.TabStop = false;
+            this.pbCancelado.Visible = false;
+            // 
             // btFinalizar
             // 
             this.btFinalizar.BackColor = System.Drawing.Color.Silver;
@@ -193,6 +203,7 @@
             this.btFinalizar.TabIndex = 8;
             this.ttInfo.SetToolTip(this.btFinalizar, "Finalizar OS");
             this.btFinalizar.UseVisualStyleBackColor = false;
+            this.btFinalizar.Click += new System.EventHandler(this.btFinalizar_Click);
             // 
             // txtObservacao
             // 
@@ -237,35 +248,14 @@
             this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Serviço,
-            this.detalhes});
+            this.Column2,
+            this.Column3});
             this.dgvItens.Location = new System.Drawing.Point(6, 149);
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItens.Size = new System.Drawing.Size(532, 82);
             this.dgvItens.TabIndex = 296;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Cód";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 54;
-            // 
-            // Serviço
-            // 
-            this.Serviço.HeaderText = "Serviço";
-            this.Serviço.Name = "Serviço";
-            this.Serviço.ReadOnly = true;
-            this.Serviço.Width = 72;
-            // 
-            // detalhes
-            // 
-            this.detalhes.HeaderText = "Detalhes";
-            this.detalhes.Name = "detalhes";
-            this.detalhes.ReadOnly = true;
-            this.detalhes.Width = 81;
             // 
             // txtNomeServico
             // 
@@ -466,15 +456,26 @@
             this.txtDataFinal.Size = new System.Drawing.Size(144, 24);
             this.txtDataFinal.TabIndex = 284;
             // 
-            // pbCancelado
+            // Column1
             // 
-            this.pbCancelado.Image = ((System.Drawing.Image)(resources.GetObject("pbCancelado.Image")));
-            this.pbCancelado.Location = new System.Drawing.Point(509, 17);
-            this.pbCancelado.Name = "pbCancelado";
-            this.pbCancelado.Size = new System.Drawing.Size(48, 48);
-            this.pbCancelado.TabIndex = 293;
-            this.pbCancelado.TabStop = false;
-            this.pbCancelado.Visible = false;
+            this.Column1.HeaderText = "Código";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 71;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Serviço";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 72;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Detalhes";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 81;
             // 
             // frmCadastroOS
             // 
@@ -484,29 +485,25 @@
             this.ClientSize = new System.Drawing.Size(595, 525);
             this.Controls.Add(this.gbOS);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCadastroOS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Cadastro Ordem de Serviço";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroOS_KeyDown);
+            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroOS_KeyDown);
             this.gbOS.ResumeLayout(false);
             this.gbOS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancelado)).EndInit();
             this.gbLancarServicos.ResumeLayout(false);
             this.gbLancarServicos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
             this.gbDadosOS.ResumeLayout(false);
             this.gbDadosOS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCancelado)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnGravar;
-        private System.Windows.Forms.Button btnSair;
         public System.Windows.Forms.TextBox txtDataInicial;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox txtCodigo;
@@ -527,17 +524,19 @@
         public System.Windows.Forms.TextBox txtCodCliente;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox txtDetalhesServico;
-        private System.Windows.Forms.DataGridView dgvItens;
         public System.Windows.Forms.TextBox txtObservacao;
         private System.Windows.Forms.GroupBox gbLancarServicos;
         private System.Windows.Forms.GroupBox gbDadosOS;
-        private System.Windows.Forms.Button btFinalizar;
         private System.Windows.Forms.MaskedTextBox txtCelCliente;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Serviço;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detalhes;
         private System.Windows.Forms.ToolTip ttInfo;
         private System.Windows.Forms.PictureBox pbCancelado;
+        public System.Windows.Forms.DataGridView dgvItens;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        public System.Windows.Forms.Button btFinalizar;
+        public System.Windows.Forms.Button btnGravar;
+        public System.Windows.Forms.Button btnSair;
     }
 }
