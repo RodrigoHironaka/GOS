@@ -16,19 +16,7 @@ namespace GOS.Formularios
     public partial class frmConsultaOS : Form
     {
         public int cod = 0;
-
-        public void ProibirEdicao()
-        {
-            frmCadastroOS f = new frmCadastroOS(AcaoTela.Alterar);
-            f.txtCodCliente.Enabled = false;
-            f.txtCodServico.Enabled = false;
-            f.txtNomeServico.Enabled = false;
-            f.txtDetalhesServico.Enabled = false;
-            f.txtObservacao.Enabled = false;
-            f.btFinalizar.Enabled = false;
-            f.btnGravar.Enabled = false;
-            f.btnSair.Enabled = false;
-        }
+        public string sit = "";
         public frmConsultaOS()
         {
             InitializeComponent();
@@ -48,7 +36,7 @@ namespace GOS.Formularios
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
-        {
+        {           
             //Cancelando
             try
             {
@@ -58,7 +46,13 @@ namespace GOS.Formularios
                     return;
                 }
                 else
-                {
+                { 
+                    this.sit = Convert.ToString(dgvDados.CurrentRow.Cells[3].Value);
+                    if(sit == "CANCELADO")
+                    {
+                        MessageBox.Show("Esse registro já foi cancelado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
                     DialogResult d = MessageBox.Show("Deseja realmente cancelar esta Ordem de Serviço? ", "Aviso", MessageBoxButtons.YesNo);
                     if (d.ToString() == "Yes")
                     {
@@ -170,68 +164,72 @@ namespace GOS.Formularios
             BLLOrdemServico bll = new BLLOrdemServico(cx);
             BLLOrdemServicoItens bllitens = new BLLOrdemServicoItens(cx);
             frmCadastroOS f = new frmCadastroOS(AcaoTela.Alterar);
-            if ((f.txtSituacao.Text == "CANCELADO") || (f.txtSituacao.Text == "FINALIZADO"))
+
+            f.btFinalizar.Visible = true;
+            if (dgvDados.SelectedRows.Count == 0)
             {
-                this.ProibirEdicao();
+                MessageBox.Show("Nenhum registro selecionado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             else
             {
-                f.btFinalizar.Visible = true;
-                if (dgvDados.SelectedRows.Count == 0)
+                this.cod = Convert.ToInt32(dgvDados.CurrentRow.Cells[0].Value);
+                ModelOrdemServico modelo = bll.CarregaModelOrdemServico(cod);
+                f.txtCodigo.Text = modelo.IdOS.ToString();
+                f.txtDataInicial.Text = modelo.DataInicial;
+                f.txtDataFinal.Text = modelo.DataFinal;
+                f.txtSituacao.Text = modelo.Situacao;
+                f.txtObservacao.Text = modelo.Observacao;
+                f.txtCodCliente.Text = modelo.IdCliente.ToString();
+
+                //servicos itens
+                DataTable tabela = bllitens.Localizar(modelo.IdOS);
+                for (int i = 0; i < tabela.Rows.Count; i++)
                 {
-                    MessageBox.Show("Nenhum registro selecionado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+
+                    string idser = tabela.Rows[i]["idser"].ToString();
+                    string nomeser = tabela.Rows[i]["nomeser"].ToString();
+                    string det = tabela.Rows[i]["detalhes"].ToString();
+                    String[] it = new String[] { idser, nomeser, det };
+                    f.dgvItens.Rows.Add(it);
                 }
-                else
+
+                //NAO DEIXA A OS SER EDITADA MAIS
+                if((f.txtSituacao.Text == "FINALIZADO") ||(f.txtSituacao.Text == "CANCELADO"))
                 {
-                    this.cod = Convert.ToInt32(dgvDados.CurrentRow.Cells[0].Value);
-                    ModelOrdemServico modelo = bll.CarregaModelOrdemServico(cod);
-                    f.txtCodigo.Text = modelo.IdOS.ToString();
-                    f.txtDataInicial.Text = modelo.DataInicial;
-                    f.txtDataFinal.Text = modelo.DataFinal;
-                    f.txtSituacao.Text = modelo.Situacao;
-                    f.txtObservacao.Text = modelo.Observacao;
-                    f.txtCodCliente.Text = modelo.IdCliente.ToString();
+                    f.gbDadosOS.Enabled = false;
+                    f.gbLancarServicos.Enabled = false;
+                    f.txtObservacao.Enabled = false;
+                    f.btFinalizar.Enabled = false;
+                    f.btnGravar.Enabled = false;
+                    f.btnSair.Enabled = false;
+                }
 
-
-                    //servicos itens
-                    DataTable tabela = bllitens.Localizar(modelo.IdOS);
-                    for (int i = 0; i < tabela.Rows.Count; i++)
-                    {
-
-                        string idser = tabela.Rows[i]["idser"].ToString();
-                        string nomeser = tabela.Rows[i]["nomeser"].ToString();
-                        string det = tabela.Rows[i]["detalhes"].ToString();
-                        String[] it = new String[] { idser, nomeser, det };
-                        f.dgvItens.Rows.Add(it);
-                    }
-
-
-                    f.ShowDialog();
-                    f.Dispose();
-                    if (cbSituacao.SelectedIndex == 0)
-                    {
-                        dgvDados.DataSource = bll.LocalizarTodos(txtPesquisar.Text);
-                        dgvDados.ClearSelection();
-                    }
-                    else if (cbSituacao.SelectedIndex == 1)
-                    {
-                        dgvDados.DataSource = bll.LocalizarAbertos(txtPesquisar.Text);
-                        dgvDados.ClearSelection();
-                    }
-                    else if (cbSituacao.SelectedIndex == 2)
-                    {
-                        dgvDados.DataSource = bll.LocalizarFinalizados(txtPesquisar.Text);
-                        dgvDados.ClearSelection();
-                    }
-                    else if (cbSituacao.SelectedIndex == 3)
-                    {
-                        dgvDados.DataSource = bll.LocalizarCancelados(txtPesquisar.Text);
-                        dgvDados.ClearSelection();
-                    }
+                f.ShowDialog();
+                f.Dispose();
+                if (cbSituacao.SelectedIndex == 0)
+                {
+                    dgvDados.DataSource = bll.LocalizarTodos(txtPesquisar.Text);
                     dgvDados.ClearSelection();
                 }
+                else if (cbSituacao.SelectedIndex == 1)
+                {
+                    dgvDados.DataSource = bll.LocalizarAbertos(txtPesquisar.Text);
+                    dgvDados.ClearSelection();
+                }
+                else if (cbSituacao.SelectedIndex == 2)
+                {
+                    dgvDados.DataSource = bll.LocalizarFinalizados(txtPesquisar.Text);
+                    dgvDados.ClearSelection();
+                }
+                else if (cbSituacao.SelectedIndex == 3)
+                {
+                    dgvDados.DataSource = bll.LocalizarCancelados(txtPesquisar.Text);
+                    dgvDados.ClearSelection();
+                }
+                dgvDados.ClearSelection();
             }
         }
     }
 }
+
