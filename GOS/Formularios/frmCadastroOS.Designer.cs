@@ -43,6 +43,7 @@
             this.btFinalizar = new System.Windows.Forms.Button();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.gbLancarServicos = new System.Windows.Forms.GroupBox();
+            this.btProcurar = new System.Windows.Forms.Button();
             this.dgvItens = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,12 +56,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtCodServico = new System.Windows.Forms.TextBox();
             this.gbDadosOS = new System.Windows.Forms.GroupBox();
+            this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.pbFinalizado = new System.Windows.Forms.PictureBox();
             this.txtCelCliente = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSituacao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDataFinal = new System.Windows.Forms.TextBox();
@@ -228,6 +229,7 @@
             // gbLancarServicos
             // 
             this.gbLancarServicos.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gbLancarServicos.Controls.Add(this.btProcurar);
             this.gbLancarServicos.Controls.Add(this.dgvItens);
             this.gbLancarServicos.Controls.Add(this.btAdd);
             this.gbLancarServicos.Controls.Add(this.btRemover);
@@ -243,6 +245,18 @@
             this.gbLancarServicos.TabIndex = 300;
             this.gbLancarServicos.TabStop = false;
             this.gbLancarServicos.Text = "Serviço(s)";
+            // 
+            // btProcurar
+            // 
+            this.btProcurar.BackColor = System.Drawing.Color.Silver;
+            this.btProcurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btProcurar.Image = ((System.Drawing.Image)(resources.GetObject("btProcurar.Image")));
+            this.btProcurar.Location = new System.Drawing.Point(71, 36);
+            this.btProcurar.Name = "btProcurar";
+            this.btProcurar.Size = new System.Drawing.Size(38, 38);
+            this.btProcurar.TabIndex = 297;
+            this.btProcurar.UseVisualStyleBackColor = false;
+            this.btProcurar.Click += new System.EventHandler(this.btProcurar_Click);
             // 
             // dgvItens
             // 
@@ -314,10 +328,10 @@
             this.txtNomeServico.Enabled = false;
             this.txtNomeServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeServico.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtNomeServico.Location = new System.Drawing.Point(94, 50);
+            this.txtNomeServico.Location = new System.Drawing.Point(114, 50);
             this.txtNomeServico.MaxLength = 60;
             this.txtNomeServico.Name = "txtNomeServico";
-            this.txtNomeServico.Size = new System.Drawing.Size(447, 24);
+            this.txtNomeServico.Size = new System.Drawing.Size(427, 24);
             this.txtNomeServico.TabIndex = 29;
             this.txtNomeServico.TabStop = false;
             // 
@@ -331,7 +345,7 @@
             this.txtDetalhesServico.Multiline = true;
             this.txtDetalhesServico.Name = "txtDetalhesServico";
             this.txtDetalhesServico.Size = new System.Drawing.Size(535, 63);
-            this.txtDetalhesServico.TabIndex = 2999;
+            this.txtDetalhesServico.TabIndex = 2;
             this.ttInfo.SetToolTip(this.txtDetalhesServico, "Digite aqui o que será feito.");
             // 
             // label7
@@ -339,7 +353,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(93, 27);
+            this.label7.Location = new System.Drawing.Point(110, 27);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 20);
             this.label7.TabIndex = 291;
@@ -363,15 +377,16 @@
             this.txtCodServico.Location = new System.Drawing.Point(6, 50);
             this.txtCodServico.MaxLength = 6;
             this.txtCodServico.Name = "txtCodServico";
-            this.txtCodServico.Size = new System.Drawing.Size(85, 24);
+            this.txtCodServico.Size = new System.Drawing.Size(59, 24);
             this.txtCodServico.TabIndex = 1;
             this.ttInfo.SetToolTip(this.txtCodServico, "Digite o código do serviço ou de um Enter com o campo em branco para pesquisar.");
             this.txtCodServico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodServico_KeyPress);
-            this.txtCodServico.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodServico_KeyUp);
+            this.txtCodServico.Leave += new System.EventHandler(this.txtCodServico_Leave);
             // 
             // gbDadosOS
             // 
             this.gbDadosOS.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gbDadosOS.Controls.Add(this.txtCodCliente);
             this.gbDadosOS.Controls.Add(this.pbFinalizado);
             this.gbDadosOS.Controls.Add(this.txtCelCliente);
             this.gbDadosOS.Controls.Add(this.label8);
@@ -379,7 +394,6 @@
             this.gbDadosOS.Controls.Add(this.label3);
             this.gbDadosOS.Controls.Add(this.label1);
             this.gbDadosOS.Controls.Add(this.txtCodigo);
-            this.gbDadosOS.Controls.Add(this.txtCodCliente);
             this.gbDadosOS.Controls.Add(this.label6);
             this.gbDadosOS.Controls.Add(this.label4);
             this.gbDadosOS.Controls.Add(this.txtDataInicial);
@@ -394,6 +408,19 @@
             this.gbDadosOS.TabIndex = 301;
             this.gbDadosOS.TabStop = false;
             this.gbDadosOS.Text = "Dados";
+            // 
+            // txtCodCliente
+            // 
+            this.txtCodCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodCliente.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtCodCliente.Location = new System.Drawing.Point(6, 98);
+            this.txtCodCliente.MaxLength = 300;
+            this.txtCodCliente.Name = "txtCodCliente";
+            this.txtCodCliente.Size = new System.Drawing.Size(85, 24);
+            this.txtCodCliente.TabIndex = 0;
+            this.ttInfo.SetToolTip(this.txtCodCliente, "Digite aqui o que será feito.");
+            this.txtCodCliente.Leave += new System.EventHandler(this.txtCodCliente_Leave);
             // 
             // pbFinalizado
             // 
@@ -450,19 +477,6 @@
             this.label3.Size = new System.Drawing.Size(76, 20);
             this.label3.TabIndex = 287;
             this.label3.Text = "Situação:";
-            // 
-            // txtCodCliente
-            // 
-            this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodCliente.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCodCliente.Location = new System.Drawing.Point(6, 98);
-            this.txtCodCliente.MaxLength = 6;
-            this.txtCodCliente.Name = "txtCodCliente";
-            this.txtCodCliente.Size = new System.Drawing.Size(85, 24);
-            this.txtCodCliente.TabIndex = 0;
-            this.ttInfo.SetToolTip(this.txtCodCliente, "Digite o código do cliente ou de um Enter com o campo em branco para pesquisar.");
-            this.txtCodCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodCliente_KeyPress);
-            this.txtCodCliente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodCliente_KeyUp);
             // 
             // label4
             // 
@@ -541,7 +555,6 @@
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox txtNomeServico;
         private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.TextBox txtCodCliente;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox txtDetalhesServico;
         public System.Windows.Forms.TextBox txtObservacao;
@@ -560,5 +573,7 @@
         public System.Windows.Forms.GroupBox gbLancarServicos;
         public System.Windows.Forms.GroupBox gbDadosOS;
         private System.Windows.Forms.PictureBox pbFinalizado;
+        public System.Windows.Forms.TextBox txtCodCliente;
+        private System.Windows.Forms.Button btProcurar;
     }
 }

@@ -28,7 +28,7 @@ namespace GOS.Formularios
         {
             frmCadastroOS f = new frmCadastroOS(AcaoTela.Inserir);
             f.txtSituacao.Text = "ABERTO";
-            f.btFinalizar.Visible = false;
+            f.btFinalizar.Enabled = false;
             f.txtDataInicial.Text = System.DateTime.Now.ToShortDateString() + " - " + System.DateTime.Now.ToShortTimeString();
             f.ShowDialog();
             f.Dispose();
@@ -165,7 +165,7 @@ namespace GOS.Formularios
             BLLOrdemServicoItens bllitens = new BLLOrdemServicoItens(cx);
             frmCadastroOS f = new frmCadastroOS(AcaoTela.Alterar);
 
-            f.btFinalizar.Visible = true;
+            f.btFinalizar.Enabled = true;
             if (dgvDados.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Nenhum registro selecionado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -181,6 +181,7 @@ namespace GOS.Formularios
                 f.txtSituacao.Text = modelo.Situacao;
                 f.txtObservacao.Text = modelo.Observacao;
                 f.txtCodCliente.Text = modelo.IdCliente.ToString();
+                f.txtCodCliente_Leave(sender, e);
 
                 //servicos itens
                 DataTable tabela = bllitens.Localizar(modelo.IdOS);

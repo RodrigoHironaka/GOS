@@ -31,7 +31,7 @@ namespace GOS.Formularios
             if (acaoTela == AcaoTela.Inserir)
             { this.Text = "Cadastro de Cliente - Inserir"; }
             else if (acaoTela == AcaoTela.Alterar)
-            { 
+            {
                 this.Text = "Cadastro de Cliente - Alterar";
             }
             txtCodCliente.Select();
@@ -64,7 +64,7 @@ namespace GOS.Formularios
                     DialogResult d = MessageBox.Show("Deseja Inserir outro serviço?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (d.ToString() == "Yes")
                     {
-                        txtCodServico.Select();
+                        txtCodServico.Focus();
                     }
                     else
                     {
@@ -102,6 +102,7 @@ namespace GOS.Formularios
         private void BtnGravar_Click(object sender, EventArgs e)
         {
             DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+            frmConsultaOS f = new frmConsultaOS();
             cx.Conectar();
             cx.IniciarTransacao();
 
@@ -154,6 +155,8 @@ namespace GOS.Formularios
                         bllOSItens.Incluir(modeloOSItens);
                     }
                     MessageBox.Show("Cadastro Alterado com sucesso!!!");
+                    this.Close();
+
                 }
                 this.LimpaTela();
                 cx.TerminarTransacao();
@@ -287,7 +290,43 @@ namespace GOS.Formularios
 
         }
 
-        public void txtCodCliente_KeyUp(object sender, KeyEventArgs e)
+        private void txtCodServico_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
+                BLLServico bll = new BLLServico(cx);
+                ModelServico modelo = bll.CarregaModelServico(Convert.ToInt32(txtCodServico.Text));
+                if (modelo.IdServico <= 0)
+                {
+                    txtCodServico.Clear();
+                    txtNomeServico.Clear();
+                }
+                else
+                {
+                    txtNomeServico.Text = modelo.Nome;
+                }
+                
+            }
+            catch
+            {
+                txtCodServico.Clear();
+                txtNomeServico.Clear();
+            }
+        }
+
+        private void btProcurar_Click(object sender, EventArgs e)
+        {
+            frmConsultaServico f = new frmConsultaServico(true);
+            f.ShowDialog();
+            if (f.cod != 0)
+            {
+                txtCodServico.Text = f.cod.ToString();
+                txtCodServico_Leave(sender, e);
+            }
+        }
+
+        public void txtCodCliente_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -342,54 +381,6 @@ namespace GOS.Formularios
                 txtNomeCliente.Clear();
                 txtCelCliente.Clear();
                 txtCodCliente.Select();
-            }
-        }
-
-        private void txtCodServico_KeyUp(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (txtCodServico.Text == "")
-                {
-                    frmConsultaServico f = new frmConsultaServico(true);
-                    f.ShowDialog();
-                    if (f.cod != 0)
-                    {
-                        txtCodServico.Text = f.cod.ToString();
-                        DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
-                        BLLServico bll = new BLLServico(cx);
-                        ModelServico modelo = bll.CarregaModelServico(Convert.ToInt32(txtCodServico.Text));
-                        if (modelo.IdServico <= 0)
-                        {
-                            txtCodServico.Clear();
-                            txtNomeServico.Clear();
-                        }
-                        else
-                        {
-                            txtNomeServico.Text = modelo.Nome;
-                        }
-                    }
-                }
-                else
-                {
-                    DALConexao cx = new DALConexao(DadosDaConexao.StringDeConexao);
-                    BLLServico bll = new BLLServico(cx);
-                    ModelServico modelo = bll.CarregaModelServico(Convert.ToInt32(txtCodServico.Text));
-                    if (modelo.IdServico <= 0)
-                    {
-                        txtCodServico.Clear();
-                        txtNomeServico.Clear();
-                    }
-                    else
-                    {
-                        txtNomeServico.Text = modelo.Nome;
-                    }
-                }
-            }
-            catch
-            {
-                txtCodServico.Clear();
-                txtNomeServico.Clear();
             }
         }
     }

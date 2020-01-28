@@ -43,7 +43,7 @@
             this.cbTipoPessoa = new System.Windows.Forms.ComboBox();
             this.txtCelular2 = new System.Windows.Forms.MaskedTextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.email = new System.Windows.Forms.Label();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txtCPFCNPJ = new System.Windows.Forms.MaskedTextBox();
@@ -58,7 +58,7 @@
             this.dataNasc = new System.Windows.Forms.Label();
             this.celular = new System.Windows.Forms.Label();
             this.lbRGIE = new System.Windows.Forms.Label();
-            this.cep = new System.Windows.Forms.Label();
+            this.lbCep = new System.Windows.Forms.Label();
             this.cbUF = new System.Windows.Forms.ComboBox();
             this.uf = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
@@ -101,7 +101,7 @@
             this.gbInvalido.Controls.Add(this.cbTipoPessoa);
             this.gbInvalido.Controls.Add(this.txtCelular2);
             this.gbInvalido.Controls.Add(this.txtEmail);
-            this.gbInvalido.Controls.Add(this.email);
+            this.gbInvalido.Controls.Add(this.lbEmail);
             this.gbInvalido.Controls.Add(this.txtCelular);
             this.gbInvalido.Controls.Add(this.txtTelefone);
             this.gbInvalido.Controls.Add(this.txtCPFCNPJ);
@@ -116,7 +116,7 @@
             this.gbInvalido.Controls.Add(this.dataNasc);
             this.gbInvalido.Controls.Add(this.celular);
             this.gbInvalido.Controls.Add(this.lbRGIE);
-            this.gbInvalido.Controls.Add(this.cep);
+            this.gbInvalido.Controls.Add(this.lbCep);
             this.gbInvalido.Controls.Add(this.cbUF);
             this.gbInvalido.Controls.Add(this.uf);
             this.gbInvalido.Controls.Add(this.txtCidade);
@@ -285,16 +285,16 @@
             this.txtEmail.TabIndex = 17;
             this.txtEmail.Leave += new System.EventHandler(this.TxtEmail_Leave);
             // 
-            // email
+            // lbEmail
             // 
-            this.email.AutoSize = true;
-            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email.ForeColor = System.Drawing.Color.Black;
-            this.email.Location = new System.Drawing.Point(9, 371);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(52, 20);
-            this.email.TabIndex = 276;
-            this.email.Text = "Email:";
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.ForeColor = System.Drawing.Color.Black;
+            this.lbEmail.Location = new System.Drawing.Point(9, 371);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(52, 20);
+            this.lbEmail.TabIndex = 276;
+            this.lbEmail.Text = "Email:";
             // 
             // txtCelular
             // 
@@ -340,6 +340,7 @@
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(93, 24);
             this.txtCEP.TabIndex = 3;
+            this.txtCEP.Text = "17800000";
             this.txtCEP.Leave += new System.EventHandler(this.TxtCEP_Leave);
             // 
             // txtDataCadastro
@@ -441,16 +442,16 @@
             this.lbRGIE.TabIndex = 273;
             this.lbRGIE.Text = "RG:";
             // 
-            // cep
+            // lbCep
             // 
-            this.cep.AutoSize = true;
-            this.cep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cep.ForeColor = System.Drawing.Color.Black;
-            this.cep.Location = new System.Drawing.Point(6, 173);
-            this.cep.Name = "cep";
-            this.cep.Size = new System.Drawing.Size(45, 20);
-            this.cep.TabIndex = 271;
-            this.cep.Text = "CEP:";
+            this.lbCep.AutoSize = true;
+            this.lbCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCep.ForeColor = System.Drawing.Color.Black;
+            this.lbCep.Location = new System.Drawing.Point(6, 173);
+            this.lbCep.Name = "lbCep";
+            this.lbCep.Size = new System.Drawing.Size(45, 20);
+            this.lbCep.TabIndex = 271;
+            this.lbCep.Text = "CEP:";
             // 
             // cbUF
             // 
@@ -722,7 +723,7 @@
         public System.Windows.Forms.ComboBox cbTipoPessoa;
         public System.Windows.Forms.MaskedTextBox txtCelular2;
         public System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label email;
+        private System.Windows.Forms.Label lbEmail;
         public System.Windows.Forms.MaskedTextBox txtCelular;
         public System.Windows.Forms.MaskedTextBox txtTelefone;
         public System.Windows.Forms.MaskedTextBox txtCPFCNPJ;
@@ -739,7 +740,7 @@
         private System.Windows.Forms.Label celular;
         private System.Windows.Forms.Label lbRGIE;
         public System.Windows.Forms.Label lbCPFCNPJ;
-        private System.Windows.Forms.Label cep;
+        private System.Windows.Forms.Label lbCep;
         public System.Windows.Forms.ComboBox cbUF;
         private System.Windows.Forms.Label uf;
         public System.Windows.Forms.TextBox txtCidade;

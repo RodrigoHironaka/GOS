@@ -38,6 +38,7 @@ namespace GOS.Formularios
             cbUF.SelectedIndex = 24;
             txtDataCadastro.Text = System.DateTime.Now.ToShortDateString() + " - " + System.DateTime.Now.ToShortTimeString();
 
+
             this.carregaDepartamento();
         }
 
@@ -58,7 +59,7 @@ namespace GOS.Formularios
             txtNomeFantasia.Text = modelo.Nome;
             txtCPFCNPJ.Text = modelo.CPFCNPJ;
             txtRGIE.Text = modelo.RGIE;
-            txtRazaoSocial.Text = modelo.RazaoSocial;           
+            txtRazaoSocial.Text = modelo.RazaoSocial;
             txtCEP.Text = modelo.CEP;
             txtEndereco.Text = modelo.Endereco;
             txtNumero.Text = modelo.EndNumero;
@@ -103,7 +104,7 @@ namespace GOS.Formularios
                     MessageBox.Show("Digite um valor válido no campo CPF/CNPJ!!!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else 
+                else
                 {
                     modelo.CPFCNPJ = txtCPFCNPJ.Text;
                 }
@@ -243,7 +244,7 @@ namespace GOS.Formularios
                 {
                     pbInvalido.Visible = false;
                 }
-                
+
             }
             else if (cbTipoPessoa.SelectedIndex == 1)
             {
@@ -259,22 +260,19 @@ namespace GOS.Formularios
             if (ValidaCEP.ValidaCep(txtCEP.Text) == false)
             {
                 pbInvalidoCEP.Visible = true;
+
                 txtBairro.Clear();
                 cbUF.SelectedIndex = 24;
                 txtCidade.Clear();
                 txtEndereco.Clear();
-
             }
-            else
+            else if (BuscaEndereco.verificaCEP(txtCEP.Text) == true)
             {
-                if (BuscaEndereco.verificaCEP(txtCEP.Text) == true)
-                {
-                    txtBairro.Text = BuscaEndereco.bairro;
-                    cbUF.Text = BuscaEndereco.estado;
-                    txtCidade.Text = BuscaEndereco.cidade;
-                    txtEndereco.Text = BuscaEndereco.endereco;
-                    pbInvalidoCEP.Visible = false;
-                }
+                pbInvalidoCEP.Visible = false;
+                txtBairro.Text = BuscaEndereco.bairro;
+                cbUF.Text = BuscaEndereco.estado;
+                txtCidade.Text = BuscaEndereco.cidade;
+                txtEndereco.Text = BuscaEndereco.endereco;
             }
         }
 
