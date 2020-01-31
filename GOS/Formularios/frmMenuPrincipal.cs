@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GOS.Relatorios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -63,6 +64,48 @@ namespace GOS.Formularios
             frmConsultaOS f = new frmConsultaOS();
             f.MdiParent = this;
             f.Show();
+        }
+
+        private void tsbOSS_Click(object sender, EventArgs e)
+        {
+            frmConsultaOS f = new frmConsultaOS();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            frmConsultaCliente f = new frmConsultaCliente();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBackupRestore f = new frmBackupRestore();
+            f.ShowDialog();
+            f.Dispose();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            frmBackupRestore f = new frmBackupRestore();
+            f.ShowDialog();
+            f.Dispose();
+        }
+
+        private void suporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSuporte f = new frmSuporte();
+            f.ShowDialog();
+            f.Dispose();
+        }
+
+        private void ordemDeServiçoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmRelFichaOS f = new frmRelFichaOS();
+            f.ShowDialog();
+            f.Dispose();
         }
     }
 }

@@ -32,7 +32,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbOSS = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSair = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -54,6 +53,8 @@
             this.sStrip = new System.Windows.Forms.StatusStrip();
             this.tsslUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.ssDataHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.suporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manualDoUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.sStrip.SuspendLayout();
@@ -65,12 +66,11 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbOSS,
             this.toolStripButton1,
-            this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripSair});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 70);
+            this.toolStrip1.Size = new System.Drawing.Size(784, 70);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -80,9 +80,10 @@
             this.tsbOSS.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbOSS.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOSS.Name = "tsbOSS";
-            this.tsbOSS.Size = new System.Drawing.Size(105, 67);
-            this.tsbOSS.Text = "Ordem de Serviço";
+            this.tsbOSS.Size = new System.Drawing.Size(52, 67);
+            this.tsbOSS.Text = "OS";
             this.tsbOSS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbOSS.Click += new System.EventHandler(this.tsbOSS_Click);
             // 
             // toolStripButton1
             // 
@@ -93,16 +94,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(52, 67);
             this.toolStripButton1.Text = "Cliente";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(52, 67);
-            this.toolStripButton2.Text = "Serviço";
-            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton3
             // 
@@ -113,6 +105,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(94, 67);
             this.toolStripButton3.Text = "Backup/Restore";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripSair
             // 
@@ -133,15 +126,15 @@
             this.opçõesToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // MenuItemUsuario
             // 
             this.MenuItemUsuario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientesToolStripMenuItem2,
             this.ordemDeServiçoToolStripMenuItem1,
+            this.clientesToolStripMenuItem2,
             this.usuáriosToolStripMenuItem2,
             this.departamentosToolStripMenuItem1,
             this.serviçosToolStripMenuItem1});
@@ -152,46 +145,46 @@
             // clientesToolStripMenuItem2
             // 
             this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
-            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(168, 22);
             this.clientesToolStripMenuItem2.Text = "Clientes";
             this.clientesToolStripMenuItem2.Click += new System.EventHandler(this.ClientesToolStripMenuItem2_Click);
             // 
             // ordemDeServiçoToolStripMenuItem1
             // 
             this.ordemDeServiçoToolStripMenuItem1.Name = "ordemDeServiçoToolStripMenuItem1";
-            this.ordemDeServiçoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ordemDeServiçoToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.ordemDeServiçoToolStripMenuItem1.Text = "Ordem de Serviço";
             this.ordemDeServiçoToolStripMenuItem1.Click += new System.EventHandler(this.OrdemDeServiçoToolStripMenuItem1_Click);
             // 
             // usuáriosToolStripMenuItem2
             // 
             this.usuáriosToolStripMenuItem2.Name = "usuáriosToolStripMenuItem2";
-            this.usuáriosToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.usuáriosToolStripMenuItem2.Size = new System.Drawing.Size(168, 22);
             this.usuáriosToolStripMenuItem2.Text = "Usuários";
             this.usuáriosToolStripMenuItem2.Click += new System.EventHandler(this.UsuáriosToolStripMenuItem2_Click);
             // 
             // departamentosToolStripMenuItem1
             // 
             this.departamentosToolStripMenuItem1.Name = "departamentosToolStripMenuItem1";
-            this.departamentosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.departamentosToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.departamentosToolStripMenuItem1.Text = "Departamentos";
             this.departamentosToolStripMenuItem1.Click += new System.EventHandler(this.DepartamentosToolStripMenuItem1_Click);
             // 
             // serviçosToolStripMenuItem1
             // 
             this.serviçosToolStripMenuItem1.Name = "serviçosToolStripMenuItem1";
-            this.serviçosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.serviçosToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.serviçosToolStripMenuItem1.Text = "Serviços";
             this.serviçosToolStripMenuItem1.Click += new System.EventHandler(this.ServiçosToolStripMenuItem1_Click);
             // 
             // relatóriosToolStripMenuItem1
             // 
             this.relatóriosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usuáriosToolStripMenuItem3,
+            this.ordemDeServiçoToolStripMenuItem2,
             this.clientesToolStripMenuItem3,
+            this.usuáriosToolStripMenuItem3,
             this.departamentosToolStripMenuItem2,
-            this.serviçosToolStripMenuItem2,
-            this.ordemDeServiçoToolStripMenuItem2});
+            this.serviçosToolStripMenuItem2});
             this.relatóriosToolStripMenuItem1.Name = "relatóriosToolStripMenuItem1";
             this.relatóriosToolStripMenuItem1.Size = new System.Drawing.Size(71, 20);
             this.relatóriosToolStripMenuItem1.Text = "Relatórios";
@@ -223,8 +216,9 @@
             // ordemDeServiçoToolStripMenuItem2
             // 
             this.ordemDeServiçoToolStripMenuItem2.Name = "ordemDeServiçoToolStripMenuItem2";
-            this.ordemDeServiçoToolStripMenuItem2.Size = new System.Drawing.Size(168, 22);
+            this.ordemDeServiçoToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.ordemDeServiçoToolStripMenuItem2.Text = "Ordem de Serviço";
+            this.ordemDeServiçoToolStripMenuItem2.Click += new System.EventHandler(this.ordemDeServiçoToolStripMenuItem2_Click);
             // 
             // opçõesToolStripMenuItem1
             // 
@@ -237,15 +231,19 @@
             // 
             // ajudaToolStripMenuItem1
             // 
+            this.ajudaToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.suporteToolStripMenuItem,
+            this.manualDoUsuárioToolStripMenuItem});
             this.ajudaToolStripMenuItem1.Name = "ajudaToolStripMenuItem1";
-            this.ajudaToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.ajudaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.ajudaToolStripMenuItem1.Text = "Ajuda";
             // 
             // backupToolStripMenuItem
             // 
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.backupToolStripMenuItem.Text = "Backup/Restore";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // sStrip
             // 
@@ -253,9 +251,9 @@
             this.sStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslUsuario,
             this.ssDataHora});
-            this.sStrip.Location = new System.Drawing.Point(0, 428);
+            this.sStrip.Location = new System.Drawing.Point(0, 439);
             this.sStrip.Name = "sStrip";
-            this.sStrip.Size = new System.Drawing.Size(800, 22);
+            this.sStrip.Size = new System.Drawing.Size(784, 22);
             this.sStrip.TabIndex = 5;
             // 
             // tsslUsuario
@@ -271,12 +269,25 @@
             this.ssDataHora.Text = "Data e Hora:";
             this.ssDataHora.Click += new System.EventHandler(this.SsDataHora_Click);
             // 
+            // suporteToolStripMenuItem
+            // 
+            this.suporteToolStripMenuItem.Name = "suporteToolStripMenuItem";
+            this.suporteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.suporteToolStripMenuItem.Text = "Suporte";
+            this.suporteToolStripMenuItem.Click += new System.EventHandler(this.suporteToolStripMenuItem_Click);
+            // 
+            // manualDoUsuárioToolStripMenuItem
+            // 
+            this.manualDoUsuárioToolStripMenuItem.Name = "manualDoUsuárioToolStripMenuItem";
+            this.manualDoUsuárioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manualDoUsuárioToolStripMenuItem.Text = "Manual do Usuário";
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.sStrip);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -301,7 +312,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbOSS;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripSair;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -323,5 +333,7 @@
         private System.Windows.Forms.StatusStrip sStrip;
         private System.Windows.Forms.ToolStripStatusLabel tsslUsuario;
         private System.Windows.Forms.ToolStripStatusLabel ssDataHora;
+        private System.Windows.Forms.ToolStripMenuItem suporteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manualDoUsuárioToolStripMenuItem;
     }
 }

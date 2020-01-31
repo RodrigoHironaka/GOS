@@ -50,6 +50,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupUsuario = new System.Windows.Forms.GroupBox();
+            this.btImprimirOS = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.groupUsuario.SuspendLayout();
@@ -60,9 +61,9 @@
             this.btnSair.BackColor = System.Drawing.Color.Silver;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
-            this.btnSair.Location = new System.Drawing.Point(724, 298);
+            this.btnSair.Location = new System.Drawing.Point(724, 359);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(48, 41);
+            this.btnSair.Size = new System.Drawing.Size(48, 48);
             this.btnSair.TabIndex = 42;
             this.ttInfo.SetToolTip(this.btnSair, "Sair da tela");
             this.btnSair.UseVisualStyleBackColor = false;
@@ -262,12 +263,25 @@
             this.groupUsuario.TabStop = false;
             this.groupUsuario.Text = "Ordem de Serviço(s)";
             // 
+            // btImprimirOS
+            // 
+            this.btImprimirOS.BackColor = System.Drawing.Color.Silver;
+            this.btImprimirOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btImprimirOS.Image = ((System.Drawing.Image)(resources.GetObject("btImprimirOS.Image")));
+            this.btImprimirOS.Location = new System.Drawing.Point(724, 290);
+            this.btImprimirOS.Name = "btImprimirOS";
+            this.btImprimirOS.Size = new System.Drawing.Size(48, 48);
+            this.btImprimirOS.TabIndex = 45;
+            this.ttInfo.SetToolTip(this.btImprimirOS, "Imprimir OS");
+            this.btImprimirOS.UseVisualStyleBackColor = false;
+            // 
             // frmConsultaOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.btImprimirOS);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.btnExcluir);
@@ -307,5 +321,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button btImprimirOS;
     }
 }
